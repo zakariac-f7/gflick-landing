@@ -1,160 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GameZone Vault</title>
-    <style>
-        body {
-            background-color: #121212;
-            font-family: Arial, sans-serif;
-            color: white;
-            text-align: center;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameZone Vault & ColorFun Books</title>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
 
-        input {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: none;
-            font-size: 16px;
-        }
+    h1, h2 {
+      color: #ff7b00;
+      margin-bottom: 10px;
+    }
 
-        .app-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            padding: 20px;
-        }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
 
-        .app-card {
-            background-color: #1E1E1E;
-            padding: 15px;
-            border-radius: 10px;
-            width: 200px;
-            text-align: center;
-        }
+    input {
+      width: 80%;
+      padding: 10px;
+      margin: 20px 0;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
 
-        .app-card img {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-        }
+    .section {
+      margin-top: 40px;
+    }
 
-        .install-btn {
-            background-color: #22c55e;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            text-decoration: none;
-            display: block;
-            margin-top: 10px;
-        }
-    </style>
+    .app-container, .preview-images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .app-card, .preview-card {
+      background-color: #1E1E1E;
+      padding: 15px;
+      border-radius: 10px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+
+    .app-card img, .preview-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .preview-card img {
+      width: 150px;
+      height: 200px;
+    }
+
+    .install-btn, .download-btn {
+      background-color: #22c55e;
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      text-decoration: none;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .install-btn:hover, .download-btn:hover {
+      background-color: #16a34a;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 600px) {
+      .app-card, .preview-card {
+        width: 100%;
+      }
+
+      input {
+        width: 95%;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <h1>GameZone Vault</h1>
-<input type="text" id="searchInput" placeholder="APP OR GAME NAME" onkeyup="filterGames()" />
+  <h1>GameZone Vault 🎮</h1>
+  <p>Discover and install popular games!</p>
+  <input type="text" id="searchInput" placeholder="Search for a game..." onkeyup="filterGames()" />
 
-    <div class="app-container">
-        <!-- Existing Games -->
-        <div class="app-card">
-            <img src="https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png" alt="GTA 5"/>
-            <h3>GTA 5</h3>
-            <p>Platforms: 🖥📱</p>
-            <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">install</a>
-        </div>
-
-        <div class="app-card">
-            <img src="https://img.utdstc.com/icon/8ab/ce5/8abce53baeb0d4e52298d5142f9b815bfae587acb18b12cbefb0feae5caba48d:200" alt="Fortnite Mobile"/>
-            <h3>FORTNITE MOBILE</h3>
-            <p>Platforms: 🖥📱</p>
-            <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">install</a>
-        </div>
-
-        <div class="app-card">
-            <img src="https://i.pinimg.com/736x/06/61/3a/06613a867196ed6cbec45a736936647b.jpg" alt="Minecraft"/>
-            <h3>MINECRAFT</h3>
-            <p>Platforms: 🖥📱</p>
-            <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">install</a>
-        </div>
-
-        <div class="app-card">
-            <img src="https://play-lh.googleusercontent.com/LmZuGeTmqAA3BTvSHvS7HSFOUfpajbknRhELZmoCHllZ27QZlhyPjD9urOrZwZAFM-A" alt="Poppy Playtime"/>
-            <h3>POPPY PLAYTIME</h3>
-            <p>Platforms: 🖥📱</p>
-            <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">install</a>
-        </div>
-
-        <div class="app-card">
-            <img src="https://sm.ign.com/t/ign_fr/cover/f/fifa-mobil/fifa-mobile-2022_64m8.300.jpg" alt="FIFA 22"/>
-            <h3>FIFA 22</h3>
-            <p>Platforms: 🖥📱</p>
-            <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">install</a>
-        </div>
-
-        <div class="app-card">
-            <img src="https://cdn.marvel.com/content/1x/spider-manunlimited_lob_crd_01.jpg" alt="Spider-Man"/>
-            <h3>SPIDER MAN</h3>
-            <p>Platforms: 🖥📱</p>
-            <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">install</a>
-        </div>
-
-        <!-- New Trending Games -->
-        <div class="app-card">
-            <img src="https://play-lh.googleusercontent.com/Y9GghCslNNk-nWccWvxgCDYvd7yLSwkw0hZ3NVTkSJqigY0ZozK3lv85jR02XOJSDPQ" alt="Baseball 9"/>
-            <h3>BASEBALL 9</h3>
-            <p>Platforms: 📱</p>
-            <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">install</a>
-        </div>
-
-        <div class="app-card">
-            <img src="https://images.seeklogo.com/logo-png/51/1/ea-sports-fc-mobile-logo-png_seeklogo-519509.png" alt="EA SPORTS FC Mobile"/>
-            <h3>EA SPORTS FC</h3>
-            <p>Platforms: 📱</p>
-            <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">install</a>
-        </div>
-
-        <div class="app-card">
-            <img src="https://theshow.com/wp-content/themes/Archive/images/ts25/standard-v2.jpg" alt="MLB The Show Mobile"/>
-            <h3>MLB THE SHOW</h3>
-            <p>Platforms: 📱</p>
-            <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">install</a>
-        </div>
-
-
-        <div class="app-card">
-            <img src="https://modcombo.com/uploads/2025/3/repo-thumbnail.jpg" alt="Roblox"/>
-            <h3>Repo Mod</h3>
-            <p>Platforms: 🖥📱</p>
-            <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">install</a>
-        </div>
-        <div class="app-card">
-            <img src="https://img.tapimg.net/market/images/85e228065e39d24700d00dc5e0856f36.jpg/appicon_m?t=1" alt="MLB perfect inning 25"/>
-            <h3>MLB Perfect Inning 25</h3>
-            <p>Platforms: 🖥📱</p>
-            <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">install</a>
-        </div>
+  <div class="app-container" id="gamesSection">
+    <!-- Games -->
+    <div class="app-card">
+      <img src="https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png" alt="GTA 5"/>
+      <h3>GTA 5</h3>
+      <p>Platforms: 🖥📱</p>
+      <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">Install</a>
     </div>
-<script>
-  function filterGames() {
-    const input = document.getElementById("searchInput");
-    const filter = input.value.toLowerCase();
-    const cards = document.getElementsByClassName("app-card");
 
-    for (let i = 0; i < cards.length; i++) {
-      const title = cards[i].getElementsByTagName("h3")[0];
-      if (title.innerText.toLowerCase().includes(filter)) {
-        cards[i].style.display = "";
-      } else {
-        cards[i].style.display = "none";
+    <div class="app-card">
+      <img src="https://img.utdstc.com/icon/8ab/ce5/8abce53baeb0d4e52298d5142f9b815bfae587acb18b12cbefb0feae5caba48d:200" alt="Fortnite Mobile"/>
+      <h3>Fortnite Mobile</h3>
+      <p>Platforms: 🖥📱</p>
+      <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">Install</a>
+    </div>
+
+    <div class="app-card">
+      <img src="https://i.pinimg.com/736x/06/61/3a/06613a867196ed6cbec45a736936647b.jpg" alt="Minecraft"/>
+      <h3>Minecraft</h3>
+      <p>Platforms: 🖥📱</p>
+      <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">Install</a>
+    </div>
+
+    <div class="app-card">
+      <img src="https://play-lh.googleusercontent.com/LmZuGeTmqAA3BTvSHvS7HSFOUfpajbknRhELZmoCHllZ27QZlhyPjD9urOrZwZAFM-A" alt="Poppy Playtime"/>
+      <h3>Poppy Playtime</h3>
+      <p>Platforms: 🖥📱</p>
+      <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">Install</a>
+    </div>
+
+    <div class="app-card">
+      <img src="https://sm.ign.com/t/ign_fr/cover/f/fifa-mobil/fifa-mobile-2022_64m8.300.jpg" alt="FIFA 22"/>
+      <h3>FIFA 22</h3>
+      <p>Platforms: 🖥📱</p>
+      <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">Install</a>
+    </div>
+
+    <div class="app-card">
+      <img src="https://cdn.marvel.com/content/1x/spider-manunlimited_lob_crd_01.jpg" alt="Spider-Man"/>
+      <h3>Spider Man</h3>
+      <p>Platforms: 🖥📱</p>
+      <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">Install</a>
+    </div>
+
+    <!-- You can add more games here -->
+  </div>
+
+  <div class="section">
+    <h2>ColorFun Books 🎨</h2>
+    <p>Fun & creative coloring pages for your kids! 📖✨</p>
+
+    <div class="preview-images">
+      <div class="preview-card">
+        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1692323579i/197140858.jpg" alt="Coloring Book 1">
+      </div>
+
+      <div class="preview-card">
+        <img src="https://m.media-amazon.com/images/I/618cpOYeTIL._AC_UF1000,1000_QL80_.jpg" alt="Coloring Book 2">
+      </div>
+
+      <div class="preview-card">
+        <img src="https://m.media-amazon.com/images/I/71jfsEP8G4L.jpg" alt="Coloring Book 3">
+      </div>
+    </div>
+
+    <a href="https://installchecker.com/cl/i/r72x9v" class="download-btn">Download Coloring Book PDF</a>
+  </div>
+
+  <script>
+    function filterGames() {
+      const input = document.getElementById("searchInput");
+      const filter = input.value.toLowerCase();
+      const cards = document.getElementsByClassName("app-card");
+
+      for (let i = 0; i < cards.length; i++) {
+        const title = cards[i].getElementsByTagName("h3")[0];
+        if (title.innerText.toLowerCase().includes(filter)) {
+          cards[i].style.display = "";
+        } else {
+          cards[i].style.display = "none";
+        }
       }
     }
-  }
-</script>
+  </script>
 
 </body>
 </html>
