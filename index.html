@@ -9,57 +9,59 @@
       background-color: #121212;
       font-family: Arial, sans-serif;
       color: white;
-      text-align: center;
       margin: 0;
       padding: 20px;
+      text-align: center;
     }
 
     h1, h2 {
       color: #ff7b00;
-      margin-bottom: 10px;
+      margin: 20px 0 10px;
     }
 
     p {
-      font-size: 1.2em;
-      margin-bottom: 20px;
       color: #ccc;
+      font-size: 1.1em;
+      margin-bottom: 20px;
     }
 
-    input {
+    input[type="text"] {
       width: 80%;
-      padding: 10px;
-      margin: 20px 0;
-      border-radius: 5px;
+      max-width: 500px;
+      padding: 12px;
+      border-radius: 8px;
       border: none;
       font-size: 16px;
-    }
-
-    .section {
-      margin-top: 40px;
+      margin: 20px auto;
+      display: block;
     }
 
     .app-container, .preview-images {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 15px;
-      padding: 20px;
+      gap: 20px;
+      padding: 20px 0;
     }
 
     .app-card, .preview-card {
-      background-color: #1E1E1E;
+      background-color: #1e1e1e;
+      border-radius: 12px;
       padding: 15px;
-      border-radius: 10px;
       width: 200px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      box-shadow: 0 0 20px rgba(255, 123, 0, 0.6); /* Always glowing */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .app-card img, .preview-card img {
+      border-radius: 10px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .app-card img {
       width: 100px;
       height: 100px;
-      object-fit: cover;
-      border-radius: 10px;
     }
 
     .preview-card img {
@@ -67,29 +69,63 @@
       height: 200px;
     }
 
+    /* Enhanced Call-to-action buttons */
     .install-btn, .download-btn {
-      background-color: #22c55e;
+      background: #22c55e;
       color: white;
-      padding: 10px;
+      padding: 12px 18px;
+      border-radius: 10px;
       font-size: 16px;
-      border-radius: 5px;
       text-decoration: none;
-      display: block;
+      display: inline-block;
       margin-top: 10px;
+      border: 2px solid #16a34a;
+      animation: pulse 1.6s infinite, glowPulse 2s infinite;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
     }
 
     .install-btn:hover, .download-btn:hover {
       background-color: #16a34a;
-      transition: 0.3s;
+    }
+
+    /* Pulse animation for CTA buttons */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.06);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Glow pulse animation */
+    @keyframes glowPulse {
+      0% {
+        box-shadow: 0 0 5px rgba(34, 197, 94, 0.6);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(34, 197, 94, 0.9);
+      }
+      100% {
+        box-shadow: 0 0 5px rgba(34, 197, 94, 0.6);
+      }
     }
 
     @media (max-width: 600px) {
-      .app-card, .preview-card {
-        width: 100%;
+      input[type="text"] {
+        width: 95%;
       }
 
-      input {
-        width: 95%;
+      .app-card, .preview-card {
+        width: 90%;
+      }
+
+      .preview-card img {
+        width: 100px;
+        height: auto;
       }
     }
   </style>
@@ -101,7 +137,7 @@
   <input type="text" id="searchInput" placeholder="Search for a game..." onkeyup="filterGames()" />
 
   <div class="app-container" id="gamesSection">
-    <!-- Games -->
+    <!-- Game Cards -->
     <div class="app-card">
       <img src="https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png" alt="GTA 5"/>
       <h3>GTA 5</h3>
@@ -110,7 +146,7 @@
     </div>
 
     <div class="app-card">
-      <img src="https://image.winudf.com/v2/image1/Y29tLndpbGRsaWZlLmdhbWVzLmJhdHRsZS5yb3lhbGUuZnJlZS56b29iYV9pY29uXzE3MzkzNzY0MzBfMDg5/icon.png?fakeurl=1&h=240&type=webp" alt="Fortnite Mobile"/>
+      <img src="https://image.winudf.com/v2/image1/Y29tLndpbGRsaWZlLmdhbWVzLmJhdHRsZS5yb3lhbGUuZnJlZS56b29iYV9pY29uXzE3MzkzNzY0MzBfMDg5/icon.png?fakeurl=1&h=240&type=webp" alt="Zooba Mod"/>
       <h3>Zooba Mod</h3>
       <p>Platforms: 🖥📱</p>
       <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">Install</a>
@@ -131,8 +167,8 @@
     </div>
 
     <div class="app-card">
-      <img src="https://sm.ign.com/t/ign_fr/cover/f/fifa-mobil/fifa-mobile-2022_64m8.300.jpg" alt="FIFA 22"/>
-      <h3>FIFA 22</h3>
+      <img src="https://sgproapk.com/wp-content/uploads/2024/10/stumble-guys-mod-apk-main-img-1.webp" alt="Stumble Guys MOD"/>
+      <h3>Stumble Guys MOD v0.86</h3>
       <p>Platforms: 🖥📱</p>
       <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">Install</a>
     </div>
@@ -144,44 +180,40 @@
       <a href="https://appinstallcheck.com/cl/i/qkd524" class="install-btn">Install</a>
     </div>
 
-    <!-- Inside your <div class="app-container" id="gamesSection"> -->
-<div class="app-card">
-  <img src="https://play-lh.googleusercontent.com/Y9GghCslNNk-nWccWvxgCDYvd7yLSwkw0hZ3NVTkSJqigY0ZozK3lv85jR02XOJSDPQ" alt="Baseball 9"/>
-  <h3>BASEBALL 9</h3>
-  <p>Platforms: 📱</p>
-  <a href="https://appinstallcheck.com/cl/js/qkd524" class="install-btn">Install</a>
-</div>
+    <div class="app-card">
+      <img src="https://play-lh.googleusercontent.com/Y9GghCslNNk-nWccWvxgCDYvd7yLSwkw0hZ3NVTkSJqigY0ZozK3lv85jR02XOJSDPQ" alt="Baseball 9"/>
+      <h3>BASEBALL 9</h3>
+      <p>Platforms: 📱</p>
+      <a href="https://appinstallcheck.com/cl/js/qkd524" class="install-btn">Install</a>
+    </div>
 
-<div class="app-card">
-  <img src="https://images.seeklogo.com/logo-png/51/1/ea-sports-fc-mobile-logo-png_seeklogo-519509.png" alt="EA SPORTS FC Mobile"/>
-  <h3>EA SPORTS FC</h3>
-  <p>Platforms: 📱</p>
-  <a href="https://appinstallcheck.com/cl/js/qkd524" class="install-btn">Install</a>
-</div>
+    <div class="app-card">
+      <img src="https://images.seeklogo.com/logo-png/51/1/ea-sports-fc-mobile-logo-png_seeklogo-519509.png" alt="EA SPORTS FC Mobile"/>
+      <h3>EA SPORTS FC</h3>
+      <p>Platforms: 📱</p>
+      <a href="https://appinstallcheck.com/cl/js/qkd524" class="install-btn">Install</a>
+    </div>
 
-<div class="app-card">
-  <img src="https://theshow.com/wp-content/themes/Archive/images/ts25/standard-v2.jpg" alt="MLB The Show Mobile"/>
-  <h3>MLB THE SHOW</h3>
-  <p>Platforms: 📱</p>
-  <a href="https://appinstallcheck.com/cl/js/qkd524" class="install-btn">Install</a>
-</div>
+    <div class="app-card">
+      <img src="https://theshow.com/wp-content/themes/Archive/images/ts25/standard-v2.jpg" alt="MLB The Show"/>
+      <h3>MLB THE SHOW</h3>
+      <p>Platforms: 📱</p>
+      <a href="https://appinstallcheck.com/cl/js/qkd524" class="install-btn">Install</a>
+    </div>
 
-<div class="app-card">
-  <img src="https://modcombo.com/uploads/2025/3/repo-thumbnail.jpg" alt="Repo Mod"/>
-  <h3>Repo Mod</h3>
-  <p>Platforms: 🖥📱</p>
-  <a href="https://appinstallcheck.com/cl/js/qkd524" class="install-btn">Install</a>
-</div>
+    <div class="app-card">
+      <img src="https://modcombo.com/uploads/2025/3/repo-thumbnail.jpg" alt="Repo Mod"/>
+      <h3>Repo Mod</h3>
+      <p>Platforms: 🖥📱</p>
+      <a href="https://appinstallcheck.com/cl/js/qkd524" class="install-btn">Install</a>
+    </div>
 
-<div class="app-card">
-  <img src="https://img.tapimg.net/market/images/85e228065e39d24700d00dc5e0856f36.jpg/appicon_m?t=1" alt="MLB Perfect Inning 25"/>
-  <h3>MLB Perfect Inning 25</h3>
-  <p>Platforms: 🖥📱</p>
-  <a href="https://appinstallcheck.com/cl/js/qkd524" class="install-btn">Install</a>
-</div>
-
-
-    <!-- You can add more games here -->
+    <div class="app-card">
+      <img src="https://img.tapimg.net/market/images/85e228065e39d24700d00dc5e0856f36.jpg/appicon_m?t=1" alt="MLB Perfect Inning 25"/>
+      <h3>MLB Perfect Inning 25</h3>
+      <p>Platforms: 🖥📱</p>
+      <a href="https://appinstallcheck.com/cl/js/qkd524" class="install-btn">Install</a>
+    </div>
   </div>
 
   <div class="section">
@@ -190,15 +222,13 @@
 
     <div class="preview-images">
       <div class="preview-card">
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1692323579i/197140858.jpg" alt="Coloring Book 1">
+        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1692323579i/197140858.jpg" alt="Coloring Book 1" />
       </div>
-
       <div class="preview-card">
-        <img src="https://m.media-amazon.com/images/I/618cpOYeTIL._AC_UF1000,1000_QL80_.jpg" alt="Coloring Book 2">
+        <img src="https://m.media-amazon.com/images/I/618cpOYeTIL._AC_UF1000,1000_QL80_.jpg" alt="Coloring Book 2" />
       </div>
-
       <div class="preview-card">
-        <img src="https://m.media-amazon.com/images/I/71jfsEP8G4L.jpg" alt="Coloring Book 3">
+        <img src="https://m.media-amazon.com/images/I/71jfsEP8G4L.jpg" alt="Coloring Book 3" />
       </div>
     </div>
 
@@ -207,17 +237,12 @@
 
   <script>
     function filterGames() {
-      const input = document.getElementById("searchInput");
-      const filter = input.value.toLowerCase();
+      const input = document.getElementById("searchInput").value.toLowerCase();
       const cards = document.getElementsByClassName("app-card");
 
       for (let i = 0; i < cards.length; i++) {
         const title = cards[i].getElementsByTagName("h3")[0];
-        if (title.innerText.toLowerCase().includes(filter)) {
-          cards[i].style.display = "";
-        } else {
-          cards[i].style.display = "none";
-        }
+        cards[i].style.display = title.innerText.toLowerCase().includes(input) ? "" : "none";
       }
     }
   </script>
