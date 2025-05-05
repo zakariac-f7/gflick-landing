@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gift Cards - Gflick</title>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: Arial, sans-serif;
+      color: white;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #ff7b00;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #ccc;
+      font-size: 1.1em;
+      margin-bottom: 30px;
+    }
+
+    .gift-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .gift-card {
+      background-color: #1e1e1e;
+      border-radius: 12px;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(255, 123, 0, 0.6);
+    }
+
+    .gift-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .download-btn {
+      background: #22c55e;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 16px;
+      text-decoration: none;
+      display: inline-block;
+      border: 2px solid #16a34a;
+      animation: pulse 1.6s infinite, glowPulse 2s infinite;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+    }
+
+    .download-btn:hover {
+      background-color: #16a34a;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 5px rgba(34, 197, 94, 0.6); }
+      50% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.9); }
+      100% { box-shadow: 0 0 5px rgba(34, 197, 94, 0.6); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎁 Gflick Gift Cards</h1>
+  <p>Claim gift cards and redeem exciting game rewards!</p>
+
+  <div class="gift-container">
+    <div class="gift-card">
+      <img src="https://cdn.pixabay.com/photo/2020/04/09/13/15/gift-card-5026610_960_720.png" alt="Gift Card Image" />
+      <a href="https://yourgiftlink.com" class="download-btn">Get Your Gift Card</a>
+    </div>
+  </div>
+
+</body>
+</html>
