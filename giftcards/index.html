@@ -7,7 +7,7 @@
   <style>
     body {
       background-color: #121212;
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       color: white;
       margin: 0;
       padding: 20px;
@@ -22,13 +22,19 @@
     p {
       color: #ccc;
       font-size: 1.1em;
+      margin-bottom: 20px;
+    }
+
+    .countdown {
+      color: #f87171;
+      font-weight: bold;
       margin-bottom: 30px;
     }
 
     .gift-container {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
     }
 
@@ -36,15 +42,34 @@
       background-color: #1e1e1e;
       border-radius: 12px;
       padding: 20px;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 0 20px rgba(255, 123, 0, 0.6);
+      width: 300px;
+      box-shadow: 0 0 20px rgba(255, 123, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .gift-card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .gift-card img {
       width: 100%;
       border-radius: 10px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
+    }
+
+    .card-info {
+      margin-bottom: 10px;
+      font-size: 0.95em;
+      color: #aaa;
+    }
+
+    .verified {
+      color: #4ade80;
+      font-size: 0.9em;
+      margin-bottom: 8px;
     }
 
     .download-btn {
@@ -64,6 +89,13 @@
       background-color: #16a34a;
     }
 
+    @media (max-width: 480px) {
+      .download-btn {
+        font-size: 18px;
+        padding: 14px 22px;
+      }
+    }
+
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.06); }
@@ -75,19 +107,103 @@
       50% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.9); }
       100% { box-shadow: 0 0 5px rgba(34, 197, 94, 0.6); }
     }
+
+    .testimonial {
+      margin-top: 40px;
+      font-style: italic;
+      color: #aaa;
+    }
+
+    .activity {
+      color: #4ade80;
+      margin-top: 20px;
+      font-size: 0.95em;
+    }
   </style>
 </head>
 <body>
 
   <h1>🎁 Gflick Gift Cards</h1>
-  <p>Claim gift cards and redeem exciting game rewards!</p>
+  <p>Choose your gift card and unlock amazing rewards! Limited-time CPA offers — don’t miss out!</p>
+
+  <p class="countdown">Hurry! Offer ends in <span id="time">05:00</span></p>
 
   <div class="gift-container">
     <div class="gift-card">
-      <img src="https://cdn.pixabay.com/photo/2020/04/09/13/15/gift-card-5026610_960_720.png" alt="Gift Card Image" />
-      <a href="https://yourgiftlink.com" class="download-btn">Get Your Gift Card</a>
+      <img src="https://www.steamcarddelivery.com/_next/image?url=https%3A%2F%2Fgiftnix-product-images.s3.us-west-2.amazonaws.com%2Fscd%2F100-amazon-digital-gift-card-email-delivery-2x&w=750&q=75" alt="Amazon Gift Card" />
+      <div class="verified">✔ Verified & Safe</div>
+      <div class="card-info">💵 Value: $100 | ⏳ Expires: May 31, 2025</div>
+      <a href="https://appinstallcheck.com/cl/i/qkd524" class="download-btn">Claim Now – Limited Offer!</a>
     </div>
+
+    <div class="gift-card">
+      <img src="https://brand-lib.mygiftcardsplus.ca/brand/image/15315-06422-e86a5327-b6a5-48b4-be6a-2bff6cba40f8/image_giftcard_300x190/walmart.png?t=1572986981" alt="Walmart Gift Card" />
+      <div class="verified">✔ Verified & Safe</div>
+      <div class="card-info">💵 Value: $50 | ⏳ Expires: June 10, 2025</div>
+      <a href="https://appinstallcheck.com/cl/i/qkd524" class="download-btn">Unlock Your walmart Code</a>
+    </div>
+
+    <div class="gift-card">
+      <img src="https://www.giftnix.com/_next/image?url=https%3A%2F%2Fgiftnix-product-images.s3.us-west-2.amazonaws.com%2Fd1561731355662366&w=3840&q=75" alt="Google Play Gift Card" />
+      <div class="verified">✔ Verified & Safe</div>
+      <div class="card-info">💵 Value: $25 | ⏳ Expires: May 20, 2025</div>
+      <a href="https://appinstallcheck.com/cl/i/qkd524" class="download-btn">Get Google Play Credit</a>
+    </div>
+	
+    </div class="gift-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzW8QlkkY04_iuOXdIA-WQl3ibXlYIMibpgQ&s" alt="Apple Gift Card" />
+      <div class="verified">✔ Verified & Safe</div>
+      <div class="card-info">💵 Value: $25 | ⏳ Expires: May 20, 2025</div>
+      <a href="https://appinstallcheck.com/cl/i/qkd524" class="download-btn">Get Apple Credit</a>
+	</div>
+
+  <div class="testimonial">
+    <h2 style="color: #ff7b00;">What Users Are Saying</h2>
+    <p>"Got my $100 Amazon card in minutes. Super easy!" – Jenna R.</p>
+    <p>"Legit and fast, just completed the quick offer." – Michael T.</p>
   </div>
+
+  <div class="activity" id="activity-feed">
+    ✅ Someone from Berlin just claimed a $50 Steam card
+  </div>
+
+  <script>
+    // Countdown timer
+    let time = 300;
+    const countdown = document.getElementById("time");
+    setInterval(() => {
+      if (time > 0) {
+        time--;
+        const minutes = String(Math.floor(time / 60)).padStart(2, '0');
+        const seconds = String(time % 60).padStart(2, '0');
+        countdown.textContent = `${minutes}:${seconds}`;
+      }
+    }, 1000);
+
+    // Scroll animations
+    const cards = document.querySelectorAll('.gift-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    });
+    cards.forEach(card => observer.observe(card));
+
+    // Activity feed rotation
+    const activities = [
+      "✅ Someone from Berlin just claimed a $50 Steam card",
+      "🎉 User in New York unlocked a $100 Amazon gift!",
+      "🔓 Laura from Madrid redeemed a Google Play credit",
+      "🚀 Tom in Tokyo just grabbed a $25 Steam card"
+    ];
+    let activityIndex = 0;
+    setInterval(() => {
+      activityIndex = (activityIndex + 1) % activities.length;
+      document.getElementById('activity-feed').textContent = activities[activityIndex];
+    }, 5000);
+  </script>
 
 </body>
 </html>
