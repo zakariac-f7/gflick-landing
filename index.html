@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GameZone Vault & ColorFun Books</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>🔥 GameZone Vault - Exclusive Mobile Mods 🔥</title>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQHXF8M7M0"></script>
   <script>
@@ -13,248 +13,560 @@
     gtag('config', 'G-XQHXF8M7M0');
   </script>
   <style>
+    :root {
+      --primary: #ff7b00;
+      --secondary: #22c55e;
+      --dark: #121212;
+      --darker: #0a0a0a;
+      --light: #f5f5f5;
+    }
+    
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
     body {
-      background-color: #121212;
-      font-family: Arial, sans-serif;
+      background-color: var(--dark);
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
       color: white;
       margin: 0;
-      padding: 20px;
+      padding: 0;
       text-align: center;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
     }
 
-    h1, h2 {
-      color: #ff7b00;
-      margin: 20px 0 10px;
+    h1, h2, h3 {
+      color: var(--primary);
+      margin: 15px 0 10px;
+      text-shadow: 0 2px 4px rgba(255, 123, 0, 0.3);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-top: 25px;
     }
 
     p {
       color: #ccc;
-      font-size: 1.1em;
+      font-size: 16px;
       margin-bottom: 20px;
+      padding: 0 15px;
     }
 
-    input[type="text"] {
-      width: 80%;
-      max-width: 500px;
-      padding: 12px;
-      border-radius: 8px;
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding-bottom: 80px;
+    }
+
+    /* Search */
+    .search-container {
+      padding: 0 15px;
+      margin: 20px 0;
+    }
+    
+    #searchInput {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
       border: none;
       font-size: 16px;
-      margin: 20px auto;
-      display: block;
+      background: #1e1e1e;
+      color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
-    .app-container, .preview-images {
+    /* App Cards */
+    .app-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
-      padding: 20px 0;
+      gap: 15px;
+      padding: 15px;
     }
 
-    .app-card, .preview-card {
-      background-color: #1e1e1e;
+    .app-card {
+      background: linear-gradient(145deg, #1a1a1a, #222);
       border-radius: 12px;
       padding: 15px;
-      width: 200px;
-      box-shadow: 0 0 20px rgba(255, 123, 0, 0.6); /* Always glowing */
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: calc(50% - 15px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      transition: transform 0.2s;
+      position: relative;
+      overflow: hidden;
     }
 
-    .app-card img, .preview-card img {
-      border-radius: 10px;
-      object-fit: cover;
-      margin-bottom: 10px;
+    .app-card:active {
+      transform: scale(0.98);
     }
 
     .app-card img {
-      width: 100px;
-      height: 100px;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
-    .preview-card img {
-      width: 150px;
-      height: 200px;
+    .app-card h3 {
+      font-size: 16px;
+      margin: 5px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    /* Enhanced Call-to-action buttons */
-    .install-btn, .download-btn {
-      background: #22c55e;
+    .app-card .badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--primary);
       color: white;
-      padding: 12px 18px;
+      font-size: 10px;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 12px 20px;
       border-radius: 10px;
       font-size: 16px;
+      font-weight: bold;
       text-decoration: none;
-      display: inline-block;
-      margin-top: 10px;
-      border: 2px solid #16a34a;
-      animation: pulse 1.6s infinite, glowPulse 2s infinite;
-      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+      margin: 10px 0;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+      transition: all 0.2s;
     }
 
-    .install-btn:hover, .download-btn:hover {
-      background-color: #16a34a;
+    .btn:active {
+      transform: scale(0.96);
     }
 
-    /* Pulse animation for CTA buttons */
+    .btn-primary {
+      background: linear-gradient(to right, #ff7b00, #ff5500);
+      box-shadow: 0 4px 15px rgba(255, 123, 0, 0.4);
+    }
+
+    /* Sticky CTA */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to right, #1a1a1a, #222);
+      padding: 12px 15px;
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.5);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+    }
+
+    .sticky-cta .btn {
+      max-width: 300px;
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Verification Popup */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 2000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .verification-popup {
+      background: linear-gradient(145deg, #1a1a1a, #222);
+      border-radius: 15px;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.6);
+      animation: popIn 0.3s ease-out;
+    }
+
+    .verification-popup h3 {
+      color: var(--primary);
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .verification-steps {
+      text-align: left;
+      margin: 20px 0;
+    }
+
+    .verification-step {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    .verification-step .checkmark {
+      color: var(--secondary);
+      font-weight: bold;
+      margin-right: 10px;
+      font-size: 18px;
+    }
+
+    .popup-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .popup-btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .popup-btn-primary {
+      background: var(--secondary);
+      color: white;
+    }
+
+    .popup-btn-secondary {
+      background: #333;
+      color: white;
+    }
+
+    /* Generating Verification Screen */
+    .generating-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #121212;
+      z-index: 3000;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 5px solid #333;
+      border-top-color: #ff7b00;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    
+    .generating-progress {
+      width: 80%;
+      max-width: 300px;
+      height: 10px;
+      background: #333;
+      border-radius: 5px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    
+    .generating-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, #ff7b00, #ff5500);
+      transition: width 3s linear;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .generating-message {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: white;
+    }
+    
+    .generating-submessage {
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    /* Trust badges */
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .trust-badge {
+      background: #1e1e1e;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Animations */
     @keyframes pulse {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.06);
-      }
-      100% {
-        transform: scale(1);
-      }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
 
-    /* Glow pulse animation */
-    @keyframes glowPulse {
-      0% {
-        box-shadow: 0 0 5px rgba(34, 197, 94, 0.6);
-      }
-      50% {
-        box-shadow: 0 0 20px rgba(34, 197, 94, 0.9);
-      }
-      100% {
-        box-shadow: 0 0 5px rgba(34, 197, 94, 0.6);
-      }
+    @keyframes popIn {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
-    @media (max-width: 600px) {
-      input[type="text"] {
-        width: 95%;
-      }
-
-      .app-card, .preview-card {
-        width: 90%;
-      }
-
-      .preview-card img {
-        width: 100px;
-        height: auto;
+    /* Responsive */
+    @media (max-width: 400px) {
+      .app-card {
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
-
-  <h1>GameZone Vault 🎮</h1>
-  <a href="/giftcards/" class="install-btn">🎁 secret Cards</a>
-  <p>Discover and install popular games and coloring books!</p>
-  <input type="text" id="searchInput" placeholder="Search for a game..." onkeyup="filterGames()" />
-
-  <div class="app-container" id="gamesSection">
-    <!-- Game Cards -->
-    <div class="app-card">
-      <img src="https://getmodsapk.com/storage/Squad-Busters-MOD-APK%20(2)3.webp" alt="Squad Busters"/>
-      <h3>Squad Busters MOD</h3>
-      <p>Platforms: 🖥📱</p>
-      <a href="https://gflick.xyz/cl/i/qkd524" class="install-btn">Install</a>
+  <!-- Generating Verification Screen -->
+  <div class="generating-screen" id="generatingScreen">
+    <div class="loader"></div>
+    <div class="generating-message">Generating Download Link...</div>
+    <div class="generating-progress">
+      <div class="generating-progress-bar" id="progressBar"></div>
     </div>
+    <div class="generating-submessage">Please wait while we verify your request</div>
+  </div>
 
-    <div class="app-card">
-      <img src="https://image.winudf.com/v2/image1/Y29tLndpbGRsaWZlLmdhbWVzLmJhdHRsZS5yb3lhbGUuZnJlZS56b29iYV9pY29uXzE3MzkzNzY0MzBfMDg5/icon.png?fakeurl=1&h=240&type=webp" alt="Zooba Mod"/>
-      <h3>Zooba Mod</h3>
-      <p>Platforms: 🖥📱</p>
-      <a href="https://gflick.xyz/cl/i/qkd524" class="install-btn">Install</a>
-    </div>
-
-    <div class="app-card">
-      <img src="https://i.pinimg.com/736x/06/61/3a/06613a867196ed6cbec45a736936647b.jpg" alt="Minecraft"/>
-      <h3>Minecraft</h3>
-      <p>Platforms: 🖥📱</p>
-      <a href="https://gflick.xyz/cl/i/qkd524" class="install-btn">Install</a>
-    </div>
-
-    <div class="app-card">
-      <img src="https://play-lh.googleusercontent.com/LmZuGeTmqAA3BTvSHvS7HSFOUfpajbknRhELZmoCHllZ27QZlhyPjD9urOrZwZAFM-A" alt="Poppy Playtime"/>
-      <h3>Poppy Playtime</h3>
-      <p>Platforms: 🖥📱</p>
-      <a href="https://gflick.xyz/cl/i/qkd524" class="install-btn">Install</a>
-    </div>
-
-    <div class="app-card">
-      <img src="https://sgproapk.com/wp-content/uploads/2024/10/stumble-guys-mod-apk-main-img-1.webp" alt="Stumble Guys MOD"/>
-      <h3>Stumble Guys MOD v0.86</h3>
-      <p>Platforms: 🖥📱</p>
-      <a href="https://gflick.xyz/cl/i/qkd524" class="install-btn">Install</a>
-    </div>
-
-    <div class="app-card">
-      <img src="https://cdn.marvel.com/content/1x/spider-manunlimited_lob_crd_01.jpg" alt="Spider-Man"/>
-      <h3>Spider Man</h3>
-      <p>Platforms: 🖥📱</p>
-      <a href="https://gflick.xyz/cl/i/qkd524" class="install-btn">Install</a>
-    </div>
-
-    <div class="app-card">
-      <img src="https://play-lh.googleusercontent.com/Y9GghCslNNk-nWccWvxgCDYvd7yLSwkw0hZ3NVTkSJqigY0ZozK3lv85jR02XOJSDPQ" alt="Baseball 9"/>
-      <h3>BASEBALL 9</h3>
-      <p>Platforms: 📱</p>
-      <a href="https://gflick.xyz/cl/i/qkd524" class="install-btn">Install</a>
-    </div>
-
-    <div class="app-card">
-      <img src="https://thestickwarlegacy.com/wp-content/uploads/2024/03/Stick-war-legacy-mod-APK-150x150.webp" alt="Stick war legacy mod"/>
-      <h3>Stick war legacy mod</h3>
-      <p>Platforms: 📱</p>
-      <a href="https://gflick.xyz/cl/i/qkd524" class="install-btn">Install</a>
-    </div>
-
-    <div class="app-card">
-      <img src="https://getmodsapk.com/storage/media/2025/4/mobile-legend-mod-apk.webp" alt="MLB The Show"/>
-      <h3>Mobile Legends Mod</h3>
-      <p>Platforms: 📱</p>
-      <a href="https://gflick.xyz/cl/i/qkd524" class="install-btn">Install</a>
-    </div>
-
-    <div class="app-card">
-      <img src="https://modcombo.com/uploads/2025/3/repo-thumbnail.jpg" alt="Repo Mod"/>
-      <h3>Repo Mod</h3>
-      <p>Platforms: 🖥📱</p>
-      <a href="https://gflick.xyz/cl/i/qkd524" class="install-btn">Install</a>
-    </div>
-
-    <div class="app-card">
-      <img src="https://img.tapimg.net/market/images/85e228065e39d24700d00dc5e0856f36.jpg/appicon_m?t=1" alt="MLB Perfect Inning 25"/>
-      <h3>MLB Perfect Inning 25</h3>
-      <p>Platforms: 🖥📱</p>
-      <a href="https://gflick.xyz/cl/i/qkd524" class="install-btn">Install</a>
+  <!-- Verification Popup -->
+  <div class="popup-overlay" id="verificationPopup">
+    <div class="verification-popup">
+      <h3>VERIFICATION REQUIRED</h3>
+      <div class="verification-steps">
+        <div class="verification-step">
+          <span class="checkmark">✔</span> Step 1: Click the Download button
+        </div>
+        <div class="verification-step">
+          <span class="checkmark">✔</span> Step 2: Complete Quick Verification survey
+        </div>
+        <div class="verification-step">
+          <span class="checkmark">✔</span> Step 3: Install & Open App
+        </div>
+        <div class="verification-step">
+          <span class="checkmark">✔</span> Step 4: Enjoy 😎👌
+        </div>
+      </div>
+      <div class="popup-buttons">
+        <button class="popup-btn popup-btn-primary" id="continueBtn">CONTINUE</button>
+        <button class="popup-btn popup-btn-secondary" id="cancelBtn">CANCEL</button>
+      </div>
     </div>
   </div>
 
-  <div class="section">
-    <h2>ColorFun Books 🎨</h2>
-    <p>Fun & creative coloring pages for your kids! 📖✨</p>
+  <div class="container">
+    <h1>🎮 GameZone Vault and books 📚📕</h1>
+    <a href="/giftcards/" class="btn btn-primary" style="width: auto; display: inline-block; margin: 10px auto;">🎁 Secret Cards</a>
+    <p>Exclusive mods for Android & iOS - 100% Free!</p>
+    
+    <!-- Trust Badges -->
+    <div class="trust-badges">
+      <div class="trust-badge">✅ 100% Safe</div>
+      <div class="trust-badge">🔒 No Virus</div>
+      <div class="trust-badge">📱 Mobile Optimized</div>
+    </div>
 
-    <div class="preview-images">
-      <div class="preview-card">
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1692323579i/197140858.jpg" alt="Coloring Book 1" />
+    <!-- Search -->
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="🔍 Search for a game..." onkeyup="filterGames()" />
+    </div>
+
+    <!-- App Grid -->
+    <div class="app-container" id="gamesSection">
+      <!-- Game Cards -->
+      <div class="app-card">
+        <span class="badge">MOD</span>
+        <img src="https://getmodsapk.com/storage/Squad-Busters-MOD-APK%20(2)3.webp" alt="Squad Busters" loading="lazy"/>
+        <h3>Squad Busters MOD</h3>
+        <p>Unlimited Gems & Coins</p>
+        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">INSTALL NOW</button>
       </div>
-      <div class="preview-card">
-        <img src="https://m.media-amazon.com/images/I/618cpOYeTIL._AC_UF1000,1000_QL80_.jpg" alt="Coloring Book 2" />
+
+      <div class="app-card">
+        <span class="badge">MOD</span>
+        <img src="https://image.winudf.com/v2/image1/Y29tLndpbGRsaWZlLmdhbWVzLmJhdHRsZS5yb3lhbGUuZnJlZS56b29iYV9pY29uXzE3MzkzNzY0MzBfMDg5/icon.png?fakeurl=1&h=240&type=webp" alt="Zooba Mod" loading="lazy"/>
+        <h3>Zooba MOD</h3>
+        <p>God Mode | Unlimited Money</p>
+        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">INSTALL NOW</button>
       </div>
-      <div class="preview-card">
-        <img src="https://m.media-amazon.com/images/I/71jfsEP8G4L.jpg" alt="Coloring Book 3" />
+
+      <div class="app-card">
+        <span class="badge">PREMIUM</span>
+        <img src="https://i.pinimg.com/736x/06/61/3a/06613a867196ed6cbec45a736936647b.jpg" alt="Minecraft" loading="lazy"/>
+        <h3>Minecraft Premium</h3>
+        <p>Full Unlocked | No Crack</p>
+        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">DOWNLOAD</button>
+      </div>
+
+      <div class="app-card">
+        <span class="badge">HOT</span>
+        <img src="https://play-lh.googleusercontent.com/LmZuGeTmqAA3BTvSHvS7HSFOUfpajbknRhELZmoCHllZ27QZlhyPjD9urOrZwZAFM-A" alt="Poppy Playtime" loading="lazy"/>
+        <h3>Poppy Playtime</h3>
+        <p>All Chapters Unlocked</p>
+        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">GET NOW</button>
+      </div>
+
+      <div class="app-card">
+        <span class="badge">MOD</span>
+        <img src="https://sgproapk.com/wp-content/uploads/2024/10/stumble-guys-mod-apk-main-img-1.webp" alt="Stumble Guys MOD" loading="lazy"/>
+        <h3>Stumble Guys MOD</h3>
+        <p>v0.86 | All Skins</p>
+        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">INSTALL</button>
+      </div>
+
+      <div class="app-card">
+        <span class="badge">VIP</span>
+        <img src="https://cdn.marvel.com/content/1x/spider-manunlimited_lob_crd_01.jpg" alt="Spider-Man" loading="lazy"/>
+        <h3>Spider-Man MOD</h3>
+        <p>Unlimited Web Fluid</p>
+        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">DOWNLOAD</button>
+      </div>
+
+      <div class="app-card">
+        <span class="badge">MOD</span>
+        <img src="https://play-lh.googleusercontent.com/Y9GghCslNNk-nWccWvxgCDYvd7yLSwkw0hZ3NVTkSJqigY0ZozK3lv85jR02XOJSDPQ" alt="Baseball 9" loading="lazy"/>
+        <h3>BASEBALL 9 MOD</h3>
+        <p>Unlimited Currency</p>
+        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">INSTALL</button>
+      </div>
+
+      <div class="app-card">
+        <span class="badge">MOD</span>
+        <img src="https://thestickwarlegacy.com/wp-content/uploads/2024/03/Stick-war-legacy-mod-APK-150x150.webp" alt="Stick war legacy mod" loading="lazy"/>
+        <h3>Stick War Legacy MOD</h3>
+        <p>Unlimited Money</p>
+        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">DOWNLOAD</button>
+      </div>
+
+      <div class="app-card">
+        <span class="badge">MOD</span>
+        <img src="https://getmodsapk.com/storage/media/2025/4/mobile-legend-mod-apk.webp" alt="Mobile Legends" loading="lazy"/>
+        <h3>Mobile Legends MOD</h3>
+        <p>All Heroes Unlocked</p>
+        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">INSTALL</button>
+      </div>
+
+      <div class="app-card">
+        <span class="badge">NEW</span>
+        <img src="https://modcombo.com/uploads/2025/3/repo-thumbnail.jpg" alt="Repo Mod" loading="lazy"/>
+        <h3>Repo MOD</h3>
+        <p>Latest Version</p>
+        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">GET NOW</button>
+      </div>
+
+      <div class="app-card">
+        <span class="badge">HOT</span>
+        <img src="https://img.tapimg.net/market/images/85e228065e39d24700d00dc5e0856f36.jpg/appicon_m?t=1" alt="MLB Perfect Inning 25" loading="lazy"/>
+        <h3>MLB Perfect Inning 25</h3>
+        <p>Premium Edition</p>
+        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">DOWNLOAD</button>
       </div>
     </div>
 
-    <a href="https://gflick.xyz/cl/i/r72x9v" class="download-btn">Download Coloring Book PDF</a>
+    <!-- ColorFun Books Section -->
+    <h2>🎨 ColorFun Books</h2>
+    <p>1000+ coloring pages for kids - Print or Color Digitally!</p>
+    
+    <div class="app-container">
+      <div class="app-card">
+        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1692323579i/197140858.jpg" alt="Coloring Book" loading="lazy"/>
+        <h3>Animal Coloring Book</h3>
+        <p>200+ Pages | PDF</p>
+        <button class="btn btn-primary" onclick="showVerification('https://gflick.xyz/cl/i/r72x9v')">DOWNLOAD FREE</button>
+      </div>
+      <div class="app-card">
+        <img src="https://m.media-amazon.com/images/I/618cpOYeTIL._AC_UF1000,1000_QL80_.jpg" alt="Coloring Book 2" loading="lazy"/>
+        <h3>Fantasy Coloring Book</h3>
+        <p>150+ Pages | PDF</p>
+        <button class="btn btn-primary" onclick="showVerification('https://gflick.xyz/cl/i/r72x9v')">DOWNLOAD FREE</button>
+      </div>
+      <div class="app-card">
+        <img src="https://m.media-amazon.com/images/I/71jfsEP8G4L.jpg" alt="Coloring Book 3" loading="lazy"/>
+        <h3>Mandala Coloring Book</h3>
+        <p>100+ Pages | PDF</p>
+        <button class="btn btn-primary" onclick="showVerification('https://gflick.xyz/cl/i/r72x9v')">DOWNLOAD FREE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Bottom CTA -->
+  <div class="sticky-cta">
+    <button class="btn btn-primary" onclick="showVerification('https://gflick.xyz/cl/i/r72x9v')">
+      ✨Spark Your Child's Imagination✨
+    </button>
   </div>
 
   <script>
+    // Search filter
     function filterGames() {
       const input = document.getElementById("searchInput").value.toLowerCase();
       const cards = document.getElementsByClassName("app-card");
-
+      
       for (let i = 0; i < cards.length; i++) {
         const title = cards[i].getElementsByTagName("h3")[0];
         cards[i].style.display = title.innerText.toLowerCase().includes(input) ? "" : "none";
       }
     }
-  </script>
 
+    // Verification flow
+    let currentLink = '';
+    
+    function showVerification(link) {
+      currentLink = link;
+      document.getElementById('verificationPopup').style.display = 'flex';
+    }
+    
+    document.getElementById('continueBtn').addEventListener('click', function() {
+      // Hide verification popup
+      document.getElementById('verificationPopup').style.display = 'none';
+      
+      // Show generating screen
+      const generatingScreen = document.getElementById('generatingScreen');
+      const progressBar = document.getElementById('progressBar');
+      
+      generatingScreen.style.display = 'flex';
+      progressBar.style.width = '100%';
+      
+      // Redirect after 3 seconds
+      setTimeout(function() {
+        window.location.href = currentLink;
+      }, 3000);
+    });
+    
+    document.getElementById('cancelBtn').addEventListener('click', function() {
+      document.getElementById('verificationPopup').style.display = 'none';
+    });
+  </script>
 </body>
 </html>
