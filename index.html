@@ -1,130 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
   <title>🔥 GameZone Vault - Exclusive Mobile Mods 🔥</title>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQHXF8M7M0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-XQHXF8M7M0');
   </script>
   <style>
-    :root {
-      --primary: #ff7b00;
-      --secondary: #22c55e;
-      --dark: #121212;
-      --darker: #0a0a0a;
-      --light: #f5f5f5;
-    }
-    
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-    
+    /* Body */
     body {
-      background-color: var(--dark);
-      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-      color: white;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0a0a23;
+      color: rgb(205, 211, 211);
+      text-align: center;
       margin: 0;
       padding: 0;
-      text-align: center;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
     }
 
-    h1, h2, h3 {
-      color: var(--primary);
-      margin: 15px 0 10px;
-      text-shadow: 0 2px 4px rgba(255, 123, 0, 0.3);
+    /* Main Logo */
+    .main-logo {
+      max-width: 140px;
+      margin: 20px auto;
+      display: block;
     }
 
-    h1 {
-      font-size: 28px;
-      margin-top: 25px;
+    /* Platform Logos */
+    .platforms {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 10px 0;
     }
 
-    p {
-      color: #ccc;
-      font-size: 16px;
-      margin-bottom: 20px;
-      padding: 0 15px;
+    .platform-icon {
+      width: 24px;
+      height: 24px;
     }
 
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding-bottom: 80px;
+    .android-icon { fill: #3ddc84; }
+    .iphone-icon { fill: #f5f5f7; }
+    .windows-icon { fill: #0078d7; }
+
+    /* OGAds locker container (if using OGAds) */
+    #ogads-locker-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
     }
 
-    /* Search */
-    .search-container {
-      padding: 0 15px;
-      margin: 20px 0;
-    }
-    
-    #searchInput {
-      width: 100%;
-      padding: 14px;
-      border-radius: 10px;
+    /* Search box style */
+    input {
+      padding-left: 40px !important;
+      color: #e9f1e7;
+      background: #1e1e1e url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffffaa'%3E%3Cpath d='M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z'/%3E%3C/svg%3E") no-repeat 15px center;
+      background-size: 20px;
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0 20px 0;
+      border-radius: 5px;
       border: none;
       font-size: 16px;
-      background: #1e1e1e;
-      color: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
-    /* App Cards */
+    input::placeholder {
+      color: #555252;
+      transition: all 0.3s ease;
+    }
+
+    input:focus::placeholder {
+      opacity: 0.5;
+      transform: translateX(5px);
+    }
+
+    /* Install Button */
+    .install-btn {
+      font-family: 'Poppins', sans-serif;
+      background-color: #61dddd;
+      color: rgb(2, 31, 31);
+      padding: 10px 20px;
+      border-radius: 15px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      margin-top: 15px;
+      width: calc(-10% -100% - 10px);
+      min-height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+    }
+
+    .install-btn:hover {
+      background-color: #0a0a23;
+      color: #0a0a23;
+      transform: scale(0.95);
+      transition: all 0.3s ease;
+    }
+
+    /* Cards container */
     .app-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 15px;
-      padding: 15px;
+      padding: 20px;
     }
 
+    /* Each card */
     .app-card {
-      background: linear-gradient(145deg, #1a1a1a, #222);
-      border-radius: 12px;
+      font-family: 'Poppins', sans-serif;
+      background-color: #16255A;
       padding: 15px;
-      width: calc(50% - 15px);
+      border-radius: 10px;
+      width: 200px;
+      text-align: center;
+      color: #fff;
+      min-height: 350px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       box-shadow: 0 4px 15px rgba(0,0,0,0.4);
       transition: transform 0.2s;
-      position: relative;
-      overflow: hidden;
     }
 
     .app-card:active {
       transform: scale(0.98);
     }
 
+    .app-card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
     .app-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      aspect-ratio: 1/1;
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      margin: 0 auto;
       object-fit: cover;
-      margin-bottom: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
     .app-card h3 {
-      font-size: 16px;
-      margin: 5px 0;
-      white-space: nowrap;
+      font-family: 'Poppins', sans-serif;
+      color: #e6eeee;
+      font-size: 1rem;
+      margin: 10px 0;
       overflow: hidden;
       text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      line-height: 1.4;
+      min-height: 4.2em;
+      flex-shrink: 0;
     }
 
-    .app-card .badge {
+    .app-card p {
+      color: #ccc;
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    .badge {
       position: absolute;
       top: 10px;
       right: 10px;
-      background: var(--primary);
+      background: #ff7b00;
       color: white;
       font-size: 10px;
       padding: 3px 6px;
@@ -132,31 +190,23 @@
       font-weight: bold;
     }
 
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      background: var(--secondary);
-      color: white;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      text-decoration: none;
-      margin: 10px 0;
-      border: none;
-      width: 100%;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
-      transition: all 0.2s;
+    /* Trust badges */
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+      flex-wrap: wrap;
     }
 
-    .btn:active {
-      transform: scale(0.96);
-    }
-
-    .btn-primary {
-      background: linear-gradient(to right, #ff7b00, #ff5500);
-      box-shadow: 0 4px 15px rgba(255, 123, 0, 0.4);
+    .trust-badge {
+      background: #1e1e1e;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
     /* Sticky CTA */
@@ -203,7 +253,7 @@
     }
 
     .verification-popup h3 {
-      color: var(--primary);
+      color: #ff7b00;
       margin-top: 0;
       font-size: 20px;
     }
@@ -221,7 +271,7 @@
     }
 
     .verification-step .checkmark {
-      color: var(--secondary);
+      color: #22c55e;
       font-weight: bold;
       margin-right: 10px;
       font-size: 18px;
@@ -242,7 +292,7 @@
     }
 
     .popup-btn-primary {
-      background: var(--secondary);
+      background: #22c55e;
       color: white;
     }
 
@@ -310,25 +360,6 @@
       color: #aaa;
     }
 
-    /* Trust badges */
-    .trust-badges {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
-      flex-wrap: wrap;
-    }
-
-    .trust-badge {
-      background: #1e1e1e;
-      padding: 8px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
     /* Animations */
     @keyframes pulse {
       0% { transform: scale(1); }
@@ -341,14 +372,40 @@
       100% { transform: scale(1); opacity: 1; }
     }
 
-    /* Responsive */
-    @media (max-width: 400px) {
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
       .app-card {
-        width: 100%;
+        width: calc(50% - 10px) !important;
+        box-sizing: border-box;
+        padding: 10px !important;
       }
+    }
+
+    @media (max-width: 480px) {
+      .app-card {
+        width: 100% !important;
+      }
+    }
+
+    h1, h2 {
+      color: #61dddd;
+      margin: 15px 0 10px;
+      text-shadow: 0 2px 4px rgba(97, 221, 221, 0.3);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-top: 25px;
+    }
+
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding-bottom: 80px;
     }
   </style>
 </head>
+
 <body>
   <!-- Generating Verification Screen -->
   <div class="generating-screen" id="generatingScreen">
@@ -386,8 +443,10 @@
   </div>
 
   <div class="container">
-    <h1>🎮 GameZone Vault and books 📚📕</h1>
-    <a href="/giftcards/" class="btn btn-primary" style="width: auto; display: inline-block; margin: 10px auto;">🎁 Secret Cards</a>
+    <!-- Main Logo -->
+    <img src="https://i.postimg.cc/020xGDLq/Chat-GPT-Image-May-30-2025-10-31-57-PM-removebg-preview.png" alt="GameZone Vault Logo" class="main-logo" />
+
+    <a href="/giftcards/" class="install-btn" style="width: auto; display: inline-block; margin: 10px auto;">🎁 Secret Cards</a>
     <p>Exclusive mods for Android & iOS - 100% Free!</p>
     
     <!-- Trust Badges -->
@@ -409,88 +468,218 @@
         <span class="badge">MOD</span>
         <img src="https://getmodsapk.com/storage/Squad-Busters-MOD-APK%20(2)3.webp" alt="Squad Busters" loading="lazy"/>
         <h3>Squad Busters MOD</h3>
+        <div class="platforms">
+          <svg class="platform-icon android-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#7cb342" d="M12 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM40 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM22 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40zM30 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40z" />
+            <path fill="#7cb342" d="M14 18v15c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V18H14zM24 8c-6 0-9.7 3.6-10 8h20C33.7 11.6 30 8 24 8zM20 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C21 13.1 20.6 13.6 20 13.6zM28 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C29 13.1 28.6 13.6 28 13.6z" />
+            <path fill="#7cb342" d="M28.3 10.5c-.2 0-.4-.1-.6-.2-.5-.3-.6-.9-.3-1.4l1.7-2.5c.3-.5.9-.6 1.4-.3.5.3.6.9.3 1.4l-1.7 2.5C29 10.3 28.7 10.5 28.3 10.5zM19.3 10.1c-.3 0-.7-.2-.8-.5l-1.3-2.1c-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3l1.3 2.1c.3.5.2 1.1-.3 1.4C19.7 10 19.5 10.1 19.3 10.1z" />
+          </svg>
+          
+          <svg class="platform-icon iphone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M 15.904297 1.078125 C 15.843359 1.06875 15.774219 1.0746094 15.699219 1.0996094 C 14.699219 1.2996094 13.600391 1.8996094 12.900391 2.5996094 C 12.300391 3.1996094 11.800781 4.1996094 11.800781 5.0996094 C 11.800781 5.2996094 11.999219 5.5 12.199219 5.5 C 13.299219 5.4 14.399609 4.7996094 15.099609 4.0996094 C 15.699609 3.2996094 16.199219 2.4 16.199219 1.5 C 16.199219 1.275 16.087109 1.10625 15.904297 1.078125 z M 16.199219 5.4003906 C 14.399219 5.4003906 13.600391 6.5 12.400391 6.5 C 11.100391 6.5 9.9003906 5.5 8.4003906 5.5 C 6.3003906 5.5 3.0996094 7.4996094 3.0996094 12.099609 C 2.9996094 16.299609 6.8 21 9 21 C 10.3 21 10.600391 20.199219 12.400391 20.199219 C 14.200391 20.199219 14.600391 21 15.900391 21 C 17.400391 21 18.500391 19.399609 19.400391 18.099609 C 19.800391 17.399609 20.100391 17.000391 20.400391 16.400391 C 20.600391 16.000391 20.4 15.600391 20 15.400391 C 17.4 14.100391 16.900781 9.9003906 19.800781 8.4003906 C 20.300781 8.1003906 20.4 7.4992188 20 7.1992188 C 18.9 6.1992187 17.299219 5.4003906 16.199219 5.4003906 z" />
+          </svg>
+        </div>
         <p>Unlimited Gems & Coins</p>
-        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">INSTALL NOW</button>
+        <button class="install-btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">INSTALL NOW</button>
       </div>
 
       <div class="app-card">
         <span class="badge">MOD</span>
         <img src="https://image.winudf.com/v2/image1/Y29tLndpbGRsaWZlLmdhbWVzLmJhdHRsZS5yb3lhbGUuZnJlZS56b29iYV9pY29uXzE3MzkzNzY0MzBfMDg5/icon.png?fakeurl=1&h=240&type=webp" alt="Zooba Mod" loading="lazy"/>
         <h3>Zooba MOD</h3>
+        <div class="platforms">
+          <svg class="platform-icon android-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#7cb342" d="M12 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM40 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM22 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40zM30 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40z" />
+            <path fill="#7cb342" d="M14 18v15c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V18H14zM24 8c-6 0-9.7 3.6-10 8h20C33.7 11.6 30 8 24 8zM20 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C21 13.1 20.6 13.6 20 13.6zM28 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C29 13.1 28.6 13.6 28 13.6z" />
+            <path fill="#7cb342" d="M28.3 10.5c-.2 0-.4-.1-.6-.2-.5-.3-.6-.9-.3-1.4l1.7-2.5c.3-.5.9-.6 1.4-.3.5.3.6.9.3 1.4l-1.7 2.5C29 10.3 28.7 10.5 28.3 10.5zM19.3 10.1c-.3 0-.7-.2-.8-.5l-1.3-2.1c-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3l1.3 2.1c.3.5.2 1.1-.3 1.4C19.7 10 19.5 10.1 19.3 10.1z" />
+          </svg>
+          
+          <svg class="platform-icon iphone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M 15.904297 1.078125 C 15.843359 1.06875 15.774219 1.0746094 15.699219 1.0996094 C 14.699219 1.2996094 13.600391 1.8996094 12.900391 2.5996094 C 12.300391 3.1996094 11.800781 4.1996094 11.800781 5.0996094 C 11.800781 5.2996094 11.999219 5.5 12.199219 5.5 C 13.299219 5.4 14.399609 4.7996094 15.099609 4.0996094 C 15.699609 3.2996094 16.199219 2.4 16.199219 1.5 C 16.199219 1.275 16.087109 1.10625 15.904297 1.078125 z M 16.199219 5.4003906 C 14.399219 5.4003906 13.600391 6.5 12.400391 6.5 C 11.100391 6.5 9.9003906 5.5 8.4003906 5.5 C 6.3003906 5.5 3.0996094 7.4996094 3.0996094 12.099609 C 2.9996094 16.299609 6.8 21 9 21 C 10.3 21 10.600391 20.199219 12.400391 20.199219 C 14.200391 20.199219 14.600391 21 15.900391 21 C 17.400391 21 18.500391 19.399609 19.400391 18.099609 C 19.800391 17.399609 20.100391 17.000391 20.400391 16.400391 C 20.600391 16.000391 20.4 15.600391 20 15.400391 C 17.4 14.100391 16.900781 9.9003906 19.800781 8.4003906 C 20.300781 8.1003906 20.4 7.4992188 20 7.1992188 C 18.9 6.1992187 17.299219 5.4003906 16.199219 5.4003906 z" />
+          </svg>
+        </div>
         <p>God Mode | Unlimited Money</p>
-        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">INSTALL NOW</button>
+        <button class="install-btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">INSTALL NOW</button>
       </div>
 
       <div class="app-card">
         <span class="badge">PREMIUM</span>
         <img src="https://play-lh.googleusercontent.com/RIHmknOlj55jKhugiS2b2p4u1yDuhV0lcGwyxh_Woy7o_Jfr6Fu9MpM4OJTaHo8ywp8" alt="Archero 2 Mod" loading="lazy"/>
         <h3>Archero 2 Mod</h3>
+        <div class="platforms">
+          <svg class="platform-icon android-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#7cb342" d="M12 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM40 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM22 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40zM30 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40z" />
+            <path fill="#7cb342" d="M14 18v15c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V18H14zM24 8c-6 0-9.7 3.6-10 8h20C33.7 11.6 30 8 24 8zM20 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C21 13.1 20.6 13.6 20 13.6zM28 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C29 13.1 28.6 13.6 28 13.6z" />
+            <path fill="#7cb342" d="M28.3 10.5c-.2 0-.4-.1-.6-.2-.5-.3-.6-.9-.3-1.4l1.7-2.5c.3-.5.9-.6 1.4-.3.5.3.6.9.3 1.4l-1.7 2.5C29 10.3 28.7 10.5 28.3 10.5zM19.3 10.1c-.3 0-.7-.2-.8-.5l-1.3-2.1c-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3l1.3 2.1c.3.5.2 1.1-.3 1.4C19.7 10 19.5 10.1 19.3 10.1z" />
+          </svg>
+          
+          <svg class="platform-icon iphone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M 15.904297 1.078125 C 15.843359 1.06875 15.774219 1.0746094 15.699219 1.0996094 C 14.699219 1.2996094 13.600391 1.8996094 12.900391 2.5996094 C 12.300391 3.1996094 11.800781 4.1996094 11.800781 5.0996094 C 11.800781 5.2996094 11.999219 5.5 12.199219 5.5 C 13.299219 5.4 14.399609 4.7996094 15.099609 4.0996094 C 15.699609 3.2996094 16.199219 2.4 16.199219 1.5 C 16.199219 1.275 16.087109 1.10625 15.904297 1.078125 z M 16.199219 5.4003906 C 14.399219 5.4003906 13.600391 6.5 12.400391 6.5 C 11.100391 6.5 9.9003906 5.5 8.4003906 5.5 C 6.3003906 5.5 3.0996094 7.4996094 3.0996094 12.099609 C 2.9996094 16.299609 6.8 21 9 21 C 10.3 21 10.600391 20.199219 12.400391 20.199219 C 14.200391 20.199219 14.600391 21 15.900391 21 C 17.400391 21 18.500391 19.399609 19.400391 18.099609 C 19.800391 17.399609 20.100391 17.000391 20.400391 16.400391 C 20.600391 16.000391 20.4 15.600391 20 15.400391 C 17.4 14.100391 16.900781 9.9003906 19.800781 8.4003906 C 20.300781 8.1003906 20.4 7.4992188 20 7.1992188 C 18.9 6.1992187 17.299219 5.4003906 16.199219 5.4003906 z" />
+          </svg>
+        </div>
         <p>Full Unlocked | No Crack</p>
-        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">DOWNLOAD</button>
+        <button class="install-btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">DOWNLOAD</button>
       </div>
 
       <div class="app-card">
         <span class="badge">HOT</span>
         <img src="https://play-lh.googleusercontent.com/LmZuGeTmqAA3BTvSHvS7HSFOUfpajbknRhELZmoCHllZ27QZlhyPjD9urOrZwZAFM-A" alt="Poppy Playtime" loading="lazy"/>
         <h3>Poppy Playtime</h3>
+        <div class="platforms">
+          <svg class="platform-icon android-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#7cb342" d="M12 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM40 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM22 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40zM30 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40z" />
+            <path fill="#7cb342" d="M14 18v15c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V18H14zM24 8c-6 0-9.7 3.6-10 8h20C33.7 11.6 30 8 24 8zM20 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C21 13.1 20.6 13.6 20 13.6zM28 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C29 13.1 28.6 13.6 28 13.6z" />
+            <path fill="#7cb342" d="M28.3 10.5c-.2 0-.4-.1-.6-.2-.5-.3-.6-.9-.3-1.4l1.7-2.5c.3-.5.9-.6 1.4-.3.5.3.6.9.3 1.4l-1.7 2.5C29 10.3 28.7 10.5 28.3 10.5zM19.3 10.1c-.3 0-.7-.2-.8-.5l-1.3-2.1c-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3l1.3 2.1c.3.5.2 1.1-.3 1.4C19.7 10 19.5 10.1 19.3 10.1z" />
+          </svg>
+          
+          <svg class="platform-icon iphone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M 15.904297 1.078125 C 15.843359 1.06875 15.774219 1.0746094 15.699219 1.0996094 C 14.699219 1.2996094 13.600391 1.8996094 12.900391 2.5996094 C 12.300391 3.1996094 11.800781 4.1996094 11.800781 5.0996094 C 11.800781 5.2996094 11.999219 5.5 12.199219 5.5 C 13.299219 5.4 14.399609 4.7996094 15.099609 4.0996094 C 15.699609 3.2996094 16.199219 2.4 16.199219 1.5 C 16.199219 1.275 16.087109 1.10625 15.904297 1.078125 z M 16.199219 5.4003906 C 14.399219 5.4003906 13.600391 6.5 12.400391 6.5 C 11.100391 6.5 9.9003906 5.5 8.4003906 5.5 C 6.3003906 5.5 3.0996094 7.4996094 3.0996094 12.099609 C 2.9996094 16.299609 6.8 21 9 21 C 10.3 21 10.600391 20.199219 12.400391 20.199219 C 14.200391 20.199219 14.600391 21 15.900391 21 C 17.400391 21 18.500391 19.399609 19.400391 18.099609 C 19.800391 17.399609 20.100391 17.000391 20.400391 16.400391 C 20.600391 16.000391 20.4 15.600391 20 15.400391 C 17.4 14.100391 16.900781 9.9003906 19.800781 8.4003906 C 20.300781 8.1003906 20.4 7.4992188 20 7.1992188 C 18.9 6.1992187 17.299219 5.4003906 16.199219 5.4003906 z" />
+          </svg>
+        </div>
         <p>All Chapters Unlocked</p>
-        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">GET NOW</button>
+        <button class="install-btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">GET NOW</button>
       </div>
 
       <div class="app-card">
         <span class="badge">MOD</span>
         <img src="https://sgproapk.com/wp-content/uploads/2024/10/stumble-guys-mod-apk-main-img-1.webp" alt="Stumble Guys MOD" loading="lazy"/>
         <h3>Stumble Guys MOD</h3>
+        <div class="platforms">
+          <svg class="platform-icon android-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#7cb342" d="M12 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM40 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM22 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40zM30 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40z" />
+            <path fill="#7cb342" d="M14 18v15c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V18H14zM24 8c-6 0-9.7 3.6-10 8h20C33.7 11.6 30 8 24 8zM20 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C21 13.1 20.6 13.6 20 13.6zM28 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C29 13.1 28.6 13.6 28 13.6z" />
+            <path fill="#7cb342" d="M28.3 10.5c-.2 0-.4-.1-.6-.2-.5-.3-.6-.9-.3-1.4l1.7-2.5c.3-.5.9-.6 1.4-.3.5.3.6.9.3 1.4l-1.7 2.5C29 10.3 28.7 10.5 28.3 10.5zM19.3 10.1c-.3 0-.7-.2-.8-.5l-1.3-2.1c-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3l1.3 2.1c.3.5.2 1.1-.3 1.4C19.7 10 19.5 10.1 19.3 10.1z" />
+          </svg>
+          
+          <svg class="platform-icon iphone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M 15.904297 1.078125 C 15.843359 1.06875 15.774219 1.0746094 15.699219 1.0996094 C 14.699219 1.2996094 13.600391 1.8996094 12.900391 2.5996094 C 12.300391 3.1996094 11.800781 4.1996094 11.800781 5.0996094 C 11.800781 5.2996094 11.999219 5.5 12.199219 5.5 C 13.299219 5.4 14.399609 4.7996094 15.099609 4.0996094 C 15.699609 3.2996094 16.199219 2.4 16.199219 1.5 C 16.199219 1.275 16.087109 1.10625 15.904297 1.078125 z M 16.199219 5.4003906 C 14.399219 5.4003906 13.600391 6.5 12.400391 6.5 C 11.100391 6.5 9.9003906 5.5 8.4003906 5.5 C 6.3003906 5.5 3.0996094 7.4996094 3.0996094 12.099609 C 2.9996094 16.299609 6.8 21 9 21 C 10.3 21 10.600391 20.199219 12.400391 20.199219 C 14.200391 20.199219 14.600391 21 15.900391 21 C 17.400391 21 18.500391 19.399609 19.400391 18.099609 C 19.800391 17.399609 20.100391 17.000391 20.400391 16.400391 C 20.600391 16.000391 20.4 15.600391 20 15.400391 C 17.4 14.100391 16.900781 9.9003906 19.800781 8.4003906 C 20.300781 8.1003906 20.4 7.4992188 20 7.1992188 C 18.9 6.1992187 17.299219 5.4003906 16.199219 5.4003906 z" />
+          </svg>
+        </div>
         <p>v0.86 | All Skins</p>
-        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">INSTALL</button>
+        <button class="install-btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">INSTALL</button>
       </div>
 
       <div class="app-card">
         <span class="badge">VIP</span>
         <img src="https://cdn.marvel.com/content/1x/spider-manunlimited_lob_crd_01.jpg" alt="Spider-Man" loading="lazy"/>
         <h3>Spider-Man MOD</h3>
+        <div class="platforms">
+          <svg class="platform-icon android-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#7cb342" d="M12 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM40 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM22 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40zM30 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40z" />
+            <path fill="#7cb342" d="M14 18v15c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V18H14zM24 8c-6 0-9.7 3.6-10 8h20C33.7 11.6 30 8 24 8zM20 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C21 13.1 20.6 13.6 20 13.6zM28 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C29 13.1 28.6 13.6 28 13.6z" />
+            <path fill="#7cb342" d="M28.3 10.5c-.2 0-.4-.1-.6-.2-.5-.3-.6-.9-.3-1.4l1.7-2.5c.3-.5.9-.6 1.4-.3.5.3.6.9.3 1.4l-1.7 2.5C29 10.3 28.7 10.5 28.3 10.5zM19.3 10.1c-.3 0-.7-.2-.8-.5l-1.3-2.1c-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3l1.3 2.1c.3.5.2 1.1-.3 1.4C19.7 10 19.5 10.1 19.3 10.1z" />
+          </svg>
+          
+          <svg class="platform-icon iphone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M 15.904297 1.078125 C 15.843359 1.06875 15.774219 1.0746094 15.699219 1.0996094 C 14.699219 1.2996094 13.600391 1.8996094 12.900391 2.5996094 C 12.300391 3.1996094 11.800781 4.1996094 11.800781 5.0996094 C 11.800781 5.2996094 11.999219 5.5 12.199219 5.5 C 13.299219 5.4 14.399609 4.7996094 15.099609 4.0996094 C 15.699609 3.2996094 16.199219 2.4 16.199219 1.5 C 16.199219 1.275 16.087109 1.10625 15.904297 1.078125 z M 16.199219 5.4003906 C 14.399219 5.4003906 13.600391 6.5 12.400391 6.5 C 11.100391 6.5 9.9003906 5.5 8.4003906 5.5 C 6.3003906 5.5 3.0996094 7.4996094 3.0996094 12.099609 C 2.9996094 16.299609 6.8 21 9 21 C 10.3 21 10.600391 20.199219 12.400391 20.199219 C 14.200391 20.199219 14.600391 21 15.900391 21 C 17.400391 21 18.500391 19.399609 19.400391 18.099609 C 19.800391 17.399609 20.100391 17.000391 20.400391 16.400391 C 20.600391 16.000391 20.4 15.600391 20 15.400391 C 17.4 14.100391 16.900781 9.9003906 19.800781 8.4003906 C 20.300781 8.1003906 20.4 7.4992188 20 7.1992188 C 18.9 6.1992187 17.299219 5.4003906 16.199219 5.4003906 z" />
+          </svg>
+        </div>
         <p>Unlimited Web Fluid</p>
-        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">DOWNLOAD</button>
+        <button class="install-btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">DOWNLOAD</button>
       </div>
 
       <div class="app-card">
         <span class="badge">MOD</span>
         <img src="https://play-lh.googleusercontent.com/Y9GghCslNNk-nWccWvxgCDYvd7yLSwkw0hZ3NVTkSJqigY0ZozK3lv85jR02XOJSDPQ" alt="Baseball 9" loading="lazy"/>
         <h3>BASEBALL 9 MOD</h3>
+        <div class="platforms">
+          <svg class="platform-icon android-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#7cb342" d="M12 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM40 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM22 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40zM30 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40z" />
+            <path fill="#7cb342" d="M14 18v15c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V18H14zM24 8c-6 0-9.7 3.6-10 8h20C33.7 11.6 30 8 24 8zM20 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C21 13.1 20.6 13.6 20 13.6zM28 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C29 13.1 28.6 13.6 28 13.6z" />
+            <path fill="#7cb342" d="M28.3 10.5c-.2 0-.4-.1-.6-.2-.5-.3-.6-.9-.3-1.4l1.7-2.5c.3-.5.9-.6 1.4-.3.5.3.6.9.3 1.4l-1.7 2.5C29 10.3 28.7 10.5 28.3 10.5zM19.3 10.1c-.3 0-.7-.2-.8-.5l-1.3-2.1c-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3l1.3 2.1c.3.5.2 1.1-.3 1.4C19.7 10 19.5 10.1 19.3 10.1z" />
+          </svg>
+          
+          <svg class="platform-icon iphone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M 15.904297 1.078125 C 15.843359 1.06875 15.774219 1.0746094 15.699219 1.0996094 C 14.699219 1.2996094 13.600391 1.8996094 12.900391 2.5996094 C 12.300391 3.1996094 11.800781 4.1996094 11.800781 5.0996094 C 11.800781 5.2996094 11.999219 5.5 12.199219 5.5 C 13.299219 5.4 14.399609 4.7996094 15.099609 4.0996094 C 15.699609 3.2996094 16.199219 2.4 16.199219 1.5 C 16.199219 1.275 16.087109 1.10625 15.904297 1.078125 z M 16.199219 5.4003906 C 14.399219 5.4003906 13.600391 6.5 12.400391 6.5 C 11.100391 6.5 9.9003906 5.5 8.4003906 5.5 C 6.3003906 5.5 3.0996094 7.4996094 3.0996094 12.099609 C 2.9996094 16.299609 6.8 21 9 21 C 10.3 21 10.600391 20.199219 12.400391 20.199219 C 14.200391 20.199219 14.600391 21 15.900391 21 C 17.400391 21 18.500391 19.399609 19.400391 18.099609 C 19.800391 17.399609 20.100391 17.000391 20.400391 16.400391 C 20.600391 16.000391 20.4 15.600391 20 15.400391 C 17.4 14.100391 16.900781 9.9003906 19.800781 8.4003906 C 20.300781 8.1003906 20.4 7.4992188 20 7.1992188 C 18.9 6.1992187 17.299219 5.4003906 16.199219 5.4003906 z" />
+          </svg>
+        </div>
         <p>Unlimited Currency</p>
-        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">INSTALL</button>
+        <button class="install-btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">INSTALL</button>
       </div>
 
       <div class="app-card">
         <span class="badge">MOD</span>
         <img src="https://thestickwarlegacy.com/wp-content/uploads/2024/03/Stick-war-legacy-mod-APK-150x150.webp" alt="Stick war legacy mod" loading="lazy"/>
         <h3>Stick War Legacy MOD</h3>
+        <div class="platforms">
+          <svg class="platform-icon android-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#7cb342" d="M12 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM40 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM22 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40zM30 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40z" />
+            <path fill="#7cb342" d="M14 18v15c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V18H14zM24 8c-6 0-9.7 3.6-10 8h20C33.7 11.6 30 8 24 8zM20 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C21 13.1 20.6 13.6 20 13.6zM28 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C29 13.1 28.6 13.6 28 13.6z" />
+            <path fill="#7cb342" d="M28.3 10.5c-.2 0-.4-.1-.6-.2-.5-.3-.6-.9-.3-1.4l1.7-2.5c.3-.5.9-.6 1.4-.3.5.3.6.9.3 1.4l-1.7 2.5C29 10.3 28.7 10.5 28.3 10.5zM19.3 10.1c-.3 0-.7-.2-.8-.5l-1.3-2.1c-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3l1.3 2.1c.3.5.2 1.1-.3 1.4C19.7 10 19.5 10.1 19.3 10.1z" />
+          </svg>
+          
+          <svg class="platform-icon windows-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#0077d4" d="M7,6h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H7c-0.552,0-1-0.448-1-1V7	C6,6.448,6.448,6,7,6z" />
+            <path fill="#0077d4" d="M25.042,21.958V7c0-0.552,0.448-1,1-1H41c0.552,0,1,0.448,1,1v14.958	c0,0.552-0.448,1-1,1H26.042C25.489,22.958,25.042,22.511,25.042,21.958z" />
+            <path fill="#0077d4" d="M7,25h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H7c-0.552,0-1-0.448-1-1V26	C6,25.448,6.448,25,7,25z" />
+            <path fill="#0077d4" d="M25,41V26c0-0.552,0.448-1,1-1h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H26	C25.448,42,25,41.552,25,41z" />
+          </svg>
+        </div>
         <p>Unlimited Money</p>
-        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">DOWNLOAD</button>
+        <button class="install-btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">DOWNLOAD</button>
       </div>
 
       <div class="app-card">
         <span class="badge">MOD</span>
         <img src="https://getmodsapk.com/storage/media/2025/4/mobile-legend-mod-apk.webp" alt="Mobile Legends" loading="lazy"/>
         <h3>Mobile Legends MOD</h3>
+        <div class="platforms">
+          <svg class="platform-icon android-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#7cb342" d="M12 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM40 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM22 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40zM30 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40z" />
+            <path fill="#7cb342" d="M14 18v15c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V18H14zM24 8c-6 0-9.7 3.6-10 8h20C33.7 11.6 30 8 24 8zM20 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C21 13.1 20.6 13.6 20 13.6zM28 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C29 13.1 28.6 13.6 28 13.6z" />
+            <path fill="#7cb342" d="M28.3 10.5c-.2 0-.4-.1-.6-.2-.5-.3-.6-.9-.3-1.4l1.7-2.5c.3-.5.9-.6 1.4-.3.5.3.6.9.3 1.4l-1.7 2.5C29 10.3 28.7 10.5 28.3 10.5zM19.3 10.1c-.3 0-.7-.2-.8-.5l-1.3-2.1c-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3l1.3 2.1c.3.5.2 1.1-.3 1.4C19.7 10 19.5 10.1 19.3 10.1z" />
+          </svg>
+          
+          <svg class="platform-icon iphone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M 15.904297 1.078125 C 15.843359 1.06875 15.774219 1.0746094 15.699219 1.0996094 C 14.699219 1.2996094 13.600391 1.8996094 12.900391 2.5996094 C 12.300391 3.1996094 11.800781 4.1996094 11.800781 5.0996094 C 11.800781 5.2996094 11.999219 5.5 12.199219 5.5 C 13.299219 5.4 14.399609 4.7996094 15.099609 4.0996094 C 15.699609 3.2996094 16.199219 2.4 16.199219 1.5 C 16.199219 1.275 16.087109 1.10625 15.904297 1.078125 z M 16.199219 5.4003906 C 14.399219 5.4003906 13.600391 6.5 12.400391 6.5 C 11.100391 6.5 9.9003906 5.5 8.4003906 5.5 C 6.3003906 5.5 3.0996094 7.4996094 3.0996094 12.099609 C 2.9996094 16.299609 6.8 21 9 21 C 10.3 21 10.600391 20.199219 12.400391 20.199219 C 14.200391 20.199219 14.600391 21 15.900391 21 C 17.400391 21 18.500391 19.399609 19.400391 18.099609 C 19.800391 17.399609 20.100391 17.000391 20.400391 16.400391 C 20.600391 16.000391 20.4 15.600391 20 15.400391 C 17.4 14.100391 16.900781 9.9003906 19.800781 8.4003906 C 20.300781 8.1003906 20.4 7.4992188 20 7.1992188 C 18.9 6.1992187 17.299219 5.4003906 16.199219 5.4003906 z" />
+          </svg>
+        </div>
         <p>All Heroes Unlocked</p>
-        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">INSTALL</button>
+        <button class="install-btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">INSTALL</button>
       </div>
 
       <div class="app-card">
         <span class="badge">NEW</span>
         <img src="https://modcombo.com/uploads/2025/3/repo-thumbnail.jpg" alt="Repo Mod" loading="lazy"/>
         <h3>Repo MOD</h3>
+        <div class="platforms">
+          <svg class="platform-icon android-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#7cb342" d="M12 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM40 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM22 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40zM30 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40z" />
+            <path fill="#7cb342" d="M14 18v15c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V18H14zM24 8c-6 0-9.7 3.6-10 8h20C33.7 11.6 30 8 24 8zM20 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C21 13.1 20.6 13.6 20 13.6zM28 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C29 13.1 28.6 13.6 28 13.6z" />
+            <path fill="#7cb342" d="M28.3 10.5c-.2 0-.4-.1-.6-.2-.5-.3-.6-.9-.3-1.4l1.7-2.5c.3-.5.9-.6 1.4-.3.5.3.6.9.3 1.4l-1.7 2.5C29 10.3 28.7 10.5 28.3 10.5zM19.3 10.1c-.3 0-.7-.2-.8-.5l-1.3-2.1c-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3l1.3 2.1c.3.5.2 1.1-.3 1.4C19.7 10 19.5 10.1 19.3 10.1z" />
+          </svg>
+          
+          <svg class="platform-icon windows-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#0077d4" d="M7,6h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H7c-0.552,0-1-0.448-1-1V7	C6,6.448,6.448,6,7,6z" />
+            <path fill="#0077d4" d="M25.042,21.958V7c0-0.552,0.448-1,1-1H41c0.552,0,1,0.448,1,1v14.958	c0,0.552-0.448,1-1,1H26.042C25.489,22.958,25.042,22.511,25.042,21.958z" />
+            <path fill="#0077d4" d="M7,25h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H7c-0.552,0-1-0.448-1-1V26	C6,25.448,6.448,25,7,25z" />
+            <path fill="#0077d4" d="M25,41V26c0-0.552,0.448-1,1-1h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H26	C25.448,42,25,41.552,25,41z" />
+          </svg>
+        </div>
         <p>Latest Version</p>
-        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">GET NOW</button>
+        <button class="install-btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">GET NOW</button>
       </div>
 
       <div class="app-card">
         <span class="badge">HOT</span>
         <img src="https://play-lh.googleusercontent.com/oLgL7u-F5_q_gdqiPgtQbEZZk-0Mmn6fGP15VbwHiNO3lIcpsc_RzDYhUG8XynBxltU" alt="Delta Force Mod" loading="lazy"/>
         <h3>Delta Force Mod</h3>
+        <div class="platforms">
+          <svg class="platform-icon android-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#7cb342" d="M12 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM40 29c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V29zM22 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40zM30 40c0 1.1-.9 2-2 2s-2-.9-2-2v-9c0-1.1.9-2 2-2s2 .9 2 2V40z" />
+            <path fill="#7cb342" d="M14 18v15c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V18H14zM24 8c-6 0-9.7 3.6-10 8h20C33.7 11.6 30 8 24 8zM20 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C21 13.1 20.6 13.6 20 13.6zM28 13.6c-.6 0-1-.4-1-1 0-.6.4-1 1-1s1 .4 1 1C29 13.1 28.6 13.6 28 13.6z" />
+            <path fill="#7cb342" d="M28.3 10.5c-.2 0-.4-.1-.6-.2-.5-.3-.6-.9-.3-1.4l1.7-2.5c.3-.5.9-.6 1.4-.3.5.3.6.9.3 1.4l-1.7 2.5C29 10.3 28.7 10.5 28.3 10.5zM19.3 10.1c-.3 0-.7-.2-.8-.5l-1.3-2.1c-.3-.5-.2-1.1.3-1.4.5-.3 1.1-.2 1.4.3l1.3 2.1c.3.5.2 1.1-.3 1.4C19.7 10 19.5 10.1 19.3 10.1z" />
+          </svg>
+          
+          <svg class="platform-icon windows-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#0077d4" d="M7,6h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H7c-0.552,0-1-0.448-1-1V7	C6,6.448,6.448,6,7,6z" />
+            <path fill="#0077d4" d="M25.042,21.958V7c0-0.552,0.448-1,1-1H41c0.552,0,1,0.448,1,1v14.958	c0,0.552-0.448,1-1,1H26.042C25.489,22.958,25.042,22.511,25.042,21.958z" />
+            <path fill="#0077d4" d="M7,25h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H7c-0.552,0-1-0.448-1-1V26	C6,25.448,6.448,25,7,25z" />
+            <path fill="#0077d4" d="M25,41V26c0-0.552,0.448-1,1-1h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H26	C25.448,42,25,41.552,25,41z" />
+          </svg>
+        </div>
         <p>Premium Edition</p>
-        <button class="btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">DOWNLOAD</button>
+        <button class="install-btn" onclick="showVerification('https://gflick.xyz/cl/i/qkd524')">DOWNLOAD</button>
       </div>
     </div>
 
@@ -502,27 +691,51 @@
       <div class="app-card">
         <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1692323579i/197140858.jpg" alt="Coloring Book" loading="lazy"/>
         <h3>Animal Coloring Book</h3>
+        <div class="platforms">
+          <svg class="platform-icon windows-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#0077d4" d="M7,6h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H7c-0.552,0-1-0.448-1-1V7	C6,6.448,6.448,6,7,6z" />
+            <path fill="#0077d4" d="M25.042,21.958V7c0-0.552,0.448-1,1-1H41c0.552,0,1,0.448,1,1v14.958	c0,0.552-0.448,1-1,1H26.042C25.489,22.958,25.042,22.511,25.042,21.958z" />
+            <path fill="#0077d4" d="M7,25h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H7c-0.552,0-1-0.448-1-1V26	C6,25.448,6.448,25,7,25z" />
+            <path fill="#0077d4" d="M25,41V26c0-0.552,0.448-1,1-1h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H26	C25.448,42,25,41.552,25,41z" />
+          </svg>
+        </div>
         <p>200+ Pages | PDF</p>
-        <button class="btn btn-primary" onclick="showVerification('https://gflick.xyz/cl/i/r72x9v')">DOWNLOAD FREE</button>
+        <button class="install-btn" onclick="showVerification('https://gflick.xyz/cl/i/r72x9v')">DOWNLOAD FREE</button>
       </div>
       <div class="app-card">
         <img src="https://m.media-amazon.com/images/I/618cpOYeTIL._AC_UF1000,1000_QL80_.jpg" alt="Coloring Book 2" loading="lazy"/>
         <h3>Fantasy Coloring Book</h3>
+        <div class="platforms">
+          <svg class="platform-icon windows-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#0077d4" d="M7,6h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H7c-0.552,0-1-0.448-1-1V7	C6,6.448,6.448,6,7,6z" />
+            <path fill="#0077d4" d="M25.042,21.958V7c0-0.552,0.448-1,1-1H41c0.552,0,1,0.448,1,1v14.958	c0,0.552-0.448,1-1,1H26.042C25.489,22.958,25.042,22.511,25.042,21.958z" />
+            <path fill="#0077d4" d="M7,25h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H7c-0.552,0-1-0.448-1-1V26	C6,25.448,6.448,25,7,25z" />
+            <path fill="#0077d4" d="M25,41V26c0-0.552,0.448-1,1-1h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H26	C25.448,42,25,41.552,25,41z" />
+          </svg>
+        </div>
         <p>150+ Pages | PDF</p>
-        <button class="btn btn-primary" onclick="showVerification('https://gflick.xyz/cl/i/r72x9v')">DOWNLOAD FREE</button>
+        <button class="install-btn" onclick="showVerification('https://gflick.xyz/cl/i/r72x9v')">DOWNLOAD FREE</button>
       </div>
       <div class="app-card">
         <img src="https://m.media-amazon.com/images/I/71jfsEP8G4L.jpg" alt="Coloring Book 3" loading="lazy"/>
         <h3>Mandala Coloring Book</h3>
+        <div class="platforms">
+          <svg class="platform-icon windows-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#0077d4" d="M7,6h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H7c-0.552,0-1-0.448-1-1V7	C6,6.448,6.448,6,7,6z" />
+            <path fill="#0077d4" d="M25.042,21.958V7c0-0.552,0.448-1,1-1H41c0.552,0,1,0.448,1,1v14.958	c0,0.552-0.448,1-1,1H26.042C25.489,22.958,25.042,22.511,25.042,21.958z" />
+            <path fill="#0077d4" d="M7,25h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H7c-0.552,0-1-0.448-1-1V26	C6,25.448,6.448,25,7,25z" />
+            <path fill="#0077d4" d="M25,41V26c0-0.552,0.448-1,1-1h15c0.552,0,1,0.448,1,1v15c0,0.552-0.448,1-1,1H26	C25.448,42,25,41.552,25,41z" />
+          </svg>
+        </div>
         <p>100+ Pages | PDF</p>
-        <button class="btn btn-primary" onclick="showVerification('https://gflick.xyz/cl/i/r72x9v')">DOWNLOAD FREE</button>
+        <button class="install-btn" onclick="showVerification('https://gflick.xyz/cl/i/r72x9v')">DOWNLOAD FREE</button>
       </div>
     </div>
   </div>
 
   <!-- Sticky Bottom CTA -->
   <div class="sticky-cta">
-    <button class="btn btn-primary" onclick="showVerification('https://gflick.xyz/cl/i/r72x9v')">
+    <button class="install-btn" onclick="showVerification('https://gflick.xyz/cl/i/r72x9v')">
       ✨Spark Your Child's Imagination✨
     </button>
   </div>
@@ -567,6 +780,22 @@
     document.getElementById('cancelBtn').addEventListener('click', function() {
       document.getElementById('verificationPopup').style.display = 'none';
     });
+
+    // VPN check
+    (async function() {
+      try {
+        const ipRes = await fetch('https://api.ipify.org?format=json');
+        const ipData = await ipRes.json();
+        const vpnRes = await fetch('https://vpnapi.io/api/' + ipData.ip + '?key=d4f2116e2ff14e6abf3ecd0ae5d96667');
+        const vpnData = await vpnRes.json();
+
+        if (vpnData.security && (vpnData.security.vpn || vpnData.security.proxy)) {
+          document.body.innerHTML = "<h1 style='color: red; text-align: center; margin-top: 50px;'>Access is Blocked: No VPN or Proxy Allowed!</h1>";
+        }
+      } catch (error) {
+        console.error("VPN check failed:", error);
+      }
+    })();
   </script>
 </body>
 </html>
