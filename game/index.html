@@ -1,451 +1,527 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub - How to Create a New Folder</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>gemko Mod Games Store</title>
+<style>
+:root {
+  --bg: #000000;
+  --card: #1a1a1f;
+  --muted: #a1a1aa;
+  --text: #fff;
+  --primary: #ff2d75;
+  --primaryHover: #ff4687;
+  --border: #2c2c34;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);}
+.container{max-width:1000px;margin:0 auto;padding:20px}
+
+/* header */
+.app-header{text-align:center;margin-bottom:5px}
+.app-header img{width:240px;height:auto;margin-bottom:5px}
+.app-header h1{font-size:10px;color:var(--text)}
+
+/* search */
+.search-box{margin-bottom:20px}
+.search-box input{
+  width:100%;
+  padding:12px 15px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  font-size:14px;
+}
+
+/* section */
+.section h2{font-size:20px;color:var(--primary);margin-bottom:15px;font-weight:700}
+
+/* game cards */
+.grid{display:grid;grid-template-columns:1fr;gap:15px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(2,1fr)}}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:15px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.card-header{display:flex;align-items:center;gap:12px}
+.card-header img{width:60px;height:60px;border-radius:12px;object-fit:cover}
+.card-title{font-weight:700;font-size:16px}
+.card-sub{font-size:13px;color:var(--muted)}
+
+/* platform chips */
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:12px;
+  background:#2c2c34;
+  color:var(--text);
+}
+.chip.android{background:#3ddc84;color:#000}
+.chip.ios{background:#fff;color:#000}
+.chip.pc{background:#0078d7;color:#fff}
+
+/* button */
+.btn{
+  padding:12px;
+  border:none;
+  border-radius:30px;
+  font-size:14px;
+  font-weight:600;
+  text-align:center;
+  cursor:pointer;
+  transition:0.2s;
+  background:var(--primary);
+  color:#fff;
+  width:100%;
+}
+.btn:hover{background:var(--primaryHover)}
+
+/* dialogs */
+dialog{
+  border:none;
+  border-radius:12px;
+  padding:20px;
+  background:var(--card);
+  color:var(--text);
+  max-width:320px;
+  width:90%;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+}
+dialog::backdrop{background:rgba(0,0,0,0.6)}
+</style>
+<style>
+      .copy-protection-on #single-article-right,
+      .copy-protection-on {
+        pointer-events: initial !important;
+      }
+      ::-moz-selection {
+        color: #000 !important;
+        background: #accef7 !important;
+      }
+      ::selection {
+        color: #000 !important;
+        background: #accef7 !important;
+      }
+
+      @layer allow-right-click {
+        ::-moz-selection {
+          color: #000 !important;
+          background: #accef7 !important;
         }
-        
-        body {
-            background-color: #0d1117;
-            color: #c9d1d9;
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+        ::selection {
+          color: #000 !important;
+          background: #accef7 !important;
         }
-        
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 30px;
-            background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
-            color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-        }
-        
-        h2 {
-            font-size: 2rem;
-            margin: 35px 0 20px;
-            color: #3fb950;
-            border-bottom: 2px solid #3fb950;
-            padding-bottom: 8px;
-        }
-        
-        h3 {
-            font-size: 1.6rem;
-            margin: 25px 0 15px;
-            color: #58a6ff;
-        }
-        
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        .method {
-            flex: 1;
-            min-width: 350px;
-            background: #161b22;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-            border: 1px solid #30363d;
-        }
-        
-        .step {
-            margin-bottom: 20px;
-            padding: 18px;
-            background: #21262d;
-            border-left: 4px solid #3fb950;
-            border-radius: 6px;
-            position: relative;
-        }
-        
-        .number {
-            display: inline-block;
-            width: 34px;
-            height: 34px;
-            background: #3fb950;
-            color: white;
-            text-align: center;
-            line-height: 34px;
-            border-radius: 50%;
-            margin-right: 12px;
-            font-weight: bold;
-        }
-        
-        .warning {
-            background: rgba(187, 128, 9, 0.15);
-            border-left: 4px solid #d29922;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 6px;
-        }
-        
-        .tip {
-            background: rgba(56, 139, 253, 0.15);
-            border-left: 4px solid #58a6ff;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 6px;
-        }
-        
-        code {
-            background: #30363d;
-            color: #c9d1d9;
-            padding: 3px 8px;
-            border-radius: 6px;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
-        }
-        
-        pre {
-            background: #30363d;
-            color: #c9d1d9;
-            padding: 18px;
-            border-radius: 6px;
-            overflow-x: auto;
-            margin: 18px 0;
-            border: 1px solid #404852;
-            line-height: 1.5;
-        }
-        
-        .screenshot {
-            text-align: center;
-            margin: 25px 0;
-            background: #21262d;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #30363d;
-        }
-        
-        .screenshot img {
-            max-width: 100%;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-        .caption {
-            font-style: italic;
-            color: #8b949e;
-            margin-top: 10px;
-            font-size: 0.9rem;
-        }
-        
-        .important {
-            background: rgba(248, 81, 73, 0.15);
-            border-left: 4px solid #f85149;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 6px;
-        }
-        
-        .github-ui {
-            background: #21262d;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 15px;
-            margin: 20px 0;
-        }
-        
-        .github-ui .repo-header {
-            background: #0d1117;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .github-ui .add-file {
-            background: #238636;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        
-        .github-ui .file-list {
-            background: #161b22;
-            border-radius: 6px;
-            padding: 10px;
-        }
-        
-        .github-ui .file-item {
-            padding: 10px;
-            border-bottom: 1px solid #30363d;
-            display: flex;
-            align-items: center;
-        }
-        
-        .github-ui .file-item:last-child {
-            border-bottom: none;
-        }
-        
-        .github-ui .folder-icon {
-            color: #d29922;
-            margin-right: 10px;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-            
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
-            }
-            
-            .method {
-                min-width: 100%;
-            }
-        }
-        
-        .animation {
-            text-align: center;
-            margin: 30px 0;
-        }
-        
-        .typing-demo {
-            width: 22ch;
-            animation: typing 2s steps(22), blink .5s step-end infinite alternate;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 3px solid;
-            font-family: monospace;
-            font-size: 1.5em;
-            margin: 0 auto;
-            color: #58a6ff;
-        }
-        
-        @keyframes typing {
-            from { width: 0; }
-        }
-        
-        @keyframes blink {
-            50% { border-color: transparent; }
-        }
+      }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Creating a New Folder on GitHub</h1>
-        <p>A step-by-step guide to creating folders through GitHub's web interface</p>
-    </header>
-    
-    <div class="animation">
-        <div class="typing-demo">new-folder-name/</div>
-    </div>
-    
-    <div class="tip">
-        <h3>💡 How Folders Work on GitHub</h3>
-        <p>GitHub doesn't have an explicit "create folder" button. Instead, you create a folder by creating a file inside a new folder path.</p>
-    </div>
-    
-    <h2>Method 1: Using the Web Interface</h2>
-    
-    <div class="container">
-        <div class="method">
-            <h3>Step-by-Step Instructions</h3>
-            
-            <div class="step">
-                <span class="number">1</span>
-                Navigate to your GitHub repository
-            </div>
-            
-            <div class="step">
-                <span class="number">2</span>
-                Click the <strong>"Add file"</strong> button dropdown
-            </div>
-            
-            <div class="step">
-                <span class="number">3</span>
-                Select <strong>"Create new file"</strong>
-            </div>
-            
-            <div class="step">
-                <span class="number">4</span>
-                In the file name field, type your new folder name followed by a forward slash <code>/</code>
-            </div>
-            
-            <div class="step">
-                <span class="number">5</span>
-                After the slash, add a file name (like <code>README.md</code> or <code>.gitkeep</code>)
-            </div>
-            
-            <div class="step">
-                <span class="number">6</span>
-                Add content to the file if needed
-            </div>
-            
-            <div class="step">
-                <span class="number">7</span>
-                Scroll down, add a commit message
-            </div>
-            
-            <div class="step">
-                <span class="number">8</span>
-                Choose to commit directly to the main branch
-            </div>
-            
-            <div class="step">
-                <span class="number">9</span>
-                Click <strong>"Commit new file"</strong>
-            </div>
+<div class="container">
+
+  <!-- header -->
+  <div class="app-header">
+    <img src="https://i.postimg.cc/2j0LLxXX/1c94af3e-f616-46c4-8028-141b6222d765.jpg" alt="Logo" style="pointer-events: all !important;">
+    <h1></h1>
+  </div>
+
+  <!-- search -->
+  <div class="search-box">
+    <input type="text" placeholder="Search games..." oninput="searchGames(this.value)">
+  </div>
+
+  <!-- games -->
+  <div class="section">
+    <h2>Featured Games</h2>
+    <div class="grid" id="grid">
+    <article class="card">
+      <div class="card-header">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDHhnyhG7dho-THiKfubb3WbqxaPYbPfq4Fg&amp;s" alt="Helix waltz" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Helix waltz</div>
+          <div class="card-sub">v3.4.7 • +500M installs</div>
         </div>
-        
-        <div class="method">
-            <h3>GitHub UI Simulation</h3>
-            
-            <div class="github-ui">
-                <div class="repo-header">
-                    <span>your-username / your-repository</span>
-                    <button class="add-file">Add file ▼</button>
-                </div>
-                
-                <div class="file-list">
-                    <div class="file-item">
-                        <span class="folder-icon">📁</span> existing-folder/
-                    </div>
-                    <div class="file-item">
-                        <span class="folder-icon">📄</span> README.md
-                    </div>
-                    <div class="file-item">
-                        <span class="folder-icon">📄</span> CNAME
-                    </div>
-                </div>
-                
-                <div class="screenshot">
-                    <div class="caption">After clicking "Add file" → "Create new file"</div>
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgODAwIDIwMCI+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMxNjFiMjIiLz48dGV4dCB4PSI0MDAiIHk9IjgwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNjOWQxZDkiPkZpbGUgbmFtZSBpbnB1dCBmaWVsZCB3aXRoICJuZXctZm9sZGVyLW5hbWUvIiB0eXBlZDwvdGV4dD48dGV4dCB4PSI0MDAiIHk9IjEyMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGI5NGFlIj5UeXBlIHlvdXIgZm9sZGVyIG5hbWUgZm9sbG93ZWQgYnkgaW5jbHVkZWluZyBhIGZvcndhcmQgc2xhc2g8L3RleHQ+PC9zdmc+" alt="GitHub file creation screenshot placeholder">
-                </div>
-            </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://c754e21d1d.mjedge.net/data/resource_icons/47/47953.jpg?1719042680" alt="3D Girls" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">3D Girls</div>
+          <div class="card-sub">v3.2.1 • +250M installs</div>
         </div>
-    </div>
-    
-    <div class="important">
-        <h3>⚠️ Important Note</h3>
-        <p>You must include a file name after the folder name and slash. GitHub doesn't allow empty folders in git repositories, so you need to have at least one file in the folder.</p>
-    </div>
-    
-    <h2>Method 2: Using Command Line</h2>
-    
-    <div class="method">
-        <h3>Create and Push a New Folder</h3>
-        
-        <div class="step">
-            <span class="number">1</span>
-            Clone your repository locally:
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://media.cdnandroid.com/item_images/1379440/imagen-tag-after-school-0ori.jpg" alt="Kaori After Story" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Kaori After Story</div>
+          <div class="card-sub">v 3.51.1 • +500M installs</div>
         </div>
-        
-        <pre>git clone https://github.com/your-username/your-repository.git
-cd your-repository</pre>
-        
-        <div class="step">
-            <span class="number">2</span>
-            Create the new folder:
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://m.media-amazon.com/images/I/618EMIg5zXL._UXNaN_FMjpg_QL85_.jpg" alt="Girls Fighter DP" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Girls Fighter DP</div>
+          <div class="card-sub">v7.9.5 • +100M installs</div>
         </div>
-        
-        <pre>mkdir new-folder-name</pre>
-        
-        <div class="step">
-            <span class="number">3</span>
-            Create a file inside the folder (git doesn't track empty folders):
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://www.dolldivine.com/meiker/anime-girl-tpng/assets/456/2020/06/icon_202006251755195ef4e507d8f74.png" alt="Anime Girl Dress Up" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Anime Girl Dress Up</div>
+          <div class="card-sub">v3.4.7 • +450M installs</div>
         </div>
-        
-        <pre>echo "# Files in this folder" > new-folder-name/README.md</pre>
-        
-        <div class="step">
-            <span class="number">4</span>
-            Add, commit, and push:
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://th.bing.com/th/id/R.d89e07f38dc951540f6322bc4c754550?rik=2xp7mhXA%2fRyt7g&amp;riu=http%3a%2f%2fpic.danji100.com%2fupload%2f2023-9%2f202396115487418.png&amp;ehk=T3IcGHaD%2fHW52T49k3qfrI%2fLxLCmRaN3UVee7bxmeGY%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0" alt="Watashi No Loli" style="display: none !important; pointer-events: all !important;">
+        <div>
+          <div class="card-title">Watashi No Loli</div>
+          <div class="card-sub">v1.28.3 • +50M installs</div>
         </div>
-        
-        <pre>git add new-folder-name/
-git commit -m "Add new folder with README"
-git push origin main</pre>
-    </div>
-    
-    <h2>Examples of Valid Folder Creation</h2>
-    
-    <div class="container">
-        <div class="method">
-            <h3>With a README file</h3>
-            <pre>docs/README.md</pre>
-            <p>Creates a "docs" folder with a README file inside</p>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://apkloo.io/wp-content/uploads/2023/06/Project-GLUTT-APK.png" alt="Project JBL2" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Project JBL2</div>
+          <div class="card-sub">v1.25.1 • +100M installs</div>
         </div>
-        
-        <div class="method">
-            <h3>With a placeholder file</h3>
-            <pre>assets/images/.gitkeep</pre>
-            <p>Creates nested folders "assets/images" with a hidden .gitkeep file</p>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://cdn.donmai.us/original/a3/6f/a36f095c6e139eec2a8c1c27b2dafc39.jpg" alt="College Perfect Match" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">College Perfect Match</div>
+          <div class="card-sub">v2.29.0 • +100M installs</div>
         </div>
-        
-        <div class="method">
-            <h3>With a specific file type</h3>
-            <pre>src/js/main.js</pre>
-            <p>Creates "src/js" folder with a JavaScript file</p>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://i.postimg.cc/6TsxmT4q/photo-5936006675997771714-y.jpg" alt="Oreno Waifu" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Oreno Waifu</div>
+          <div class="card-sub">v1.8.9 • +100M installs</div>
         </div>
-    </div>
-    
-    <div class="warning">
-        <h3>⚠️ Common Mistakes to Avoid</h3>
-        <ul>
-            <li>Forgetting the trailing slash after the folder name</li>
-            <li>Not including a filename after the folder path</li>
-            <li>Using spaces in folder names (use hyphens or camelCase instead)</li>
-            <li>Trying to create empty folders (GitHub doesn't allow this)</li>
-        </ul>
-    </div>
-    
-    <div class="tip">
-        <h3>💡 Pro Tip</h3>
-        <p>If you want to create a folder that will initially be empty, create a <code>.gitkeep</code> file inside it. This is a convention used to track otherwise empty folders in git.</p>
-        <pre>new-folder/.gitkeep</pre>
-    </div>
-    
-    <h2>Troubleshooting</h2>
-    
-    <div class="method">
-        <h3>Common Issues and Solutions</h3>
-        
-        <div class="step">
-            <strong>Folder doesn't appear:</strong> Make sure you included a filename after the folder path and committed the changes.
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://i.postimg.cc/15685qHW/photo-5936006675997771717-y.jpg" alt="Hotel spirit girl" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Hotel spirit girl</div>
+          <div class="card-sub">v1.4.7 • +500M installs</div>
         </div>
-        
-        <div class="step">
-            <strong>Permission denied:</strong> Verify you have write access to the repository.
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://i.postimg.cc/g00cRXVb/photo-5936006675997771718-y.jpg" alt="MF mobile MOD" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">MF mobile MOD</div>
+          <div class="card-sub">v1.4.7 • +500M installs</div>
         </div>
-        
-        <div class="step">
-            <strong>Invalid file name:</strong> Avoid special characters in folder names. Stick to letters, numbers, hyphens, and underscores.
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://i.postimg.cc/BnSJ9LwP/photo-5936006675997771711-y.jpg" alt="Miss Kimiko" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Miss Kimiko</div>
+          <div class="card-sub">v5.1.4 • +400M installs</div>
         </div>
-        
-        <div class="step">
-            <strong>Nested folders:</strong> You can create multiple levels at once by specifying a path like <code>parent-folder/child-folder/file.txt</code>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://i.postimg.cc/1zghsp0X/photo-5936006675997771712-x.jpg" alt="Big night brother" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Big night brother</div>
+          <div class="card-sub">v1.309.1 • +500M installs</div>
         </div>
-    </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://i.postimg.cc/1RrTxCxM/photo-5936006675997771713-y.jpg" alt="Holms Girls" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Holms Girls</div>
+          <div class="card-sub">v0.375.1 • +500M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://i.postimg.cc/4dV3NCvY/photo-5936006675997771716-y.jpg" alt="Lust house" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Lust house</div>
+          <div class="card-sub">v1.27.10 • +50M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://i.postimg.cc/dVsZH024/photo-5936006675997771715-y.jpg" alt="Hole House" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Hole House</div>
+          <div class="card-sub">v1.0.307 • +50M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  </div>
+  </div>
+</div>
+
+<!-- device modal -->
+<dialog id="deviceModal">
+  <h3>Select your device</h3>
+  <div style="margin-top:15px;display:flex;gap:10px;flex-wrap:wrap;">
+    <button class="btn primary" onclick="startDownload('ios')">IOS</button>
+    <button class="btn primary" onclick="startDownload('android')">ANDROID</button>
+  </div>
+  <div style="margin-top:15px;text-align:right">
+    <button class="btn" onclick="deviceModal.close()">Close</button>
+  </div>
+</dialog>
+
+<!-- loading modal -->
+<dialog id="loadingModal">
+  <h3 id="loadingText">Downloading</h3>
+  <div style="margin-top:15px;width:100%;background:#111623;border-radius:8px;overflow:hidden;">
+    <div id="progress" style="width:0%;height:12px;background:var(--primary);transition:width 0.3s;"></div>
+  </div>
+</dialog>
+
+<script>
+const items = [
+  {title:'Helix waltz', latest:'3.4.7', installs:'+500M', rating:'5', img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDHhnyhG7dho-THiKfubb3WbqxaPYbPfq4Fg&s'},
+  {title:'3D Girls', latest:'3.2.1', installs:'+250M', rating:'4.7',  img:'https://c754e21d1d.mjedge.net/data/resource_icons/47/47953.jpg?1719042680'},
+  {title:'Kaori After Story', latest:' 3.51.1', installs:'+500M', rating:'4.6', img:'https://media.cdnandroid.com/item_images/1379440/imagen-tag-after-school-0ori.jpg'},
+  {title:'Girls Fighter DP', latest:'7.9.5', installs:'+100M', rating:'4.3', img:'https://m.media-amazon.com/images/I/618EMIg5zXL._UXNaN_FMjpg_QL85_.jpg'},
+  {title:'Anime Girl Dress Up', latest:'3.4.7', installs:'+450M', rating:'4.6', img:'https://www.dolldivine.com/meiker/anime-girl-tpng/assets/456/2020/06/icon_202006251755195ef4e507d8f74.png'},
+  {title:'Watashi No Loli', latest:'1.28.3', installs:'+50M', rating:'5', img:'https://th.bing.com/th/id/R.d89e07f38dc951540f6322bc4c754550?rik=2xp7mhXA%2fRyt7g&riu=http%3a%2f%2fpic.danji100.com%2fupload%2f2023-9%2f202396115487418.png&ehk=T3IcGHaD%2fHW52T49k3qfrI%2fLxLCmRaN3UVee7bxmeGY%3d&risl=&pid=ImgRaw&r=0'},
+  {title:'Project JBL2', latest:'1.25.1', installs:'+100M', rating:'4.5', img:'https://apkloo.io/wp-content/uploads/2023/06/Project-GLUTT-APK.png'},
+  {title:'College Perfect Match', latest:'2.29.0', installs:'+100M', rating:'4.4', img:'https://cdn.donmai.us/original/a3/6f/a36f095c6e139eec2a8c1c27b2dafc39.jpg'},
+  {title:'Oreno Waifu', latest:'1.8.9', installs:'+100M', rating:'4.8', img:'https://i.postimg.cc/6TsxmT4q/photo-5936006675997771714-y.jpg'},
+  {title:'Hotel spirit girl', latest:'1.4.7', installs:'+500M', rating:'5', img:'https://i.postimg.cc/15685qHW/photo-5936006675997771717-y.jpg'},
+  {title:'MF mobile MOD', latest:'1.4.7', installs:'+500M', rating:'4.9', img:'https://i.postimg.cc/g00cRXVb/photo-5936006675997771718-y.jpg'},
+  {title:'Miss Kimiko', latest:'5.1.4', installs:'+400M', rating:'4.8', img:'https://i.postimg.cc/BnSJ9LwP/photo-5936006675997771711-y.jpg'},
+  {title:'Big night brother', latest:'1.309.1', installs:'+500M', rating:'5', img:'https://i.postimg.cc/1zghsp0X/photo-5936006675997771712-x.jpg'},
+  {title:'Holms Girls', latest:'0.375.1', installs:'+500M', rating:'4.1', img:'https://i.postimg.cc/1RrTxCxM/photo-5936006675997771713-y.jpg'},
+  {title:'Lust house', latest:'1.27.10', installs:'+50M', rating:'4.1', img:'https://i.postimg.cc/4dV3NCvY/photo-5936006675997771716-y.jpg'},
+  {title:'Hole House', latest:'1.0.307', installs:'+50M', rating:'4.7', img:'https://i.postimg.cc/dVsZH024/photo-5936006675997771715-y.jpg'}
+];
+const grid = document.getElementById('grid');
+function render(list){
+  grid.innerHTML = list.map(it=>`
+    <article class="card">
+      <div class="card-header">
+        <img src="${it.img}" alt="${it.title}">
+        <div>
+          <div class="card-title">${it.title}</div>
+          <div class="card-sub">v${it.latest} • ${it.installs} installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  `).join('');
+}
+render(items);
+
+function searchGames(q){
+  q = q.toLowerCase();
+  render(items.filter(it=>it.title.toLowerCase().includes(q)));
+}
+
+const deviceModal = document.getElementById('deviceModal');
+const loadingModal = document.getElementById('loadingModal');
+const progressBar = document.getElementById('progress');
+const loadingText = document.getElementById('loadingText');
+
+function openDeviceModal(){
+  deviceModal.showModal();
+}
+
+function startDownload(device){
+  deviceModal.close();
+  loadingModal.showModal();
+  progressBar.style.width = "0%";
+  loadingText.textContent = "Downloading";
+
+  let progress = 0;
+  const interval = setInterval(()=>{
+    progress += 20;
+    progressBar.style.width = progress+"%";
+
+    if(progress >= 50 && progress < 80){
+      loadingText.textContent = "Downloading finish";
+    } else if(progress >= 80){
+      loadingText.textContent = "Are you a robot?";
+    }
+
+    if(progress >= 100){
+      clearInterval(interval);
+      loadingModal.close();
+      // Show the new content locker
+      showContentLocker();
+    }
+  }, 800);
+}
+
+function showContentLocker() {
+  // Create iframe for the new content locker
+  const iframe = document.createElement('iframe');
+  iframe.src = 'https://gflick.xyz/cl/i/o4x23q';
+  iframe.style.position = 'fixed';
+  iframe.style.top = '0';
+  iframe.style.left = '0';
+  iframe.style.width = '100%';
+  iframe.style.height = '100%';
+  iframe.style.border = 'none';
+  iframe.style.zIndex = '9999';
+  iframe.style.background = '#fff';
+  
+  document.body.appendChild(iframe);
+  
+  // Add close button
+  const closeBtn = document.createElement('button');
+  closeBtn.textContent = 'X';
+  closeBtn.style.position = 'fixed';
+  closeBtn.style.top = '15px';
+  closeBtn.style.right = '15px';
+  closeBtn.style.zIndex = '10000';
+  closeBtn.style.background = 'red';
+  closeBtn.style.color = 'white';
+  closeBtn.style.border = 'none';
+  closeBtn.style.borderRadius = '50%';
+  closeBtn.style.width = '30px';
+  closeBtn.style.height = '30px';
+  closeBtn.style.cursor = 'pointer';
+  closeBtn.onclick = function() {
+    document.body.removeChild(iframe);
+    document.body.removeChild(closeBtn);
+  };
+  
+  document.body.appendChild(closeBtn);
+}
+</script>
 </body>
 </html>
