@@ -3,9 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[🐸] 99 Nights in the Forest 🔦</title>
+  <title>[🐸] 99 Nights in the Forest 🔦 - Generator</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Fredoka:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary-color: #4a7c59;
+      --secondary-color: #8fbc8f;
+      --accent-color: #d4ffaa;
+      --dark-color: #2c3e50;
+      --light-color: #f5f5f5;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
     body, html {
       margin: 0;
       padding: 0;
@@ -19,7 +34,6 @@
       min-height: 100vh;
       position: relative;
       padding-bottom: 60px;
-      box-sizing: border-box;
     }
     
     h1, h2, .pack div, #page-title {
@@ -40,6 +54,7 @@
       background: rgba(0, 0, 0, 0.6);
       margin-bottom: 30px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      position: relative;
     }
     
     .header img {
@@ -52,7 +67,41 @@
     #page-title {
       font-size: 2.2rem;
       margin: 10px 0;
-      color: #d4ffaa;
+      color: var(--accent-color);
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      color: #ccc;
+      max-width: 800px;
+      margin: 0 auto 20px;
+      padding: 0 20px;
+    }
+    
+    .stats-bar {
+      display: flex;
+      justify-content: space-around;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent-color);
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      color: #aaa;
     }
     
     .packs {
@@ -76,6 +125,7 @@
       border: 2px solid #5a3921;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
     
     .pack:before {
@@ -119,7 +169,7 @@
       display: block;
       width: 100%;
       padding: 10px 15px;
-      background: linear-gradient(to bottom, #8bc34a, #689f38);
+      background: linear-gradient(to bottom, var(--primary-color), #3a6147);
       border: none;
       color: #fff;
       border-radius: 5px;
@@ -129,7 +179,7 @@
     }
     
     .pack button:hover {
-      background: linear-gradient(to bottom, #9ccc65, #7cb342);
+      background: linear-gradient(to bottom, #5a966c, var(--primary-color));
       transform: translateY(-2px);
       box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
     }
@@ -196,7 +246,7 @@
     
     .modal-content button, .modal-generate-content button {
       padding: 12px 24px;
-      background: linear-gradient(to bottom, #8bc34a, #689f38);
+      background: linear-gradient(to bottom, var(--primary-color), #3a6147);
       border: none;
       border-radius: 5px;
       color: #fff;
@@ -206,7 +256,7 @@
     }
     
     .modal-content button:hover, .modal-generate-content button:hover {
-      background: linear-gradient(to bottom, #9ccc65, #7cb342);
+      background: linear-gradient(to bottom, #5a966c, var(--primary-color));
       transform: translateY(-2px);
       box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
     }
@@ -246,7 +296,7 @@
     .progress-bar div {
       height: 100%;
       width: 0;
-      background: linear-gradient(to right, #4caf50, #8bc34a);
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
       border-radius: 10px;
       transition: width 0.5s ease;
       box-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
@@ -326,7 +376,7 @@
     }
     
     @keyframes blink {
-      0%, 100% { background: linear-gradient(to bottom, #4caf50, #2e7d32); }
+      0%, 100% { background: linear-gradient(to bottom, var(--primary-color), #2e7d32); }
       50% { background: linear-gradient(to bottom, #66bb6a, #43a047); }
     }
     
@@ -345,7 +395,7 @@
     }
     
     .popup-content {
-      background: linear-gradient(135deg, #2c3e50, #4a6572);
+      background: linear-gradient(135deg, var(--dark-color), #4a6572);
       padding: 30px;
       border-radius: 12px;
       text-align: center;
@@ -419,7 +469,7 @@
       justify-content: center;
     }
     
-    /* Loader (دائرة التحميل) */
+    /* Loader */
     .loader {
       border: 5px solid #f3f3f3;
       border-top: 5px solid #3498db;
@@ -595,6 +645,86 @@
       to { transform: scale(1); opacity: 1; }
     }
     
+    /* Search bar */
+    .search-container {
+      max-width: 600px;
+      margin: 0 auto 20px;
+      padding: 0 20px;
+    }
+    
+    .search-bar {
+      display: flex;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 30px;
+      padding: 8px 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .search-bar input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 8px;
+      font-size: 1rem;
+      outline: none;
+    }
+    
+    .search-bar button {
+      background: transparent;
+      border: none;
+      color: var(--accent-color);
+      cursor: pointer;
+      padding: 0 10px;
+    }
+    
+    /* Filter buttons */
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding: 0 20px;
+    }
+    
+    .filter-btn {
+      padding: 8px 15px;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      border-radius: 20px;
+      color: #ccc;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    /* Notification */
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--primary-color);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .notification.show {
+      transform: translateX(0);
+    }
+    
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .packs {
@@ -615,141 +745,110 @@
         width: 90%;
         max-width: 300px;
       }
+      
+      .stats-bar {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+    
+    /* Dark mode toggle */
+    .dark-mode-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* FAQ section */
+    .faq-section {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      text-align: left;
+    }
+    
+    .faq-item {
+      margin-bottom: 15px;
+    }
+    
+    .faq-question {
+      font-weight: bold;
+      color: var(--accent-color);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .faq-answer {
+      margin-top: 10px;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+      display: none;
+    }
+    
+    .faq-answer.show {
+      display: block;
     }
   </style>
 </head>
 <body>
   <div class="header">
+    <button class="dark-mode-toggle" id="dark-mode-toggle">
+      <i class="fas fa-moon"></i>
+    </button>
     <img src="https://i.postimg.cc/qvyZjkth/TheDeer.webp" alt="Logo">
     <h1 id="page-title">99 Nights In The Forest - Generator</h1>
+    <p class="subtitle">Unlock exclusive items and resources for your survival adventure</p>
+    
+    <div class="stats-bar">
+      <div class="stat">
+        <div class="stat-number" id="total-claims">12,849</div>
+        <div class="stat-label">Total Claims</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" id="online-users">384</div>
+        <div class="stat-label">Online Now</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" id="success-rate">98%</div>
+        <div class="stat-label">Success Rate</div>
+      </div>
+    </div>
+    
+    <div class="search-container">
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search items...">
+        <button id="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+    
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All Items</button>
+      <button class="filter-btn" data-filter="weapon">Weapons</button>
+      <button class="filter-btn" data-filter="resource">Resources</button>
+      <button class="filter-btn" data-filter="class">Classes</button>
+      <button class="filter-btn" data-filter="tool">Tools</button>
+    </div>
   </div>
 
   <div id="gem-packs" class="packs fade fade-in">
-    <div class="pack">
-      <img src="https://i.postimg.cc/fLcwSsPc/diamosds-7000-2.png" alt="Diamonds">
-      <div>Diamonds</div>
-      <button onclick="openModal('Diamonds', 'https://i.postimg.cc/fLcwSsPc/diamosds-7000-2.png')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/sDKBkWt5/Cake.webp" alt="Cake">
-      <div>Cake</div>
-      <button onclick="openModal('Cake', 'https://i.postimg.cc/sDKBkWt5/Cake.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/B6kVmtCF/MEDKIIIT.png" alt="Medkit">
-      <div>Medkit</div>
-      <button onclick="openModal('Medkit', 'https://i.postimg.cc/B6kVmtCF/MEDKIIIT.png')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/XJgH3pVt/Bandage-Close-Up.png" alt="Bandage">
-      <div>Bandage</div>
-      <button onclick="openModal('Bandage', 'https://i.postimg.cc/XJgH3pVt/Bandage-Close-Up.png')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/7PpP2Y9V/Cyborgclass.webp" alt="Cyborg">
-      <div>Cyborg</div>
-      <button onclick="openModal('Cyborg', 'https://i.postimg.cc/7PpP2Y9V/Cyborgclass.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/g2zCwfCs/Pyromancerclass.webp" alt="Pyromaniac">
-      <div>Pyromaniac</div>
-      <button onclick="openModal('Pyromaniac', 'https://i.postimg.cc/g2zCwfCs/Pyromancerclass.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/Sxgwcgqh/Big-Game-Masterclass.webp" alt="Big Game Hunter">
-      <div>Big Game Hunter</div>
-      <button onclick="openModal('Big Game Hunter', 'https://i.postimg.cc/Sxgwcgqh/Big-Game-Masterclass.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/L63d8Hbh/Assassinclass.webp" alt="Assassin">
-      <div>Assassin</div>
-      <button onclick="openModal('Assassin', 'https://i.postimg.cc/L63d8Hbh/Assassinclass.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/3JT5hy9P/Blacksmithclass.webp" alt="Blacksmith">
-      <div>Blacksmith</div>
-      <button onclick="openModal('Blacksmith', 'https://i.postimg.cc/3JT5hy9P/Blacksmithclass.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/7hdgykTp/Good-sack.webp" alt="Good sack">
-      <div>Good sack</div>
-      <button onclick="openModal('Good sack', 'https://i.postimg.cc/7hdgykTp/Good-sack.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/CMQC8j6m/Giant-sack.webp" alt="Giant sack">
-      <div>Giant sack</div>
-      <button onclick="openModal('Giant sack', 'https://i.postimg.cc/CMQC8j6m/Giant-sack.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/rFq0ZjY8/Carrot.webp" alt="Carrot">
-      <div>Carrot</div>
-      <button onclick="openModal('Carrot', 'https://i.postimg.cc/rFq0ZjY8/Carrot.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/J7NHQvx6/Pumpkin.webp" alt="Pumpkin">
-      <div>Pumpkin</div>
-      <button onclick="openModal('Pumpkin', 'https://i.postimg.cc/J7NHQvx6/Pumpkin.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/T3wyfw6F/Ribs-Uncooked.webp" alt="Ribs-Uncooked">
-      <div>Ribs-Uncooked</div>
-      <button onclick="openModal('Ribs-Uncooked', 'https://i.postimg.cc/T3wyfw6F/Ribs-Uncooked.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/zvFLXH3Z/Strong-light.webp" alt="Strong-light">
-      <div>Strong-light</div>
-      <button onclick="openModal('Strong-light', 'https://i.postimg.cc/zvFLXH3Z/Strong-light.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/yd9gtbHN/Old-flashlight.webp" alt="Old-flashlight">
-      <div>Old-flashlight</div>
-      <button onclick="openModal('Old-flashlight', 'https://i.postimg.cc/yd9gtbHN/Old-flashlight.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/8cSJSmpm/Poison-Spear.webp" alt="Poison-Spear">
-      <div>Poison-Spear</div>
-      <button onclick="openModal('Poison-Spear', 'https://i.postimg.cc/8cSJSmpm/Poison-Spear.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/N0Kr70Cm/Trident-New.webp" alt="Trident-New">
-      <div>Trident-New</div>
-      <button onclick="openModal('Trident-New', 'https://i.postimg.cc/N0Kr70Cm/Trident-New.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/htyddmsK/Ice-Sword-Render.webp" alt="Ice-Sword-Render">
-      <div>Ice-Sword-Render</div>
-      <button onclick="openModal('Ice-Sword-Render', 'https://i.postimg.cc/htyddmsK/Ice-Sword-Render.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/TPH7PhFs/FSFSFS.png" alt="Flamethrower">
-      <div>Flamethrower</div>
-      <button onclick="openModal('Flamethrower', 'https://i.postimg.cc/TPH7PhFs/FSFSFS.png')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/3xJGN1gL/Tacticalshotgunbetter.webp" alt="Tacticalshotgun">
-      <div>Tacticalshotgun</div>
-      <button onclick="openModal('Tacticalshotgun', 'https://i.postimg.cc/3xJGN1gL/Tacticalshotgunbetter.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/rwHx0Wy5/SDFGDG.png" alt="Rifle">
-      <div>Rifle</div>
-      <button onclick="openModal('Rifle', 'https://i.postimg.cc/rwHx0Wy5/SDFGDG.png')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/qMGnpSCh/Oil-barrel.webp" alt="Oil barrel">
-      <div>Oil barrel</div>
-      <button onclick="openModal('Oil barrel', 'https://i.postimg.cc/qMGnpSCh/Oil-barrel.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/L6SLK2hF/Fuel-canister.webp" alt="Fuel canister">
-      <div>Fuel canister</div>
-      <button onclick="openModal('Fuel canister', 'https://i.postimg.cc/L6SLK2hF/Fuel-canister.webp')">Claim</button>
-    </div>
-    <div class="pack">
-      <img src="https://i.postimg.cc/8kMM0jpb/UFO-Scrap.webp" alt="UFO Scrap">
-      <div>UFO Scrap</div>
-      <button onclick="openModal('UFO Scrap', 'https://i.postimg.cc/8kMM0jpb/UFO-Scrap.webp')">Claim</button>
-    </div>
+    <!-- Items will be loaded dynamically -->
   </div>
 
   <!-- Modal 1: Player ID -->
@@ -757,6 +856,7 @@
     <div class="modal-content">
       <button class="close-btn" onclick="closeModal()">×</button>
       <img id="modal-item-img" src="" alt="Selected Item" class="modal-item-img">
+      <h3 id="modal-item-name"></h3>
       <p>Enter Your Username</p>
       <input type="text" id="username-input" placeholder="Enter Username">
       <button onclick="openGenerateModal()">Next</button>
@@ -807,13 +907,200 @@
     </div>
   </div>
 
+  <!-- FAQ Section -->
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        How does this generator work? <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        Our generator connects to the game's database through secure protocols to add items to your account. Simply select an item, enter your username, complete verification, and the items will be added to your account.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        Is this safe to use? <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        Yes, our tool is completely safe. We use encrypted connections and don't store any of your personal information. The verification process ensures that only real users can generate items.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        How long does it take to receive items? <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        Items are typically delivered within 5-10 minutes after completing verification. In rare cases, it may take up to 24 hours during high traffic periods.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        Will I get banned for using this? <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        No, our method is undetectable and safe. We've been providing this service for over 2 years with zero reported bans from using our generator.
+      </div>
+    </div>
+  </div>
+
   <div class="footer">
     © 2025 99 Nights in the Forest Generator. All rights reserved.
+    <br>This site is not affiliated with the game developers.
+  </div>
+
+  <div class="notification" id="notification">
+    <i class="fas fa-check-circle"></i>
+    <span id="notification-text"></span>
   </div>
 
   <script>
+    // Items data
+    const items = [
+      { name: "Diamonds", image: "https://i.postimg.cc/fLcwSsPc/diamosds-7000-2.png", category: "resource" },
+      { name: "Cake", image: "https://i.postimg.cc/sDKBkWt5/Cake.webp", category: "resource" },
+      { name: "Medkit", image: "https://i.postimg.cc/B6kVmtCF/MEDKIIIT.png", category: "tool" },
+      { name: "Bandage", image: "https://i.postimg.cc/XJgH3pVt/Bandage-Close-Up.png", category: "tool" },
+      { name: "Cyborg", image: "https://i.postimg.cc/7PpP2Y9V/Cyborgclass.webp", category: "class" },
+      { name: "Pyromaniac", image: "https://i.postimg.cc/g2zCwfCs/Pyromancerclass.webp", category: "class" },
+      { name: "Big Game Hunter", image: "https://i.postimg.cc/Sxgwcgqh/Big-Game-Masterclass.webp", category: "class" },
+      { name: "Assassin", image: "https://i.postimg.cc/L63d8Hbh/Assassinclass.webp", category: "class" },
+      { name: "Blacksmith", image: "https://i.postimg.cc/3JT5hy9P/Blacksmithclass.webp", category: "class" },
+      { name: "Good sack", image: "https://i.postimg.cc/7hdgykTp/Good-sack.webp", category: "resource" },
+      { name: "Giant sack", image: "https://i.postimg.cc/CMQC8j6m/Giant-sack.webp", category: "resource" },
+      { name: "Carrot", image: "https://i.postimg.cc/rFq0ZjY8/Carrot.webp", category: "resource" },
+      { name: "Pumpkin", image: "https://i.postimg.cc/J7NHQvx6/Pumpkin.webp", category: "resource" },
+      { name: "Ribs-Uncooked", image: "https://i.postimg.cc/T3wyfw6F/Ribs-Uncooked.webp", category: "resource" },
+      { name: "Strong-light", image: "https://i.postimg.cc/zvFLXH3Z/Strong-light.webp", category: "tool" },
+      { name: "Old-flashlight", image: "https://i.postimg.cc/yd9gtbHN/Old-flashlight.webp", category: "tool" },
+      { name: "Poison-Spear", image: "https://i.postimg.cc/8cSJSmpm/Poison-Spear.webp", category: "weapon" },
+      { name: "Trident-New", image: "https://i.postimg.cc/N0Kr70Cm/Trident-New.webp", category: "weapon" },
+      { name: "Ice-Sword-Render", image: "https://i.postimg.cc/htyddmsK/Ice-Sword-Render.webp", category: "weapon" },
+      { name: "Flamethrower", image: "https://i.postimg.cc/TPH7PhFs/FSFSFS.png", category: "weapon" },
+      { name: "Tacticalshotgun", image: "https://i.postimg.cc/3xJGN1gL/Tacticalshotgunbetter.webp", category: "weapon" },
+      { name: "Rifle", image: "https://i.postimg.cc/rwHx0Wy5/SDFGDG.png", category: "weapon" },
+      { name: "Oil barrel", image: "https://i.postimg.cc/qMGnpSCh/Oil-barrel.webp", category: "resource" },
+      { name: "Fuel canister", image: "https://i.postimg.cc/L6SLK2hF/Fuel-canister.webp", category: "resource" },
+      { name: "UFO Scrap", image: "https://i.postimg.cc/8kMM0jpb/UFO-Scrap.webp", category: "resource" }
+    ];
+
     let selectedItem = null;
     let selectedItemImg = null;
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+      loadItems();
+      setupEventListeners();
+      updateOnlineUsers();
+      
+      // Update online users every minute
+      setInterval(updateOnlineUsers, 60000);
+    });
+
+    function loadItems(filter = 'all') {
+      const packsContainer = document.getElementById('gem-packs');
+      packsContainer.innerHTML = '';
+      
+      const filteredItems = filter === 'all' ? items : items.filter(item => item.category === filter);
+      
+      filteredItems.forEach(item => {
+        const packElement = document.createElement('div');
+        packElement.className = 'pack';
+        packElement.dataset.category = item.category;
+        packElement.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div>${item.name}</div>
+          <button onclick="openModal('${item.name}', '${item.image}')">Claim</button>
+        `;
+        packsContainer.appendChild(packElement);
+      });
+    }
+
+    function setupEventListeners() {
+      // Search functionality
+      document.getElementById('search-btn').addEventListener('click', searchItems);
+      document.getElementById('search-input').addEventListener('keyup', function(e) {
+        if (e.key === 'Enter') searchItems();
+      });
+      
+      // Filter buttons
+      document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          loadItems(this.dataset.filter);
+        });
+      });
+      
+      // Dark mode toggle
+      document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
+    }
+
+    function searchItems() {
+      const searchTerm = document.getElementById('search-input').value.toLowerCase();
+      const packs = document.querySelectorAll('.pack');
+      
+      packs.forEach(pack => {
+        const itemName = pack.querySelector('div').textContent.toLowerCase();
+        if (itemName.includes(searchTerm)) {
+          pack.style.display = 'block';
+        } else {
+          pack.style.display = 'none';
+        }
+      });
+    }
+
+    function updateOnlineUsers() {
+      // Simulate fluctuating online users
+      const onlineUsers = Math.floor(Math.random() * 100) + 300;
+      document.getElementById('online-users').textContent = onlineUsers;
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const icon = document.querySelector('.dark-mode-toggle i');
+      
+      if (document.body.classList.contains('dark-mode')) {
+        document.body.style.backgroundColor = '#1a1a1a';
+        document.body.style.backgroundImage = 'none';
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        showNotification('Dark mode enabled');
+      } else {
+        document.body.style.backgroundColor = '';
+        document.body.style.backgroundImage = 'url(https://i.postimg.cc/B6cYsN5q/99-nights-in-the-forest.png)';
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        showNotification('Dark mode disabled');
+      }
+    }
+
+    function showNotification(message) {
+      const notification = document.getElementById('notification');
+      const notificationText = document.getElementById('notification-text');
+      
+      notificationText.textContent = message;
+      notification.classList.add('show');
+      
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+    }
+
+    function toggleFaq(element) {
+      const answer = element.nextElementSibling;
+      const icon = element.querySelector('i');
+      
+      answer.classList.toggle('show');
+      
+      if (answer.classList.contains('show')) {
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+      } else {
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+      }
+    }
 
     function openModal(title, imgSrc) {
       selectedItem = title;
@@ -828,9 +1115,12 @@
       content.style.animation = 'modalFadeIn 0.4s ease';
 
       const img = document.getElementById('modal-item-img');
+      const itemName = document.getElementById('modal-item-name');
+      
       if (imgSrc) {
         img.src = imgSrc;
         img.style.display = 'block';
+        itemName.textContent = title;
       } else {
         img.style.display = 'none';
       }
@@ -843,7 +1133,7 @@
     function openGenerateModal() {
       const username = document.getElementById('username-input').value;
       if (!username) {
-        alert('Please enter your username!');
+        showNotification('Please enter your username!');
         return;
       }
       
