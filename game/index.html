@@ -1,527 +1,971 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>gemko Mod Games Store</title>
-<style>
-:root {
-  --bg: #000000;
-  --card: #1a1a1f;
-  --muted: #a1a1aa;
-  --text: #fff;
-  --primary: #ff2d75;
-  --primaryHover: #ff4687;
-  --border: #2c2c34;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);}
-.container{max-width:1000px;margin:0 auto;padding:20px}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[🐸] 99 Nights in the Forest 🔦</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Fredoka:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://i.postimg.cc/B6cYsN5q/99-nights-in-the-forest.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      position: relative;
+      padding-bottom: 60px;
+      box-sizing: border-box;
+    }
+    
+    h1, h2, .pack div, #page-title {
+      font-family: 'Fredoka', sans-serif;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
 
-/* header */
-.app-header{text-align:center;margin-bottom:5px}
-.app-header img{width:240px;height:auto;margin-bottom:5px}
-.app-header h1{font-size:10px;color:var(--text)}
-
-/* search */
-.search-box{margin-bottom:20px}
-.search-box input{
-  width:100%;
-  padding:12px 15px;
-  border-radius:10px;
-  border:1px solid var(--border);
-  background:var(--card);
-  color:var(--text);
-  font-size:14px;
-}
-
-/* section */
-.section h2{font-size:20px;color:var(--primary);margin-bottom:15px;font-weight:700}
-
-/* game cards */
-.grid{display:grid;grid-template-columns:1fr;gap:15px}
-@media(min-width:600px){.grid{grid-template-columns:repeat(2,1fr)}}
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:15px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-.card-header{display:flex;align-items:center;gap:12px}
-.card-header img{width:60px;height:60px;border-radius:12px;object-fit:cover}
-.card-title{font-weight:700;font-size:16px}
-.card-sub{font-size:13px;color:var(--muted)}
-
-/* platform chips */
-.chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{
-  padding:4px 10px;
-  border-radius:999px;
-  font-size:12px;
-  background:#2c2c34;
-  color:var(--text);
-}
-.chip.android{background:#3ddc84;color:#000}
-.chip.ios{background:#fff;color:#000}
-.chip.pc{background:#0078d7;color:#fff}
-
-/* button */
-.btn{
-  padding:12px;
-  border:none;
-  border-radius:30px;
-  font-size:14px;
-  font-weight:600;
-  text-align:center;
-  cursor:pointer;
-  transition:0.2s;
-  background:var(--primary);
-  color:#fff;
-  width:100%;
-}
-.btn:hover{background:var(--primaryHover)}
-
-/* dialogs */
-dialog{
-  border:none;
-  border-radius:12px;
-  padding:20px;
-  background:var(--card);
-  color:var(--text);
-  max-width:320px;
-  width:90%;
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
-}
-dialog::backdrop{background:rgba(0,0,0,0.6)}
-</style>
-<style>
-      .copy-protection-on #single-article-right,
-      .copy-protection-on {
-        pointer-events: initial !important;
+    button {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .header {
+      padding: 20px 0;
+      background: rgba(0, 0, 0, 0.6);
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .header img {
+      max-width: 120px;
+      height: auto;
+      margin-top: 10px;
+      filter: drop-shadow(0 0 8px rgba(0, 128, 0, 0.5));
+    }
+    
+    #page-title {
+      font-size: 2.2rem;
+      margin: 10px 0;
+      color: #d4ffaa;
+    }
+    
+    .packs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .pack {
+      background: url('https://i.postimg.cc/fRk6n5WY/GF.png');
+      background-size: cover;
+      padding: 15px;
+      border-radius: 10px;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+      font-weight: bold;
+      text-align: center;
+      border: 2px solid #5a3921;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .pack:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(139, 69, 19, 0.3), rgba(101, 67, 33, 0.3));
+      z-index: 1;
+    }
+    
+    .pack:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+    }
+    
+    .pack > * {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .pack img {
+      width: 100px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      background: rgba(255, 255, 255, 0.1);
+      padding: 5px;
+    }
+    
+    .pack div {
+      color: #fff;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+    
+    .pack button {
+      display: block;
+      width: 100%;
+      padding: 10px 15px;
+      background: linear-gradient(to bottom, #8bc34a, #689f38);
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    
+    .pack button:hover {
+      background: linear-gradient(to bottom, #9ccc65, #7cb342);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .points {
+      margin-top: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #080808;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Modal Styles */
+    .modal, .modal-generate, .verification-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .modal-content, .modal-generate-content {
+      background: url('https://i.postimg.cc/wTwf7Spv/ds.png');
+      background-size: cover;
+      color: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+      width: 320px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      font-family: 'Fredoka', sans-serif;
+      border: 2px solid #8b5a2b;
+      position: relative;
+    }
+    
+    .verification-modal .modal-content {
+      background: url('https://i.postimg.cc/wTwf7Spv/ds.png');
+      background-size: cover;
+      color: #ffffff;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      width: 350px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+    
+    .modal-content input, .modal-generate-content button {
+      width: 85%;
+      padding: 12px;
+      margin: 12px auto;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    
+    .modal-content button, .modal-generate-content button {
+      padding: 12px 24px;
+      background: linear-gradient(to bottom, #8bc34a, #689f38);
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .modal-content button:hover, .modal-generate-content button:hover {
+      background: linear-gradient(to bottom, #9ccc65, #7cb342);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.3);
+    }
+    
+    .close-btn:hover {
+      background: rgba(0, 0, 0, 0.5);
+    }
+    
+    .progress-bar {
+      width: 85%;
+      background: #444;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px auto;
+      height: 20px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    .progress-bar div {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(to right, #4caf50, #8bc34a);
+      border-radius: 10px;
+      transition: width 0.5s ease;
+      box-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
+    }
+    
+    .verify-btn {
+      display: none;
+      padding: 15px 30px;
+      background: linear-gradient(145deg, #007bff, #0056b3);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 20px auto;
+      text-align: center;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .verify-btn.active {
+      display: block;
+    }
+    
+    .verify-btn:hover {
+      background: linear-gradient(145deg, #0056b3, #007bff);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+    }
+    
+    .fade {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .fade-in {
+      opacity: 1;
+    }
+    
+    /* Animation for modal appearance */
+    @keyframes modalFadeIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
       }
-      ::-moz-selection {
-        color: #000 !important;
-        background: #accef7 !important;
+      100% {
+        opacity: 1;
+        transform: scale(1);
       }
-      ::selection {
-        color: #000 !important;
-        background: #accef7 !important;
-      }
+    }
 
-      @layer allow-right-click {
-        ::-moz-selection {
-          color: #000 !important;
-          background: #accef7 !important;
-        }
-        ::selection {
-          color: #000 !important;
-          background: #accef7 !important;
-        }
+    .modal-content {
+      animation: modalFadeIn 0.4s ease;
+    }
+    
+    @keyframes flipIn {
+      0% {
+        opacity: 0;
+        transform: rotateX(-90deg) scale(0.8);
       }
-    </style>
+      60% {
+        opacity: 1;
+        transform: rotateX(20deg) scale(1.05);
+      }
+      100% {
+        transform: rotateX(0deg) scale(1);
+      }
+    }
+
+    .modal-generate-content {
+      transform-origin: top center;
+      animation: flipIn 0.6s ease-out;
+    }
+    
+    .complete-btn.active {
+      animation: blink 1s infinite;
+    }
+    
+    @keyframes blink {
+      0%, 100% { background: linear-gradient(to bottom, #4caf50, #2e7d32); }
+      50% { background: linear-gradient(to bottom, #66bb6a, #43a047); }
+    }
+    
+    /* Popup styles */
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    
+    .popup-content {
+      background: linear-gradient(135deg, #2c3e50, #4a6572);
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      border: 2px solid #8b5a2b;
+    }
+    
+    .popup-content img {
+      width: 250px;
+      height: 250px;
+      margin: 0 auto 20px;
+      border-radius: 8px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .popup-content button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    #popup-points {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+    
+    #popup-points:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+    }
+    
+    #open-btn {
+      background: linear-gradient(135deg, #8e44ad, #9b59b6);
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+    
+    #open-btn:hover {
+      background: linear-gradient(135deg, #9b59b6, #8e44ad);
+      transform: scale(1.05);
+    }
+    
+    .close-popup {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.3);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Loader (دائرة التحميل) */
+    .loader {
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #3498db;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: auto;
+      display: none;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* iframe for locker */
+    .locker-iframe {
+      width: 100%;
+      border: none;
+      height: 100%;
+      min-height: 500px;
+      box-sizing: border-box;
+      border-radius: 8px;
+    }
+    
+    /* Container for iframe (wrapper) */
+    .locker-popup-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      width: 800px;
+      height: 600px;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    .locker-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 10;
+    }
+    
+    /* Footer */
+    .footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 15px 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: #aaa;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    
+    /* Roblox loader */
+    .roblox-loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    
+    .roblox-loader div {
+      width: 14px;
+      height: 14px;
+      background-color: #ffffff;
+      border-radius: 3px;
+      animation: bounce 1.2s infinite ease-in-out both;
+    }
+    
+    .roblox-loader div:nth-child(1) {
+      animation-delay: -0.4s;
+    }
+    
+    .roblox-loader div:nth-child(2) {
+      animation-delay: -0.2s;
+    }
+    
+    .roblox-loader div:nth-child(3) {
+      animation-delay: 0s;
+    }
+    
+    .roblox-loader div:nth-child(4) {
+      animation-delay: 0.2s;
+    }
+    
+    @keyframes bounce {
+      0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1.3);
+        opacity: 1;
+      }
+    }
+    
+    .square-loader {
+      width: 64px;
+      height: 64px;
+      position: relative;
+      margin: 0 auto 20px;
+    }
+    
+    .square-loader div {
+      width: 16px;
+      height: 16px;
+      background: #ffffff;
+      position: absolute;
+      animation: squareFade 1.2s linear infinite;
+    }
+    
+    .square-loader div:nth-child(1) {
+      top: 0;
+      left: 0;
+      animation-delay: 0s;
+    }
+    
+    .square-loader div:nth-child(2) {
+      top: 0;
+      right: 0;
+      animation-delay: 0.3s;
+    }
+    
+    .square-loader div:nth-child(3) {
+      bottom: 0;
+      right: 0;
+      animation-delay: 0.6s;
+    }
+    
+    .square-loader div:nth-child(4) {
+      bottom: 0;
+      left: 0;
+      animation-delay: 0.9s;
+    }
+    
+    @keyframes squareFade {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+    }
+    
+    .modal-item-img {
+      width: 120px;
+      height: auto;
+      margin: 0 auto 20px;
+      display: block;
+      animation: zoomIn 0.4s ease;
+      border-radius: 8px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    @keyframes zoomIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .packs {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 15px;
+        padding: 15px;
+      }
+      
+      .pack img {
+        width: 80px;
+      }
+      
+      #page-title {
+        font-size: 1.8rem;
+      }
+      
+      .modal-content, .modal-generate-content {
+        width: 90%;
+        max-width: 300px;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-
-  <!-- header -->
-  <div class="app-header">
-    <img src="https://i.postimg.cc/2j0LLxXX/1c94af3e-f616-46c4-8028-141b6222d765.jpg" alt="Logo" style="pointer-events: all !important;">
-    <h1></h1>
+  <div class="header">
+    <img src="https://i.postimg.cc/qvyZjkth/TheDeer.webp" alt="Logo">
+    <h1 id="page-title">99 Nights In The Forest - Generator</h1>
   </div>
 
-  <!-- search -->
-  <div class="search-box">
-    <input type="text" placeholder="Search games..." oninput="searchGames(this.value)">
+  <div id="gem-packs" class="packs fade fade-in">
+    <div class="pack">
+      <img src="https://i.postimg.cc/fLcwSsPc/diamosds-7000-2.png" alt="Diamonds">
+      <div>Diamonds</div>
+      <button onclick="openModal('Diamonds', 'https://i.postimg.cc/fLcwSsPc/diamosds-7000-2.png')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/sDKBkWt5/Cake.webp" alt="Cake">
+      <div>Cake</div>
+      <button onclick="openModal('Cake', 'https://i.postimg.cc/sDKBkWt5/Cake.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/B6kVmtCF/MEDKIIIT.png" alt="Medkit">
+      <div>Medkit</div>
+      <button onclick="openModal('Medkit', 'https://i.postimg.cc/B6kVmtCF/MEDKIIIT.png')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/XJgH3pVt/Bandage-Close-Up.png" alt="Bandage">
+      <div>Bandage</div>
+      <button onclick="openModal('Bandage', 'https://i.postimg.cc/XJgH3pVt/Bandage-Close-Up.png')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/7PpP2Y9V/Cyborgclass.webp" alt="Cyborg">
+      <div>Cyborg</div>
+      <button onclick="openModal('Cyborg', 'https://i.postimg.cc/7PpP2Y9V/Cyborgclass.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/g2zCwfCs/Pyromancerclass.webp" alt="Pyromaniac">
+      <div>Pyromaniac</div>
+      <button onclick="openModal('Pyromaniac', 'https://i.postimg.cc/g2zCwfCs/Pyromancerclass.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/Sxgwcgqh/Big-Game-Masterclass.webp" alt="Big Game Hunter">
+      <div>Big Game Hunter</div>
+      <button onclick="openModal('Big Game Hunter', 'https://i.postimg.cc/Sxgwcgqh/Big-Game-Masterclass.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/L63d8Hbh/Assassinclass.webp" alt="Assassin">
+      <div>Assassin</div>
+      <button onclick="openModal('Assassin', 'https://i.postimg.cc/L63d8Hbh/Assassinclass.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/3JT5hy9P/Blacksmithclass.webp" alt="Blacksmith">
+      <div>Blacksmith</div>
+      <button onclick="openModal('Blacksmith', 'https://i.postimg.cc/3JT5hy9P/Blacksmithclass.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/7hdgykTp/Good-sack.webp" alt="Good sack">
+      <div>Good sack</div>
+      <button onclick="openModal('Good sack', 'https://i.postimg.cc/7hdgykTp/Good-sack.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/CMQC8j6m/Giant-sack.webp" alt="Giant sack">
+      <div>Giant sack</div>
+      <button onclick="openModal('Giant sack', 'https://i.postimg.cc/CMQC8j6m/Giant-sack.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/rFq0ZjY8/Carrot.webp" alt="Carrot">
+      <div>Carrot</div>
+      <button onclick="openModal('Carrot', 'https://i.postimg.cc/rFq0ZjY8/Carrot.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/J7NHQvx6/Pumpkin.webp" alt="Pumpkin">
+      <div>Pumpkin</div>
+      <button onclick="openModal('Pumpkin', 'https://i.postimg.cc/J7NHQvx6/Pumpkin.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/T3wyfw6F/Ribs-Uncooked.webp" alt="Ribs-Uncooked">
+      <div>Ribs-Uncooked</div>
+      <button onclick="openModal('Ribs-Uncooked', 'https://i.postimg.cc/T3wyfw6F/Ribs-Uncooked.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/zvFLXH3Z/Strong-light.webp" alt="Strong-light">
+      <div>Strong-light</div>
+      <button onclick="openModal('Strong-light', 'https://i.postimg.cc/zvFLXH3Z/Strong-light.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/yd9gtbHN/Old-flashlight.webp" alt="Old-flashlight">
+      <div>Old-flashlight</div>
+      <button onclick="openModal('Old-flashlight', 'https://i.postimg.cc/yd9gtbHN/Old-flashlight.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/8cSJSmpm/Poison-Spear.webp" alt="Poison-Spear">
+      <div>Poison-Spear</div>
+      <button onclick="openModal('Poison-Spear', 'https://i.postimg.cc/8cSJSmpm/Poison-Spear.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/N0Kr70Cm/Trident-New.webp" alt="Trident-New">
+      <div>Trident-New</div>
+      <button onclick="openModal('Trident-New', 'https://i.postimg.cc/N0Kr70Cm/Trident-New.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/htyddmsK/Ice-Sword-Render.webp" alt="Ice-Sword-Render">
+      <div>Ice-Sword-Render</div>
+      <button onclick="openModal('Ice-Sword-Render', 'https://i.postimg.cc/htyddmsK/Ice-Sword-Render.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/TPH7PhFs/FSFSFS.png" alt="Flamethrower">
+      <div>Flamethrower</div>
+      <button onclick="openModal('Flamethrower', 'https://i.postimg.cc/TPH7PhFs/FSFSFS.png')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/3xJGN1gL/Tacticalshotgunbetter.webp" alt="Tacticalshotgun">
+      <div>Tacticalshotgun</div>
+      <button onclick="openModal('Tacticalshotgun', 'https://i.postimg.cc/3xJGN1gL/Tacticalshotgunbetter.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/rwHx0Wy5/SDFGDG.png" alt="Rifle">
+      <div>Rifle</div>
+      <button onclick="openModal('Rifle', 'https://i.postimg.cc/rwHx0Wy5/SDFGDG.png')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/qMGnpSCh/Oil-barrel.webp" alt="Oil barrel">
+      <div>Oil barrel</div>
+      <button onclick="openModal('Oil barrel', 'https://i.postimg.cc/qMGnpSCh/Oil-barrel.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/L6SLK2hF/Fuel-canister.webp" alt="Fuel canister">
+      <div>Fuel canister</div>
+      <button onclick="openModal('Fuel canister', 'https://i.postimg.cc/L6SLK2hF/Fuel-canister.webp')">Claim</button>
+    </div>
+    <div class="pack">
+      <img src="https://i.postimg.cc/8kMM0jpb/UFO-Scrap.webp" alt="UFO Scrap">
+      <div>UFO Scrap</div>
+      <button onclick="openModal('UFO Scrap', 'https://i.postimg.cc/8kMM0jpb/UFO-Scrap.webp')">Claim</button>
+    </div>
   </div>
 
-  <!-- games -->
-  <div class="section">
-    <h2>Featured Games</h2>
-    <div class="grid" id="grid">
-    <article class="card">
-      <div class="card-header">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDHhnyhG7dho-THiKfubb3WbqxaPYbPfq4Fg&amp;s" alt="Helix waltz" style="pointer-events: all !important;">
-        <div>
-          <div class="card-title">Helix waltz</div>
-          <div class="card-sub">v3.4.7 • +500M installs</div>
-        </div>
-      </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
-      </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
-  
-    <article class="card">
-      <div class="card-header">
-        <img src="https://c754e21d1d.mjedge.net/data/resource_icons/47/47953.jpg?1719042680" alt="3D Girls" style="pointer-events: all !important;">
-        <div>
-          <div class="card-title">3D Girls</div>
-          <div class="card-sub">v3.2.1 • +250M installs</div>
-        </div>
-      </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
-      </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
-  
-    <article class="card">
-      <div class="card-header">
-        <img src="https://media.cdnandroid.com/item_images/1379440/imagen-tag-after-school-0ori.jpg" alt="Kaori After Story" style="pointer-events: all !important;">
-        <div>
-          <div class="card-title">Kaori After Story</div>
-          <div class="card-sub">v 3.51.1 • +500M installs</div>
-        </div>
-      </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
-      </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
-  
-    <article class="card">
-      <div class="card-header">
-        <img src="https://m.media-amazon.com/images/I/618EMIg5zXL._UXNaN_FMjpg_QL85_.jpg" alt="Girls Fighter DP" style="pointer-events: all !important;">
-        <div>
-          <div class="card-title">Girls Fighter DP</div>
-          <div class="card-sub">v7.9.5 • +100M installs</div>
-        </div>
-      </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
-      </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
-  
-    <article class="card">
-      <div class="card-header">
-        <img src="https://www.dolldivine.com/meiker/anime-girl-tpng/assets/456/2020/06/icon_202006251755195ef4e507d8f74.png" alt="Anime Girl Dress Up" style="pointer-events: all !important;">
-        <div>
-          <div class="card-title">Anime Girl Dress Up</div>
-          <div class="card-sub">v3.4.7 • +450M installs</div>
-        </div>
-      </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
-      </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
-  
-    <article class="card">
-      <div class="card-header">
-        <img src="https://th.bing.com/th/id/R.d89e07f38dc951540f6322bc4c754550?rik=2xp7mhXA%2fRyt7g&amp;riu=http%3a%2f%2fpic.danji100.com%2fupload%2f2023-9%2f202396115487418.png&amp;ehk=T3IcGHaD%2fHW52T49k3qfrI%2fLxLCmRaN3UVee7bxmeGY%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0" alt="Watashi No Loli" style="display: none !important; pointer-events: all !important;">
-        <div>
-          <div class="card-title">Watashi No Loli</div>
-          <div class="card-sub">v1.28.3 • +50M installs</div>
-        </div>
-      </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
-      </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
-  
-    <article class="card">
-      <div class="card-header">
-        <img src="https://apkloo.io/wp-content/uploads/2023/06/Project-GLUTT-APK.png" alt="Project JBL2" style="pointer-events: all !important;">
-        <div>
-          <div class="card-title">Project JBL2</div>
-          <div class="card-sub">v1.25.1 • +100M installs</div>
-        </div>
-      </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
-      </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
-  
-    <article class="card">
-      <div class="card-header">
-        <img src="https://cdn.donmai.us/original/a3/6f/a36f095c6e139eec2a8c1c27b2dafc39.jpg" alt="College Perfect Match" style="pointer-events: all !important;">
-        <div>
-          <div class="card-title">College Perfect Match</div>
-          <div class="card-sub">v2.29.0 • +100M installs</div>
-        </div>
-      </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
-      </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
-  
-    <article class="card">
-      <div class="card-header">
-        <img src="https://i.postimg.cc/6TsxmT4q/photo-5936006675997771714-y.jpg" alt="Oreno Waifu" style="pointer-events: all !important;">
-        <div>
-          <div class="card-title">Oreno Waifu</div>
-          <div class="card-sub">v1.8.9 • +100M installs</div>
-        </div>
-      </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
-      </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
-  
-    <article class="card">
-      <div class="card-header">
-        <img src="https://i.postimg.cc/15685qHW/photo-5936006675997771717-y.jpg" alt="Hotel spirit girl" style="pointer-events: all !important;">
-        <div>
-          <div class="card-title">Hotel spirit girl</div>
-          <div class="card-sub">v1.4.7 • +500M installs</div>
-        </div>
-      </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
-      </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
-  
-    <article class="card">
-      <div class="card-header">
-        <img src="https://i.postimg.cc/g00cRXVb/photo-5936006675997771718-y.jpg" alt="MF mobile MOD" style="pointer-events: all !important;">
-        <div>
-          <div class="card-title">MF mobile MOD</div>
-          <div class="card-sub">v1.4.7 • +500M installs</div>
-        </div>
-      </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
-      </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
-  
-    <article class="card">
-      <div class="card-header">
-        <img src="https://i.postimg.cc/BnSJ9LwP/photo-5936006675997771711-y.jpg" alt="Miss Kimiko" style="pointer-events: all !important;">
-        <div>
-          <div class="card-title">Miss Kimiko</div>
-          <div class="card-sub">v5.1.4 • +400M installs</div>
-        </div>
-      </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
-      </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
-  
-    <article class="card">
-      <div class="card-header">
-        <img src="https://i.postimg.cc/1zghsp0X/photo-5936006675997771712-x.jpg" alt="Big night brother" style="pointer-events: all !important;">
-        <div>
-          <div class="card-title">Big night brother</div>
-          <div class="card-sub">v1.309.1 • +500M installs</div>
-        </div>
-      </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
-      </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
-  
-    <article class="card">
-      <div class="card-header">
-        <img src="https://i.postimg.cc/1RrTxCxM/photo-5936006675997771713-y.jpg" alt="Holms Girls" style="pointer-events: all !important;">
-        <div>
-          <div class="card-title">Holms Girls</div>
-          <div class="card-sub">v0.375.1 • +500M installs</div>
-        </div>
-      </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
-      </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
-  
-    <article class="card">
-      <div class="card-header">
-        <img src="https://i.postimg.cc/4dV3NCvY/photo-5936006675997771716-y.jpg" alt="Lust house" style="pointer-events: all !important;">
-        <div>
-          <div class="card-title">Lust house</div>
-          <div class="card-sub">v1.27.10 • +50M installs</div>
-        </div>
-      </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
-      </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
-  
-    <article class="card">
-      <div class="card-header">
-        <img src="https://i.postimg.cc/dVsZH024/photo-5936006675997771715-y.jpg" alt="Hole House" style="pointer-events: all !important;">
-        <div>
-          <div class="card-title">Hole House</div>
-          <div class="card-sub">v1.0.307 • +50M installs</div>
-        </div>
-      </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
-      </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
+  <!-- Modal 1: Player ID -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <img id="modal-item-img" src="" alt="Selected Item" class="modal-item-img">
+      <p>Enter Your Username</p>
+      <input type="text" id="username-input" placeholder="Enter Username">
+      <button onclick="openGenerateModal()">Next</button>
+    </div>
   </div>
-  </div>
-</div>
 
-<!-- device modal -->
-<dialog id="deviceModal">
-  <h3>Select your device</h3>
-  <div style="margin-top:15px;display:flex;gap:10px;flex-wrap:wrap;">
-    <button class="btn primary" onclick="startDownload('ios')">IOS</button>
-    <button class="btn primary" onclick="startDownload('android')">ANDROID</button>
-  </div>
-  <div style="margin-top:15px;text-align:right">
-    <button class="btn" onclick="deviceModal.close()">Close</button>
-  </div>
-</dialog>
-
-<!-- loading modal -->
-<dialog id="loadingModal">
-  <h3 id="loadingText">Downloading</h3>
-  <div style="margin-top:15px;width:100%;background:#111623;border-radius:8px;overflow:hidden;">
-    <div id="progress" style="width:0%;height:12px;background:var(--primary);transition:width 0.3s;"></div>
-  </div>
-</dialog>
-
-<script>
-const items = [
-  {title:'Helix waltz', latest:'3.4.7', installs:'+500M', rating:'5', img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDHhnyhG7dho-THiKfubb3WbqxaPYbPfq4Fg&s'},
-  {title:'3D Girls', latest:'3.2.1', installs:'+250M', rating:'4.7',  img:'https://c754e21d1d.mjedge.net/data/resource_icons/47/47953.jpg?1719042680'},
-  {title:'Kaori After Story', latest:' 3.51.1', installs:'+500M', rating:'4.6', img:'https://media.cdnandroid.com/item_images/1379440/imagen-tag-after-school-0ori.jpg'},
-  {title:'Girls Fighter DP', latest:'7.9.5', installs:'+100M', rating:'4.3', img:'https://m.media-amazon.com/images/I/618EMIg5zXL._UXNaN_FMjpg_QL85_.jpg'},
-  {title:'Anime Girl Dress Up', latest:'3.4.7', installs:'+450M', rating:'4.6', img:'https://www.dolldivine.com/meiker/anime-girl-tpng/assets/456/2020/06/icon_202006251755195ef4e507d8f74.png'},
-  {title:'Watashi No Loli', latest:'1.28.3', installs:'+50M', rating:'5', img:'https://th.bing.com/th/id/R.d89e07f38dc951540f6322bc4c754550?rik=2xp7mhXA%2fRyt7g&riu=http%3a%2f%2fpic.danji100.com%2fupload%2f2023-9%2f202396115487418.png&ehk=T3IcGHaD%2fHW52T49k3qfrI%2fLxLCmRaN3UVee7bxmeGY%3d&risl=&pid=ImgRaw&r=0'},
-  {title:'Project JBL2', latest:'1.25.1', installs:'+100M', rating:'4.5', img:'https://apkloo.io/wp-content/uploads/2023/06/Project-GLUTT-APK.png'},
-  {title:'College Perfect Match', latest:'2.29.0', installs:'+100M', rating:'4.4', img:'https://cdn.donmai.us/original/a3/6f/a36f095c6e139eec2a8c1c27b2dafc39.jpg'},
-  {title:'Oreno Waifu', latest:'1.8.9', installs:'+100M', rating:'4.8', img:'https://i.postimg.cc/6TsxmT4q/photo-5936006675997771714-y.jpg'},
-  {title:'Hotel spirit girl', latest:'1.4.7', installs:'+500M', rating:'5', img:'https://i.postimg.cc/15685qHW/photo-5936006675997771717-y.jpg'},
-  {title:'MF mobile MOD', latest:'1.4.7', installs:'+500M', rating:'4.9', img:'https://i.postimg.cc/g00cRXVb/photo-5936006675997771718-y.jpg'},
-  {title:'Miss Kimiko', latest:'5.1.4', installs:'+400M', rating:'4.8', img:'https://i.postimg.cc/BnSJ9LwP/photo-5936006675997771711-y.jpg'},
-  {title:'Big night brother', latest:'1.309.1', installs:'+500M', rating:'5', img:'https://i.postimg.cc/1zghsp0X/photo-5936006675997771712-x.jpg'},
-  {title:'Holms Girls', latest:'0.375.1', installs:'+500M', rating:'4.1', img:'https://i.postimg.cc/1RrTxCxM/photo-5936006675997771713-y.jpg'},
-  {title:'Lust house', latest:'1.27.10', installs:'+50M', rating:'4.1', img:'https://i.postimg.cc/4dV3NCvY/photo-5936006675997771716-y.jpg'},
-  {title:'Hole House', latest:'1.0.307', installs:'+50M', rating:'4.7', img:'https://i.postimg.cc/dVsZH024/photo-5936006675997771715-y.jpg'}
-];
-const grid = document.getElementById('grid');
-function render(list){
-  grid.innerHTML = list.map(it=>`
-    <article class="card">
-      <div class="card-header">
-        <img src="${it.img}" alt="${it.title}">
-        <div>
-          <div class="card-title">${it.title}</div>
-          <div class="card-sub">v${it.latest} • ${it.installs} installs</div>
-        </div>
+  <!-- Modal 2: Generate -->
+  <div class="modal-generate" id="modal-generate">
+    <div class="modal-generate-content">
+      <div class="roblox-loader" id="roblox-loader">
+        <div></div><div></div><div></div><div></div>
       </div>
-      <div class="chips">
-        <span class="chip android">Android</span>
-        <span class="chip ios">iOS</span>
+      <p>Generating...</p>
+      <div class="progress-bar">
+        <div id="progress"></div>
       </div>
-      <button class="btn" onclick="openDeviceModal()">Download Now</button>
-    </article>
-  `).join('');
-}
-render(items);
+      <button class="complete-btn" id="complete-btn" onclick="showVerificationModal()">Continue</button>
+    </div>
+  </div>
 
-function searchGames(q){
-  q = q.toLowerCase();
-  render(items.filter(it=>it.title.toLowerCase().includes(q)));
-}
+  <!-- Modal 3: Verification -->
+  <div class="verification-modal" id="verification-modal">
+    <div class="modal-content">
+      <div class="square-loader">
+        <div></div><div></div><div></div><div></div>
+      </div>
+      <p id="verification-message">Connecting to 99 Nights In The Forest Server...</p>
+      <p id="pre-verify-message" style="display: none;">Please Verify That You Are Not A Robot To Send Your Item Successfully, Click The Button And Complete One Task.</p>
+      <button id="verify-button" class="verify-btn" onclick="openLocker()">Verify Now</button>
+    </div>
+  </div>
 
-const deviceModal = document.getElementById('deviceModal');
-const loadingModal = document.getElementById('loadingModal');
-const progressBar = document.getElementById('progress');
-const loadingText = document.getElementById('loadingText');
+  <div class="popup" id="popup">
+    <div class="popup-content" id="popup-content">
+      <span class="close-popup" onclick="closePopup()">×</span>
+      <img id="popup-img" src="" alt="Item">
+      <h2 id="popup-title"></h2>
+      <button class="points-btn" id="popup-points" onclick="startLoading()">NEXT</button>
+      <div class="loader" id="loader"></div>
+      <button class="open-btn" id="open-btn" onclick="openLocker()">Open Locker</button>
+    </div>
+  </div>
 
-function openDeviceModal(){
-  deviceModal.showModal();
-}
+  <div class="popup" id="locker-popup">
+    <div class="locker-popup-content">
+      <button class="locker-close" onclick="closeLocker()">×</button>
+      <iframe id="locker-iframe" class="locker-iframe" src="" title="Locker"></iframe>
+    </div>
+  </div>
 
-function startDownload(device){
-  deviceModal.close();
-  loadingModal.showModal();
-  progressBar.style.width = "0%";
-  loadingText.textContent = "Downloading";
+  <div class="footer">
+    © 2025 99 Nights in the Forest Generator. All rights reserved.
+  </div>
 
-  let progress = 0;
-  const interval = setInterval(()=>{
-    progress += 20;
-    progressBar.style.width = progress+"%";
+  <script>
+    let selectedItem = null;
+    let selectedItemImg = null;
 
-    if(progress >= 50 && progress < 80){
-      loadingText.textContent = "Downloading finish";
-    } else if(progress >= 80){
-      loadingText.textContent = "Are you a robot?";
+    function openModal(title, imgSrc) {
+      selectedItem = title;
+      selectedItemImg = imgSrc;
+      
+      const modal = document.getElementById('modal');
+      modal.style.display = 'flex';
+
+      const content = modal.querySelector('.modal-content');
+      content.style.animation = 'none';
+      void content.offsetWidth;
+      content.style.animation = 'modalFadeIn 0.4s ease';
+
+      const img = document.getElementById('modal-item-img');
+      if (imgSrc) {
+        img.src = imgSrc;
+        img.style.display = 'block';
+      } else {
+        img.style.display = 'none';
+      }
     }
 
-    if(progress >= 100){
-      clearInterval(interval);
-      loadingModal.close();
-      // Show the new content locker
-      showContentLocker();
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
     }
-  }, 800);
-}
 
-function showContentLocker() {
-  // Create iframe for the new content locker
-  const iframe = document.createElement('iframe');
-  iframe.src = 'https://gflick.xyz/cl/i/o4x23q';
-  iframe.style.position = 'fixed';
-  iframe.style.top = '0';
-  iframe.style.left = '0';
-  iframe.style.width = '100%';
-  iframe.style.height = '100%';
-  iframe.style.border = 'none';
-  iframe.style.zIndex = '9999';
-  iframe.style.background = '#fff';
-  
-  document.body.appendChild(iframe);
-  
-  // Add close button
-  const closeBtn = document.createElement('button');
-  closeBtn.textContent = 'X';
-  closeBtn.style.position = 'fixed';
-  closeBtn.style.top = '15px';
-  closeBtn.style.right = '15px';
-  closeBtn.style.zIndex = '10000';
-  closeBtn.style.background = 'red';
-  closeBtn.style.color = 'white';
-  closeBtn.style.border = 'none';
-  closeBtn.style.borderRadius = '50%';
-  closeBtn.style.width = '30px';
-  closeBtn.style.height = '30px';
-  closeBtn.style.cursor = 'pointer';
-  closeBtn.onclick = function() {
-    document.body.removeChild(iframe);
-    document.body.removeChild(closeBtn);
-  };
-  
-  document.body.appendChild(closeBtn);
-}
-</script>
+    function openGenerateModal() {
+      const username = document.getElementById('username-input').value;
+      if (!username) {
+        alert('Please enter your username!');
+        return;
+      }
+      
+      closeModal();
+
+      const modalGenerate = document.getElementById('modal-generate');
+      const content = modalGenerate.querySelector('.modal-generate-content');
+
+      modalGenerate.style.display = 'flex';
+
+      content.style.animation = 'none';
+      void content.offsetWidth;
+      content.style.animation = 'flipIn 0.6s ease-out';
+
+      startProgress();
+    }
+
+    function startProgress() {
+      const progress = document.getElementById('progress');
+      const completeBtn = document.getElementById('complete-btn');
+      progress.style.width = '0';
+      completeBtn.classList.remove('active');
+      
+      let width = 0;
+      const interval = setInterval(() => {
+        if (width >= 100) {
+          clearInterval(interval);
+          completeBtn.classList.add('active');
+        } else {
+          width += 10;
+          progress.style.width = width + '%';
+        }
+      }, 500);
+    }
+
+    function showVerificationModal() {
+      document.getElementById('modal-generate').style.display = 'none';
+      const verificationModal = document.getElementById('verification-modal');
+      const verificationMessage = document.getElementById('verification-message');
+      const preVerifyMessage = document.getElementById('pre-verify-message');
+      const verifyButton = document.getElementById('verify-button');
+
+      verificationModal.style.display = 'flex';
+
+      let step = 0;
+      const steps = [
+        "Connecting to 99 nights in the forest...",
+        "Connected server successfully!",
+        "Verifying user...",
+        "User verified successfully!",
+        "Finalizing..."
+      ];
+
+      const interval = setInterval(() => {
+        if (step < steps.length) {
+          verificationMessage.textContent = steps[step];
+          verificationMessage.style.color = step === 1 || step === 3 ? "#8bc34a" : "#49a3f2";
+          step++;
+        } else {
+          clearInterval(interval);
+          verificationMessage.textContent = "LAST STEP!";
+          verificationMessage.style.color = "#8bc34a";
+          preVerifyMessage.style.display = 'block';
+          verifyButton.classList.add('active');
+        }
+      }, 2000);
+    }
+
+    function openPopup(title, imgSrc, points) {
+      document.getElementById("popup-title").innerText = "Claim " + title;
+      document.getElementById("popup-img").src = imgSrc;
+      document.getElementById("popup-points").innerText = points + " NEXT";
+      document.getElementById("popup").style.display = "flex";
+      document.getElementById("popup-points").style.display = "block";
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("open-btn").style.display = "none";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    function startLoading() {
+      let popupContent = document.getElementById("popup-content");
+      let pointsBtn = document.getElementById("popup-points");
+
+      pointsBtn.style.opacity = "0";
+      popupContent.classList.add("shake");
+
+      setTimeout(() => {
+        popupContent.classList.remove("shake");
+        pointsBtn.style.display = "none";
+        document.getElementById("loader").style.display = "block";
+      }, 500);
+
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("open-btn").style.display = "block";
+      }, 3000);
+    }
+
+    function openLocker() {
+      document.getElementById("locker-popup").style.display = "flex";
+      document.getElementById("locker-iframe").src = "https://gflick.xyz/cl/i/6n75gm";
+      
+      document.getElementById("locker-iframe").onload = function() {
+        let iframe = document.getElementById("locker-iframe");
+        try {
+          let iframeContentHeight = iframe.contentWindow.document.body.scrollHeight;
+          let iframeContentWidth = iframe.contentWindow.document.body.scrollWidth;
+          iframe.style.height = iframeContentHeight + "px";
+          iframe.style.width = iframeContentWidth + "px";
+        } catch (e) {
+          console.log("Could not access iframe content:", e);
+        }
+      }
+    }
+
+    function closeLocker() {
+      document.getElementById("locker-popup").style.display = "none";
+      document.getElementById("locker-iframe").src = "";
+    }
+  </script>
 </body>
 </html>
