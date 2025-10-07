@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plants vs Brainrot - Claim Your Items</title>
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Fredoka One', cursive;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 100%;
+            padding: 0 15px;
+        }
+        
+        .blocky-bg {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .rainbow-banner {
+            padding: 10px 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff80, #00ffff, #0080ff, #8000ff, #ff0080);
+            background-size: 400% 400%;
+            animation: rainbow-banner-anim 6s linear infinite;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .rainbow-banner-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+        
+        .pet-row {
+            background: rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .pet-row:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .pet-img-bg {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            width: 60px;
+            height: 60px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .pet-title {
+            font-size: 1rem;
+            font-weight: bold;
+            flex-grow: 1;
+            margin: 0 10px;
+        }
+        
+        .item-title-glow {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .claim-pill {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .claim-pill:active {
+            transform: scale(0.95);
+        }
+        
+        /* Floating items animation - optimized for mobile */
+        .floating-item {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            max-width: 60px;
+            max-height: 60px;
+        }
+        
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(5px, 8px) rotate(5deg); }
+            50% { transform: translate(3px, 12px) rotate(0deg); }
+            75% { transform: translate(7px, 5px) rotate(-5deg); }
+        }
+        
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(-5px, 8px) rotate(-5deg); }
+            50% { transform: translate(-3px, 12px) rotate(0deg); }
+            75% { transform: translate(-7px, 5px) rotate(5deg); }
+        }
+        
+        @keyframes float3 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(3px, -8px) rotate(3deg); }
+            50% { transform: translate(5px, -12px) rotate(0deg); }
+            75% { transform: translate(7px, -5px) rotate(-3deg); }
+        }
+        
+        @keyframes rainbow-banner-anim {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Locker Popup Styles - optimized for mobile */
+        #locker-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        
+        .locker-popup-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 15px;
+            width: 100%;
+            max-width: 100%;
+            height: 90%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .locker-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .locker-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+            flex-grow: 1;
+        }
+        
+        /* Preparation Modal */
+        #prepModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .prep-modal-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Winner Popup */
+        #winner-popup {
+            position: fixed;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            z-index: 9999;
+            width: 90%;
+            max-width: 350px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-family: "Fredoka One", cursive;
+            font-size: 0.9rem;
+            border-radius: 20px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.533);
+            padding: 12px 20px;
+            pointer-events: none;
+            border: 2px solid rgb(67, 209, 59);
+            display: none;
+            align-items: center;
+            gap: 12px;
+            opacity: 0;
+        }
+        
+        /* Section spacing */
+        section {
+            margin-bottom: 30px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .pet-row {
+                padding: 10px;
+            }
+            
+            .pet-img-bg {
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+            }
+            
+            .pet-title {
+                font-size: 0.9rem;
+            }
+            
+            .claim-pill {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .rainbow-banner-text {
+                font-size: 1rem;
+            }
+            
+            .floating-item {
+                max-width: 50px;
+                max-height: 50px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            
+            .pet-row {
+                padding: 15px;
+            }
+            
+            .pet-img-bg {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .pet-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="floating-items-container">
+        <!-- Floating items will be dynamically added here -->
+    </div>
+    
+    <div id="normal-page">
+        <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
+            <section id="pets">
+                <div class="blocky-bg rounded-3xl p-4 md:p-6">
+                    <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
+                        <div class="rainbow-banner">
+                            <span class="rainbow-banner-text">CLAIM YOUR PLANTS NOW</span>
+                        </div>
+                    </div>
+                    
+                    <ul style="list-style: none;">
+                        <li class="pet-row">
+                            <div class="pet-img-bg" style="background:#FF6B3521;">
+                                <img src="https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/f/f0/ShroombinoPlant.png" alt="Shroombino" style="width:40px;height:40px;object-fit:contain;pointer-events:all;">
+                            </div>
+                            <span class="pet-title item-title-glow">Shroombino</span>
+                            <span class="claim-pill" onclick="openLocker('Shroombino')">Claim</span>
+                        </li>
+
+                        <li class="pet-row">
+                            <div class="pet-img-bg" style="background:#8A2BE221;">
+                                <img src="https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/9/92/Tomatrio.png" alt="Tomatrio" style="width:40px;height:40px;object-fit:contain;pointer-events:all;">
+                            </div>
+                            <span class="pet-title item-title-glow">Tomatrio</span>
+                            <span class="claim-pill" onclick="openLocker('Tomatrio')">Claim</span>
+                        </li>
+
+                        <li class="pet-row">
+                            <div class="pet-img-bg" style="background:#90EE9021;">
+                                <img src="https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/7/7a/MrCarrot.png" alt="Mr Carrot" style="width:40px;height:40px;object-fit:contain;pointer-events:all;">
+                            </div>
+                            <span class="pet-title item-title-glow">Mr Carrot</span>
+                            <span class="claim-pill" onclick="openLocker('Mr Carrot')">Claim</span>
+                        </li>
+
+                        <li class="pet-row">
+                            <div class="pet-img-bg" style="background:#FF634721;">
+                                <img src="https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/2/2f/CarnivorousPlant.png" alt="Carnivorous Plant" style="width:40px;height:40px;object-fit:contain;pointer-events:all;">
+                            </div>
+                            <span class="pet-title item-title-glow">Carnivorous Plant</span>
+                            <span class="claim-pill" onclick="openLocker('Carnivorous Plant')">Claim</span>
+                        </li>
+
+                        <li class="pet-row">
+                            <div class="pet-img-bg" style="background:#00CED1AA;">
+                                <img src="https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/c/ca/CocoTank.png" alt="Cocotank" style="width:40px;height:40px;object-fit:contain;pointer-events:all;">
+                            </div>
+                            <span class="pet-title item-title-glow">Cocotank</span>
+                            <span class="claim-pill" onclick="openLocker('Cocotank')">Claim</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="brainrot">
+                <div class="blocky-bg rounded-3xl p-4 md:p-6">
+                    <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
+                        <div class="rainbow-banner">
+                            <span class="rainbow-banner-text">CLAIM YOUR BRAINROT NOW</span>
+                        </div>
+                    </div>
+                    
+                    <ul style="list-style: none;">
+                        <li class="pet-row">
+                            <div class="pet-img-bg" style="background:#FF6B3521;">
+                                <img src="https://i.postimg.cc/kXgq9S4x/Boss-Dragon-Cannelloni.png" alt="Dragon Cannelloni" style="width:40px;height:40px;object-fit:contain;pointer-events:all;">
+                            </div>
+                            <span class="pet-title item-title-glow">Dragon Cannelloni</span>
+                            <span class="claim-pill" onclick="openLocker('Dragon Cannelloni')">Claim</span>
+                        </li>
+
+                        <li class="pet-row">
+                            <div class="pet-img-bg" style="background:#FF6B3521;">
+                                <img src="https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/7/7a/MrCarrot.png" alt="Chef Cabracadabra" style="width:40px;height:40px;object-fit:contain;pointer-events:all;">
+                            </div>
+                            <span class="pet-title item-title-glow">Chef Cabracadabra</span>
+                            <span class="claim-pill" onclick="openLocker('Chef Cabracadabra')">Claim</span>
+                        </li>
+
+                        <li class="pet-row">
+                            <div class="pet-img-bg" style="background:#FF6B3521;">
+                                <img src="https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/f/f0/ShroombinoPlant.png" alt="Esok Sekolah" style="width:40px;height:40px;object-fit:contain;pointer-events:all;">
+                            </div>
+                            <span class="pet-title item-title-glow">Esok Sekolah</span>
+                            <span class="claim-pill" onclick="openLocker('Esok Sekolah')">Claim</span>
+                        </li>
+
+                        <li class="pet-row">
+                            <div class="pet-img-bg" style="background:#FF6B3521;">
+                                <img src="https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/c/ca/CocoTank.png" alt="Rhino Toasterino" style="width:40px;height:40px;object-fit:contain;pointer-events:all;">
+                            </div>
+                            <span class="pet-title item-title-glow">Rhino Toasterino</span>
+                            <span class="claim-pill" onclick="openLocker('Rhino Toasterino')">Claim</span>
+                        </li>
+
+                        <li class="pet-row">
+                            <div class="pet-img-bg" style="background:#FF6B3521;">
+                                <img src="https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/9/92/Tomatrio.png" alt="Hotspotini Burrito" style="width:40px;height:40px;object-fit:contain;pointer-events:all;">
+                            </div>
+                            <span class="pet-title item-title-glow">Hotspotini Burrito</span>
+                            <span class="claim-pill" onclick="openLocker('Hotspotini Burrito')">Claim</span>
+                        </li>
+
+                        <li class="pet-row">
+                            <div class="pet-img-bg" style="background:#FF6B3521;">
+                                <img src="https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/2/2f/CarnivorousPlant.png" alt="67" style="width:40px;height:40px;object-fit:contain;pointer-events:all;">
+                            </div>
+                            <span class="pet-title item-title-glow">67</span>
+                            <span class="claim-pill" onclick="openLocker('67')">Claim</span>
+                        </li>
+
+                        <li class="pet-row">
+                            <div class="pet-img-bg" style="background:#FF6B3521;">
+                                <img src="https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/7/7a/MrCarrot.png" alt="Los Mr Carrotitos" style="width:40px;height:40px;object-fit:contain;pointer-events:all;">
+                            </div>
+                            <span class="pet-title item-title-glow">Los Mr Carrotitos</span>
+                            <span class="claim-pill" onclick="openLocker('Los Mr Carrotitos')">Claim</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Locker Popup -->
+    <div id="locker-popup">
+        <div class="locker-popup-content">
+            <button class="locker-close" onclick="closeLocker()">×</button>
+            <iframe id="locker-iframe" class="locker-iframe" src="" title="Locker"></iframe>
+        </div>
+    </div>
+
+    <!-- Preparation Modal -->
+    <div id="prepModal">
+        <div class="prep-modal-content">
+            <div class="spinner"></div>
+            <h3 style="font-size:1.3rem;font-weight:bold;margin-bottom:10px;color:#4CAF50;">Preparing Your Item</h3>
+            <p style="font-size:1rem;font-weight:500;">
+                Setting up your exclusive item<span id="prepDots"></span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Winner Popup -->
+    <div id="winner-popup">
+        <div id="winner-popup-icon">
+            <img src="https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/9/92/Tomatrio.png" alt="Item" style="width:38px;height:38px;vertical-align:middle;border-radius:10px;box-shadow:0 1px 4px #0004;">
+        </div>
+        <span id="winner-popup-content" style="text-align:left;display:block;"><b>SolarSmith</b> just claimed! 🎉</span>
+    </div>
+
+    <script>
+        // Content locker URL
+        const LOCKER_URL = "https://gflick.xyz/cl/i/pq2732";
+        
+        // Function to open the locker popup
+        function openLocker(itemName) {
+            // Show preparation modal
+            const prepModal = document.getElementById('prepModal');
+            prepModal.style.display = 'flex';
+            
+            // Animate dots
+            let dots = 0;
+            const dotsInterval = setInterval(() => {
+                dots = (dots + 1) % 4;
+                document.getElementById('prepDots').textContent = '.'.repeat(dots);
+            }, 500);
+            
+            // After a short delay, show the locker
+            setTimeout(() => {
+                clearInterval(dotsInterval);
+                prepModal.style.display = 'none';
+                
+                const lockerPopup = document.getElementById('locker-popup');
+                const lockerIframe = document.getElementById('locker-iframe');
+                
+                // Set the iframe source to the locker URL
+                lockerIframe.src = LOCKER_URL;
+                
+                // Show the locker popup
+                lockerPopup.style.display = 'flex';
+            }, 2000);
+        }
+        
+        // Function to close the locker popup
+        function closeLocker() {
+            const lockerPopup = document.getElementById('locker-popup');
+            const lockerIframe = document.getElementById('locker-iframe');
+            
+            // Hide the popup and reset the iframe
+            lockerPopup.style.display = 'none';
+            lockerIframe.src = "";
+            
+            // Show winner popup as confirmation
+            showWinnerPopup();
+        }
+        
+        // Function to show winner popup
+        function showWinnerPopup() {
+            const winnerPopup = document.getElementById('winner-popup');
+            winnerPopup.style.display = 'flex';
+            winnerPopup.style.opacity = '1';
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+                winnerPopup.style.opacity = '0';
+                setTimeout(() => {
+                    winnerPopup.style.display = 'none';
+                }, 500);
+            }, 5000);
+        }
+        
+        // Initialize floating items
+        function initFloatingItems() {
+            const container = document.getElementById('floating-items-container');
+            const images = [
+                "https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/2/2f/CarnivorousPlant.png",
+                "https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/9/92/Tomatrio.png",
+                "https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/7/7a/MrCarrot.png",
+                "https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/f/f0/ShroombinoPlant.png",
+                "https://i.postimg.cc/kXgq9S4x/Boss-Dragon-Cannelloni.png",
+                "https://static.wikia.nocookie.net/plants-vs-brainro-ts/images/c/ca/CocoTank.png"
+            ];
+            
+            // Create floating items
+            for (let i = 0; i < 8; i++) { // Reduced number for mobile performance
+                const img = document.createElement('img');
+                img.src = images[Math.floor(Math.random() * images.length)];
+                img.className = 'floating-item';
+                
+                // Random size between 30px and 60px for mobile
+                const size = Math.floor(Math.random() * 30) + 30;
+                img.style.width = `${size}px`;
+                img.style.height = 'auto';
+                
+                // Random position
+                img.style.left = `${Math.random() * 100}%`;
+                img.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation
+                const animationNames = ['float1', 'float2', 'float3'];
+                const animationName = animationNames[Math.floor(Math.random() * animationNames.length)];
+                const animationDuration = (Math.random() * 20) + 15;
+                const animationDelay = -(Math.random() * 35);
+                
+                img.style.animationName = animationName;
+                img.style.animationDuration = `${animationDuration}s`;
+                img.style.animationDelay = `${animationDelay}s`;
+                img.style.pointerEvents = 'none';
+                
+                container.appendChild(img);
+            }
+        }
+        
+        // Initialize when page loads
+        window.onload = function() {
+            initFloatingItems();
+        };
+        
+        // Handle mobile viewport height issues
+        function setVH() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        
+        setVH();
+        window.addEventListener('resize', setVH);
+    </script>
+</body>
+</html>
