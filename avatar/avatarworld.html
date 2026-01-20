@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avatar World Rewards - Claim Your Coins Now</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Fredoka+One&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #6a11cb;
+      --secondary: #2575fc;
+      --accent: #22d3ee;
+      --danger: #ef4444;
+      --success: #10b981;
+      --dark: #0a0a0a;
+      --darker: #000000;
+      --gray: #8a8a8a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--darker);
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated Cyber Grid Background */
+    .cyber-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(106, 17, 203, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(106, 17, 203, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+      z-index: -2;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    /* Floating Particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: float 15s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh) translateX(0); }
+      to { transform: translateY(-10px) translateX(50px); }
+    }
+
+    /* Sticky Header */
+    .header {
+      position: sticky;
+      top: 0;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+      z-index: 100;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* CENTER HEADER FOR MOBILE FIRST */
+    .header-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      font-family: 'Fredoka One', cursive;
+      font-size: 2rem;
+      color: var(--accent);
+      text-align: center;
+    }
+
+    .logo img {
+      width: 80px;
+      height: 80px;
+      animation: rotate 10s linear infinite;
+      filter: drop-shadow(0 0 12px var(--accent));
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .live-stats {
+      display: flex;
+      gap: 12px;
+      font-size: 0.85rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      background: rgba(34, 211, 238, 0.1);
+      border-radius: 20px;
+      border: 1px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .stat-item i {
+      color: var(--accent);
+    }
+
+    .stat-value {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* Hero Section (less padding for mobile) */
+    .hero {
+      padding: 45px 0 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2.2rem, 8vw, 4.5rem);
+      background: linear-gradient(135deg, var(--accent), #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto 15px;
+      line-height: 1.5;
+    }
+
+    .urgency-banner {
+      background: linear-gradient(135deg, var(--danger), #f97316);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 50px;
+      margin: 14px 0 5px;
+      animation: pulse 2s infinite;
+      box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4);
+      font-size: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .countdown {
+      font-size: 1.25rem;
+      font-weight: 900;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 6px 10px;
+      border-radius: 10px;
+      font-family: 'Inter', monospace;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Mobile Jump Button */
+    .mobile-jump {
+      display: flex;
+      justify-content: center;
+      padding: 0 20px 20px;
+    }
+
+    .mobile-jump button {
+      width: 100%;
+      max-width: 520px;
+      padding: 14px;
+      border-radius: 14px;
+      border: none;
+      font-weight: 800;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 15px 30px rgba(106, 17, 203, 0.3);
+      transition: transform 0.25s ease;
+    }
+
+    .mobile-jump button:active {
+      transform: scale(0.98);
+    }
+
+    /* Social Proof */
+    .social-proof {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 18px;
+      margin: 15px 0 25px;
+      backdrop-filter: blur(10px);
+    }
+
+    .proof-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.5rem;
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .activity-stream {
+      position: relative;
+      height: 175px;
+      overflow: hidden;
+    }
+
+    .activity-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      animation: slideIn 0.5s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .activity-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .activity-text {
+      flex: 1;
+      font-size: 0.9rem;
+      line-height: 1.35;
+    }
+
+    .activity-time {
+      font-size: 0.72rem;
+      color: var(--gray);
+      white-space: nowrap;
+    }
+
+    /* Rewards Section */
+    .rewards-section {
+      padding: 20px 0 40px;
+    }
+
+    .section-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 18px;
+      color: var(--accent);
+    }
+
+    .rewards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 15px;
+      margin-bottom: 55px;
+    }
+
+    .reward-card {
+      background: linear-gradient(145deg, rgba(106, 17, 203, 0.1), rgba(34, 211, 238, 0.1));
+      border: 1px solid rgba(106, 17, 203, 0.3);
+      border-radius: 18px;
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .reward-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 50px rgba(106, 17, 203, 0.3);
+      border-color: var(--accent);
+    }
+
+    .rarity-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      padding: 4px 12px;
+      border-radius: 25px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      z-index: 2; /* Ensure badge stays above card content */
+    }
+
+    .rarity-legendary {
+      background: linear-gradient(135deg, #ffd700, #ff8c00);
+      color: #000;
+    }
+
+    .rarity-epic {
+      background: linear-gradient(135deg, #9b59b6, var(--primary));
+      color: white;
+    }
+
+    .rarity-rare {
+      background: linear-gradient(135deg, #3498db, var(--secondary));
+      color: white;
+    }
+
+    .rarity-common {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--gray);
+    }
+
+    .reward-image {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      margin: 8px auto 10px;
+      display: block;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+      transition: transform 0.3s;
+    }
+
+    .reward-card:hover .reward-image {
+      transform: scale(1.08) rotate(4deg);
+    }
+
+    .reward-name {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .reward-value {
+      color: var(--accent);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+    }
+
+    .reward-claimed {
+      color: var(--gray);
+      font-size: 0.75rem;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .claim-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-weight: 800;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .claim-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(106, 17, 203, 0.45);
+    }
+
+    .claim-btn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(rgba(255,255,255,0.12), transparent);
+      transform: rotate(30deg);
+      transition: all 0.6s;
+    }
+
+    .claim-btn:hover::before {
+      transform: translateX(100%) rotate(30deg);
+    }
+
+    /* Modal System */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+      border-radius: 22px;
+      padding: 26px;
+      max-width: 520px;
+      width: 100%;
+      position: relative;
+      animation: slideUp 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(80px) scale(0.92); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+      font-size: 1.3rem;
+    }
+
+    .modal-close:hover {
+      background: var(--danger);
+      transform: rotate(90deg);
+    }
+
+    .modal-icon {
+      width: 92px;
+      height: 92px;
+      border-radius: 18px;
+      margin: 0 auto 18px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.6rem;
+    }
+
+    .modal-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.75rem;
+      text-align: center;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .modal-subtitle {
+      color: var(--gray);
+      text-align: center;
+      margin-bottom: 18px;
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    .input-group {
+      margin-bottom: 16px;
+    }
+
+    .input-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
+
+    .text-input {
+      width: 100%;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: white;
+      font-size: 1rem;
+      transition: all 0.25s ease;
+    }
+
+    .text-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+    }
+
+    .trust-text {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gray);
+      font-size: 0.85rem;
+      margin-top: 10px;
+    }
+
+    .trust-text i {
+      color: var(--success);
+    }
+
+    .cta-button {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-weight: 800;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      margin-top: 14px;
+    }
+
+    .cta-button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(106, 17, 203, 0.4);
+    }
+
+    .cta-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Progress Modal */
+    .progress-container {
+      text-align: center;
+    }
+
+    .progress-icon {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 22px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse 1.5s infinite;
+      font-size: 2rem;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 18px 0;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      width: 0;
+      transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+      position: relative;
+    }
+
+    .progress-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 30px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4));
+      animation: shimmer 1.5s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-40px); }
+      100% { transform: translateX(80px); }
+    }
+
+    .progress-steps {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    .step::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: -1;
+    }
+
+    .step:last-child::after {
+      display: none;
+    }
+
+    .step-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      font-weight: 800;
+      transition: all 0.25s;
+      color: white;
+    }
+
+    .step.active .step-icon {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+    }
+
+    .step.completed .step-icon {
+      background: var(--success);
+    }
+
+    /* Success Modal */
+    .guarantee-list {
+      list-style: none;
+      margin: 18px 0;
+    }
+
+    .guarantee-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    .guarantee-list i {
+      color: var(--success);
+      font-size: 1.15rem;
+    }
+
+    .final-cta {
+      background: linear-gradient(135deg, var(--success), var(--accent));
+      margin-top: 16px;
+    }
+
+    /* Footer */
+    .footer {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 30px 0;
+      text-align: center;
+      margin-top: 70px;
+    }
+
+    .footer-trust {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    .footer-trust-item i {
+      color: var(--accent);
+    }
+
+    /* Desktop / wider screens */
+    @media (min-width: 769px) {
+      .header-inner {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .logo {
+        justify-content: flex-start;
+        font-size: 1.8rem;
+      }
+
+      .logo img {
+        width: 62px;
+        height: 62px;
+      }
+
+      .hero {
+        padding: 85px 0 60px;
+      }
+
+      .mobile-jump {
+        display: none;
+      }
+
+      .rewards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .reward-card {
+        padding: 30px;
+        min-height: unset;
+      }
+
+      .reward-image {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+      }
+
+      .reward-name { font-size: 1.5rem; }
+      .reward-value { font-size: 1.1rem; }
+      .reward-claimed { font-size: 0.9rem; }
+      .claim-btn { padding: 18px; font-size: 1rem; }
+      .section-title { font-size: 3rem; margin-bottom: 50px; }
+      .rewards-section { padding: 60px 0; }
+      .proof-title { font-size: 1.8rem; }
+      .activity-stream { height: 200px; }
+      .activity-text { font-size: 0.95rem; }
+    }
+
+    /* Utility */
+    .hidden { display: none !important; }
+  </style>
+</head>
+
+<body>
+  <div class="cyber-grid"></div>
+  <div class="particles" id="particles"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo">
+          <img src="https://i.ibb.co/GvNvTnY3/image-2026-01-20-171756861-removebg-preview.png" alt="Avatar World">
+          <span></span>
+        </div>
+
+        <div class="live-stats">
+          <div class="stat-item">
+            <i class="fas fa-users"></i>
+            <span><span class="stat-value" id="online-users">3,421</span> Online</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-gift"></i>
+            <span><span class="stat-value" id="total-claims">24,847</span> Delivered</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-shield-alt"></i>
+            <span><span class="stat-value">100%</span> Safe</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>CLAIM AVATAR WORLD COINS</h1>
+      <p class="hero-subtitle">
+        Get instant AW Coins directly to your account. No payment. No password. Just rewards.
+        Join 2M+ players already stacking their vault!
+      </p>
+
+      <div class="urgency-banner">
+        <i class="fas fa-fire"></i>
+        <span>FLASH DROP ENDS IN:</span>
+        <div class="countdown" id="countdown">52:47</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mobile Jump Button -->
+  <div class="mobile-jump">
+    <button onclick="scrollToPacks()">
+      <i class="fas fa-bolt"></i> Claim Coins Now
+    </button>
+  </div>
+
+  <!-- Social Proof -->
+  <div class="container">
+    <div class="social-proof">
+      <h3 class="proof-title">🔥 LIVE CLAIMS</h3>
+      <div class="activity-stream" id="activity-stream"></div>
+    </div>
+  </div>
+
+  <!-- Rewards Section -->
+  <section class="rewards-section" id="packs">
+    <div class="container">
+      <h2 class="section-title">CHOOSE YOUR COIN PACK</h2>
+      <div class="rewards-grid" id="rewards-grid"></div>
+    </div>
+  </section>
+
+  <!-- Modals -->
+
+  <!-- Username Modal -->
+  <div class="modal" id="username-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('username-modal')">×</button>
+      <div class="modal-icon" id="modal-item-icon"></div>
+      <h3 class="modal-title">Claim Your Coins</h3>
+      <p class="modal-subtitle">
+        Enter your <strong>Avatar Username</strong> to receive
+        <span id="modal-item-name" style="color: var(--accent); font-weight: 800;"></span>
+        directly in your Avatar World account
+      </p>
+
+      <div class="input-group">
+        <label class="input-label">Avatar Username</label>
+        <input type="text" class="text-input" id="username-input" placeholder="e.g. ProGamer123" maxlength="20" autocomplete="off">
+        <div class="trust-text">
+          <i class="fas fa-lock"></i>
+          <span>We never ask for your password</span>
+        </div>
+      </div>
+
+      <button class="cta-button" onclick="startGeneration()">
+        Continue to Generation <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Progress Modal -->
+  <div class="modal" id="progress-modal">
+    <div class="modal-content">
+      <div class="progress-container">
+        <div class="progress-icon">
+          <i class="fas fa-cog fa-spin"></i>
+        </div>
+        <h3 class="modal-title">Generating Your Coins...</h3>
+        <p class="modal-subtitle">Do not close this window</p>
+
+        <div class="progress-steps">
+          <div class="step active" id="step-1">
+            <div class="step-icon">1</div>
+            <div>Connect</div>
+          </div>
+          <div class="step" id="step-2">
+            <div class="step-icon">2</div>
+            <div>Generate</div>
+          </div>
+          <div class="step" id="step-3">
+            <div class="step-icon">3</div>
+            <div>Verify</div>
+          </div>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <p class="modal-subtitle" id="progress-text">
+          Establishing secure connection to Avatar World servers...
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Verification Modal -->
+  <div class="modal" id="verify-modal">
+    <div class="modal-content">
+      <div class="modal-icon" style="background: linear-gradient(135deg, var(--success), var(--accent));">
+        <i class="fas fa-check"></i>
+      </div>
+
+      <h3 class="modal-title" style="color: var(--success);">Coins Generated Successfully!</h3>
+
+      <p class="modal-subtitle">
+        Your <span id="verify-item-name" style="color: var(--accent); font-weight: 800;"></span>
+        is ready for instant delivery
+      </p>
+
+      <div class="modal-icon" style="background: var(--accent); font-size: 2rem; width: 80px; height: 80px;">
+        <i class="fas fa-lock-open"></i>
+      </div>
+
+      <p class="modal-subtitle" style="font-size: 1.05rem;">
+        🎯 <strong>Final Step:</strong> Complete a quick 30-second verification to prove you're human and receive your coins immediately
+      </p>
+
+      <ul class="guarantee-list">
+        <li><i class="fas fa-shield-alt"></i> Anti-ban protection guaranteed</li>
+        <li><i class="fas fa-clock"></i> Delivery within 2-5 minutes</li>
+        <li><i class="fas fa-user-secret"></i> No personal data collected</li>
+      </ul>
+
+      <button class="cta-button final-cta" onclick="openVerification()">
+        <i class="fas fa-lock-open"></i> Complete Verification & Get Coins Now
+      </button>
+
+      <p class="trust-text" style="justify-content:center; margin-top: 14px;">
+        <i class="fas fa-info-circle"></i> This keeps our service running and prevents bots
+      </p>
+    </div>
+  </div>
+
+  <!-- Content Locker Modal (Same Page Popup) -->
+  <div class="modal" id="locker-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('locker-modal')">×</button>
+
+      <div class="modal-icon" style="background: linear-gradient(135deg, var(--primary), var(--accent));">
+        <i class="fas fa-user-check"></i>
+      </div>
+
+      <h3 class="modal-title">Quick Verification</h3>
+      <p class="modal-subtitle">
+        Complete the short step below to unlock delivery.
+      </p>
+
+      <div style="width: 100%; height: 420px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+        <iframe
+          id="locker-frame"
+          src=""
+          style="width: 100%; height: 100%; border: none; background: rgba(255,255,255,0.03);"
+          allow="clipboard-write; fullscreen"
+        ></iframe>
+      </div>
+
+      <p class="trust-text" style="justify-content: center; margin-top: 15px;">
+        <i class="fas fa-shield-alt"></i> Secure verification system
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-trust">
+        <div class="footer-trust-item">
+          <i class="fas fa-lock"></i>
+          <span>256-bit SSL Encrypted</span>
+        </div>
+        <div class="footer-trust-item">
+          <i class="fas fa-user-secret"></i>
+          <span>Zero Data Storage</span>
+        </div>
+        <div class="footer-trust-item">
+          <i class="fas fa-check-circle"></i>
+          <span>Verified Service</span>
+        </div>
+        <div class="footer-trust-item">
+          <i class="fas fa-headset"></i>
+          <span>24/7 Discord Support</span>
+        </div>
+      </div>
+
+      <p>© 2025 AvatarWorldRewards.com | Fan-made rewards hub | Not affiliated with Pando Interactive</p>
+    </div>
+  </footer>
+
+  <script>
+    // Enhanced items data
+    const items = [
+      { name: "🪙 150 AW Coins", image: "https://i.ibb.co/m54K55FY/IMG-20250816-WA0002.jpg", rarity: "common", value: "$1.99", claimed: 3421 },
+      { name: "🪙 250 AW Coins", image: "https://i.ibb.co/m54K55FY/IMG-20250816-WA0002.jpg", rarity: "common", value: "$3.99", claimed: 5247 },
+      { name: "🪙 1,250 AW Coins", image: "https://i.ibb.co/m54K55FY/IMG-20250816-WA0002.jpg", rarity: "rare", value: "$19.99", claimed: 1823 },
+      { name: "🪙 2,500 AW Coins", image: "https://i.ibb.co/m54K55FY/IMG-20250816-WA0002.jpg", rarity: "epic", value: "$39.99", claimed: 947 },
+      { name: "🪙 7,500 AW Coins", image: "https://i.ibb.co/m54K55FY/IMG-20250816-WA0002.jpg", rarity: "legendary", value: "$99.99", claimed: 433 },
+      { name: "🎁 MYSTERY PACK", image: "https://i.ibb.co/991fbGG1/awicon.png", rarity: "legendary", value: "$50+", claimed: 876 }
+    ];
+
+    let selectedItem = null;
+    let userName = null;
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function () {
+      createParticles();
+      loadRewardCards();
+      startCountdown();
+      startActivityFeed();
+      updateStats();
+
+      setInterval(updateStats, 5000);
+    });
+
+    function createParticles() {
+      const container = document.getElementById('particles');
+      for (let i = 0; i < 40; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        container.appendChild(particle);
+      }
+    }
+
+    function scrollToPacks() {
+      document.getElementById("packs").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function loadRewardCards() {
+      const grid = document.getElementById('rewards-grid');
+      grid.innerHTML = '';
+
+      items.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'reward-card';
+        card.style.animationDelay = (index * 0.1) + 's';
+        card.innerHTML = `
+          <div class="rarity-badge rarity-${item.rarity}">${item.rarity}</div>
+          <img src="${item.image}" alt="${item.name}" class="reward-image">
+          <h3 class="reward-name">${item.name}</h3>
+          <div class="reward-value">💰 Real Value: ${item.value}</div>
+          <div class="reward-claimed">🔥 ${item.claimed.toLocaleString()} claimed today</div>
+          <button class="claim-btn" onclick="openUsernameModal('${item.name}', '${item.image}')">
+            <i class="fas fa-bolt"></i> Claim Now
+          </button>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function startCountdown() {
+      const timer = document.getElementById('countdown');
+      let minutes = 52;
+      let seconds = 47;
+
+      setInterval(() => {
+        if (seconds === 0) {
+          if (minutes === 0) {
+            minutes = 60;
+          } else {
+            minutes--;
+            seconds = 59;
+          }
+        } else {
+          seconds--;
+        }
+        timer.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }, 1000);
+    }
+
+    function startActivityFeed() {
+      const activities = [
+        { user: "ShadowSurvivor", item: "7,500 Coins", time: "just now" },
+        { user: "NightWalker", item: "Mystery Pack", time: "8s ago" },
+        { user: "ProGamer", item: "2,500 Coins", time: "15s ago" },
+        { user: "Phantom", item: "1,250 Coins", time: "22s ago" },
+        { user: "LoneWolf", item: "Mystery Pack", time: "31s ago" },
+        { user: "PixelMaster", item: "7,500 Coins", time: "45s ago" },
+        { user: "ShadowNinja", item: "2,500 Coins", time: "58s ago" }
+      ];
+
+      const stream = document.getElementById('activity-stream');
+      let index = 0;
+
+      setInterval(() => {
+        const activity = activities[index % activities.length];
+        const item = document.createElement('div');
+        item.className = 'activity-item';
+        item.innerHTML = `
+          <div class="activity-avatar">${activity.user.charAt(0)}</div>
+          <div class="activity-text">
+            <strong>${activity.user}</strong> claimed <strong>${activity.item}</strong>
+          </div>
+          <div class="activity-time">${activity.time}</div>
+        `;
+        stream.appendChild(item);
+
+        if (stream.children.length > 4) {
+          stream.removeChild(stream.firstChild);
+        }
+
+        index++;
+      }, 3000);
+    }
+
+    function updateStats() {
+      const users = document.getElementById('online-users');
+      const claims = document.getElementById('total-claims');
+
+      const currentUsers = parseInt(users.textContent.replace(/,/g, ''));
+      const currentClaims = parseInt(claims.textContent.replace(/,/g, ''));
+
+      users.textContent = (currentUsers + Math.floor(Math.random() * 5 + 2)).toLocaleString();
+      claims.textContent = (currentClaims + Math.floor(Math.random() * 4 + 1)).toLocaleString();
+    }
+
+    function openUsernameModal(itemName, itemImage) {
+      selectedItem = itemName;
+      document.getElementById('modal-item-icon').innerHTML =
+        `<img src="${itemImage}" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">`;
+      document.getElementById('modal-item-name').textContent = itemName;
+      document.getElementById('username-input').value = '';
+      document.getElementById('username-modal').style.display = 'flex';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+
+    function startGeneration() {
+      const username = document.getElementById('username-input').value.trim();
+      if (!username || username.length < 3) {
+        return;
+      }
+
+      userName = username;
+      document.getElementById('username-modal').style.display = 'none';
+      document.getElementById('progress-modal').style.display = 'flex';
+
+      // Animate generation process
+      const progressFill = document.getElementById('progress-fill');
+      const progressText = document.getElementById('progress-text');
+
+      const steps = [
+        "Establishing secure connection...",
+        "Authenticating with Roblox API...",
+        "Verifying user eligibility...",
+        "Generating coin code...",
+        "Applying anti-ban protection...",
+        "Preparing delivery..."
+      ];
+
+      let currentStep = 0;
+      const stepInterval = setInterval(() => {
+        if (currentStep <= steps.length) {
+          progressFill.style.width = (currentStep * 16.67) + '%';
+          if (steps[currentStep]) {
+            progressText.textContent = steps[currentStep];
+          }
+
+          // Update step indicators
+          if (currentStep > 0) {
+            const prevStep = document.getElementById(`step-${currentStep}`);
+            if (prevStep) {
+              prevStep.classList.add('completed');
+              prevStep.classList.remove('active');
+            }
+          }
+          if (currentStep < 3) {
+            const nextStep = document.getElementById(`step-${currentStep + 1}`);
+            if (nextStep) nextStep.classList.add('active');
+          }
+
+          currentStep++;
+        } else {
+          clearInterval(stepInterval);
+          setTimeout(() => {
+            document.getElementById('progress-modal').style.display = 'none';
+            openVerificationModal();
+          }, 900);
+        }
+      }, 1100);
+    }
+
+    function openVerificationModal() {
+      document.getElementById('verify-item-name').textContent = selectedItem;
+      document.getElementById('verify-modal').style.display = 'flex';
+    }
+
+    // SAME PAGE POPUP CONTENT LOCKER
+    function openVerification() {
+      const offerUrl = "https://gflick.xyz/cl/i/6n75gm";
+
+      // close verify modal
+      document.getElementById('verify-modal').style.display = 'none';
+
+      // open locker modal
+      document.getElementById('locker-modal').style.display = 'flex';
+
+      // load offerwall inside iframe
+      document.getElementById('locker-frame').src = offerUrl;
+    }
+
+    // Close modal on outside click
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', function (e) {
+        if (e.target === this) {
+          this.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
