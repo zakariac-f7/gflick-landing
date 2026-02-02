@@ -5,11 +5,13 @@ $API_KEY = "39884|vCk958zhT2f6uQCBa9BH7wQ7d4HUQRuGaSFUN1TC5edef98a";
 // --- 1. THE OFFER ROUTING TABLE ---
 // Put your preferred Offer IDs in order (Best ones at the top)
 $REGION_OFFERS = [
-    "US" => [57464, 68707, 59475, 69521], // USA Specific
+    "US" => [9164, 2993, 15696, 5930], // USA Specific
     
-    "FR" => [69541, 68328, 65234, 64996], // FR Specific
+    "EUROPE" => [15696, 5930, 1111, 2222], // UK, FR, DE, IT, etc.
     
-    "GLOBAL" => [random] // Everyone else
+    "AFRICA" => [5930, 3333, 4444, 5555], // MA, EG, ZA, NG, etc.
+    
+    "GLOBAL" => [5930, 2993] // Everyone else
 ];
 
 // Define which Country Codes belong to which group
